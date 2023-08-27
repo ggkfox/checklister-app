@@ -1,0 +1,122 @@
+{
+  "Zones":{
+    "Kikori Forest": [
+      { "name": "Mido's house x4",              "tags": ["chest"]                                 },
+      { "name": "Sword chest",                  "tags": ["chest", "child"]                        },
+      { "name": "Behind house",                 "tags": ["spider", "child", "night"]              },
+      { "name": "Soft soil",                    "tags": ["spider", "child", "soil"]               },
+      { "name": "On roof",                      "tags": ["spider", "adult", "night"]              },
+      { "name": "Indoor cow",                   "tags": ["cow"]                                   }
+    ],
+    "Lost Woods": [
+      { "name": "Leaving village",              "tags": ["song"]                                  },
+      { "name": "Deku under the bridge",        "tags": ["shop"]                                  },
+      { "name": "Grotto salesman",              "tags": ["shop", "bomb", "grotto"]                },
+      { "name": "Grotto near Goron City",       "tags": ["chest", "bomb", "grotto"]               },
+      { "name": "Slingshot target",             "tags": ["child"]                                 },
+      { "name": "Ocarina memory game",          "tags": ["child"]                                 },
+      { "name": "Play song for skull kid",      "tags": ["child"]                                 },
+      { "name": "Deku Theater (skull mask)",    "tags": ["child"]                                 },
+      { "name": "Deku Theater (mask of truth)", "tags": ["child"]                                 },
+      { "name": "Trade Cojiro",                 "tags": ["adult"]                                 },
+      { "name": "Trade odd potion",             "tags": ["adult"]                                 },
+      { "name": "Soft soil (under bridge)",     "tags": ["spider", "child", "soil"]               },
+      { "name": "Soft soil (near theater)",     "tags": ["spider", "child", "soil"]               },
+      { "name": "Ride hover plant",             "tags": ["spider", "adult", "night", "soil"]      }
+    ],
+    "Kakariko Village" : [
+      { "name": "Anju's Chickens",              "tags": ["day"]                                   },
+      { "name": "Open Grotto",                  "tags": ["chest"]                                 },
+      { "name": "Redesad Grotto",               "tags": ["chest"]                                 },
+      { "name": "Man On Roof"                                                                     },
+      { "name": "windmill",                     "tags": ["heart"]                                 },
+      { "name": "side of spider house",         "tags": ["spider", "night", "child"]              }
+    ],
+    "Sacred Forest Meadow" : [
+      { "name": "wolfos Grotto",                "tags": ["chest", "bomb", "grotto"]               },
+      { "name": "Song from Saria",              "tags": ["song", "child"]                         },
+      { "name": "Song from Shiek",              "tags": ["song", "adult"]                         },
+      { "name": "Maze wall",                    "tags": ["spider", "night", "adult"]              }
+    ],
+    "Hyrule Field": [
+      { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
+      { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
+      { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
+      { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
+      { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+      { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
+      { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+      { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
+      { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
+    ],
+    "Market": [
+      { "name": "Slingshot Game",               "tags": ["child"]                                 },
+      { "name": "Find dog",                     "tags": ["child", "night"]                        },
+      { "name": "Bombchu game",                 "tags": ["child", "day"]                          },
+      { "name": "Bombchu game x2",              "tags": ["child", "day"]                          },
+      { "name": "treasure chest game",          "tags": ["child", "night"]                        },
+      { "name": "Big Poes",                     "tags": ["adult"]                                 },
+      { "name": "Bazaar shop",                  "tags": ["shop", "child", "day"]                  },
+      { "name": "Potion shop",                  "tags": ["child", "day"]                          },
+      { "name": "Bombchu shop",                 "tags": ["child", "day"]                          }
+    ],
+    "Ice Cavern": [
+      { "name": "chest" }
+    ],
+    "Hyrule Field1": [
+      { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
+      { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
+      { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
+      { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
+      { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+      { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
+      { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+      { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
+      { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
+    ],
+    "Hyrule Field2": [
+      { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
+      { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
+      { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
+      { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
+      { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+      { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
+      { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+      { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
+      { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
+    ],
+    "Hyrule Field3": [
+      { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
+      { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
+      { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
+      { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
+      { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+      { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
+      { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+      { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
+      { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
+    ],
+    "Hyrule Field4": [
+      { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
+      { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
+      { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
+      { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
+      { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+      { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
+      { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+      { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
+      { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
+    ],
+    "Hyrule Field5": [
+      { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
+      { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
+      { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
+      { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
+      { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+      { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
+      { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+      { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
+      { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
+    ]
+  }
+}

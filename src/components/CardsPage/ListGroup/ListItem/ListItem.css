@@ -1,0 +1,23 @@
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.group-1-icon {
+  color: #7e7e7e;
+  padding: 0 0 0 5px;
+}
+
+.group-2-icon {
+  color: #7e7e7e;
+  padding: 5px 2px;
+}

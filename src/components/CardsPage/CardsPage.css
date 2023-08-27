@@ -1,0 +1,16 @@
+.container-fluid { 
+  columns: auto 4;
+}
+
+.card {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 350px;
+  break-inside: avoid-column;
+  page-break-inside: avoid;
+}
+
+.fx-column {
+  display: inline-block;
+}
