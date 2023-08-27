@@ -39,12 +39,12 @@ function ListItem({ item }: props) {
             <span className="noselect" style={{ margin: "0 5px" }}>
               {item.name}
             </span>
-            {item.tags?.includes("chest") && <FontAwesomeIcon icon={faBox} className={"group-1-icon"} />}
-            {item.tags?.includes("heart") && <FontAwesomeIcon icon={faHeart} className={"group-1-icon"} />}
-            {item.tags?.includes("spider") && <FontAwesomeIcon icon={faSpider} className={"group-1-icon"} />}
-            {item.tags?.includes("shop") && <FontAwesomeIcon icon={faSackDollar} className={"group-1-icon"} />}
-            {item.tags?.includes("song") && <FontAwesomeIcon icon={faMusic} className={"group-1-icon"} />}
-            {item.tags?.includes("cow") && <FontAwesomeIcon icon={faCow} className={"group-1-icon"} />}
+            {item.tags?.includes("chest") && <FontAwesomeIcon className={"group-1-icon"} icon={faBox} />}
+            {item.tags?.includes("heart") && <FontAwesomeIcon className={"group-1-icon"} icon={faHeart} />}
+            {item.tags?.includes("spider") && <FontAwesomeIcon className={"group-1-icon"} icon={faSpider} />}
+            {item.tags?.includes("shop") && <FontAwesomeIcon className={"group-1-icon"} icon={faSackDollar} />}
+            {item.tags?.includes("song") && <FontAwesomeIcon className={"group-1-icon"} icon={faMusic} />}
+            {item.tags?.includes("cow") && <FontAwesomeIcon className={"group-1-icon"} icon={faCow} />}
           </label>
         </div>
         <div className="col-md-3">
