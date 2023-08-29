@@ -1,32 +1,29 @@
-import ListItem from "./ListItem/ListItem";
+import React, { useState, useRef, useEffect } from "react";
 import { Item } from "../../../models/Item";
+import ListItem from "./ListItem";
 import "./ListGroup.css";
-import { useState, useRef, useEffect } from "react";
 
 interface props {
   items: Item[];
   heading: string;
-  isVisible: boolean;
-  toggleVisibility: (index: number) => void;
-  cardIndex: number;
+  reRender: () => void;
 }
 
-function ListGroup({ items, heading, isVisible, toggleVisibility, cardIndex }: props) {
+function ListGroup({ items, heading, reRender }: props) {
+  const [isExpanded, setExpanded] = useState(true);
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const [contentHeight, setContentHeight] = useState(0);
+  let cardHeight = contentRef.current?.scrollHeight;
 
   useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(isVisible ? contentRef.current.scrollHeight : 0);
-    }
-  }, [isVisible]);
+    reRender();
+  }, [isExpanded]);
 
   return (
     <>
-      <div className="card-header" onClick={() => toggleVisibility(cardIndex)}>
+      <div className="card-header" onClick={() => setExpanded(!isExpanded)}>
         {heading}
       </div>
-      <ul className={"list-group list-group-flush"} style={{ height: isVisible ? contentHeight : 5 }}>
+      <ul className={"list-group list-group-flush"} style={{ height: isExpanded ? cardHeight : 5 }}>
         <div ref={contentRef}>
           {items.map((item) => (
             <ListItem item={item} key={item.name}></ListItem>
