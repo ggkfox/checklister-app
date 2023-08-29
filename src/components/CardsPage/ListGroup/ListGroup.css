@@ -1,6 +1,6 @@
 .list-group {
   overflow: hidden;
-  transition: all .5s cubic-bezier(.8, 0, 0, 0.8);
+  /* transition: all .5s cubic-bezier(.8, 0, 0, 0.8); */
 }
 
 .hidden {

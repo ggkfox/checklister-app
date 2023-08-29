@@ -1,14 +1,4 @@
-.container-fluid { 
-  columns: 4;
-}
-
 .card {
-  margin-bottom: 10px;
   width: 350px;
-  break-inside: avoid-column;
-  page-break-inside: avoid;
-}
-
-.fx-column {
-  display: inline-block;
+  margin-bottom: 5px;
 }

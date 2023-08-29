@@ -6,10 +6,12 @@ import { useState, useRef, useEffect } from "react";
 interface props {
   items: Item[];
   heading: string;
+  isVisible: boolean;
+  toggleVisibility: (index: number) => void;
+  cardIndex: number;
 }
 
-function ListGroup({ items, heading }: props) {
-  const [isVisible, setIsVisible] = useState(true);
+function ListGroup({ items, heading, isVisible, toggleVisibility, cardIndex }: props) {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const [contentHeight, setContentHeight] = useState(0);
 
@@ -18,13 +20,10 @@ function ListGroup({ items, heading }: props) {
       setContentHeight(isVisible ? contentRef.current.scrollHeight : 0);
     }
   }, [isVisible]);
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
-  };
 
   return (
     <>
-      <div className="card-header" onClick={toggleVisibility}>
+      <div className="card-header" onClick={() => toggleVisibility(cardIndex)}>
         {heading}
       </div>
       <ul className={"list-group list-group-flush"} style={{ height: isVisible ? contentHeight : 5 }}>
