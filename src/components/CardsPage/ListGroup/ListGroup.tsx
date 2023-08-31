@@ -1,36 +1,37 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Item } from "../../../models/Item";
 import ListItem from "./ListItem";
-import "./ListGroup.css";
+import CSS from "./ListGroup.module.css";
+import { Card, Collapse, Divider, List, ListItemButton, Typography } from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 interface props {
   items: Item[];
   heading: string;
-  reRender: () => void;
 }
 
-function ListGroup({ items, heading, reRender }: props) {
+function ListGroup({ items, heading }: props) {
   const [isExpanded, setExpanded] = useState(true);
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  let cardHeight = contentRef.current?.scrollHeight;
-
-  useEffect(() => {
-    reRender();
-  }, [isExpanded]);
 
   return (
-    <>
-      <div className="card-header" onClick={() => setExpanded(!isExpanded)}>
-        {heading}
-      </div>
-      <ul className={"list-group list-group-flush"} style={{ height: isExpanded ? cardHeight : 5 }}>
-        <div ref={contentRef}>
+    <Card sx={{ boxShadow: 4 }}>
+      <ListItemButton sx={{ background: "#f6f6f6", justifyContent: "space-between" }} onClick={() => setExpanded(!isExpanded)}>
+        <Typography sx={{ textAlign: "center", margin: 0 }} variant="h6" gutterBottom>
+          {heading}
+        </Typography>
+        {isExpanded ? <ExpandMore /> : <ExpandLess />}
+      </ListItemButton>
+      <Collapse in={isExpanded}>
+        <List sx={{ padding: 0 }}>
           {items.map((item) => (
-            <ListItem item={item} key={item.name}></ListItem>
+            <>
+              <Divider sx={{ width: "95%", display: "block", marginRight: "auto", marginLeft: "auto", justifyContent: "center" }} />
+              <ListItem item={item} key={item.name} isExpanded={isExpanded}></ListItem>
+            </>
           ))}
-        </div>
-      </ul>
-    </>
+        </List>
+      </Collapse>
+    </Card>
   );
 }
 

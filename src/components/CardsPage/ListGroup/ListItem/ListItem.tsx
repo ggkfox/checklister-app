@@ -1,63 +1,46 @@
 import { Item } from "../../../../models/Item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./ListItem.css";
-import {
-  faSun,
-  faMoon,
-  faSeedling,
-  faC,
-  faA,
-  faCircleDown,
-  faBomb,
-  faMusic,
-  faCloudBolt,
-  faSpider,
-  faHeart,
-  faBox,
-  faCow,
-  faSackDollar,
-  faSkull,
-} from "@fortawesome/free-solid-svg-icons";
-
-// const element = <FontAwesomeIcon icon={faEnvelope} />;
+import CSS from "./ListItem.module.css";
+import ListItem1 from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Checkbox from "@mui/material/Checkbox";
+import { faSun, faMoon, faSeedling, faC, faA, faCircleDown, faBomb, faMusic, faCloudBolt, faSpider, faHeart, faBox, faCow, faSackDollar } from "@fortawesome/free-solid-svg-icons";
+import { ListItemButton } from "@mui/material";
+import { useState } from "react";
 
 interface props {
   item: Item;
+  isExpanded: boolean;
 }
 
-const styles = {
-  padding: "2px 0",
-};
+function ListItem({ item, isExpanded }: props) {
+  const [isChecked, setChecked] = useState(false);
+  const handleCheckmark = () => {
+    setChecked(!isChecked);
+  };
 
-function ListItem({ item }: props) {
   return (
-    <li className="list-group-item" style={styles}>
-      <div className="row" style={{ padding: "0 3px" }}>
-        <div className="label-section col-md-9">
-          <label className="form-check-label" style={{ cursor: "pointer" }} htmlFor={item.name}>
-            <input className="form-check-input" type="checkbox" value="" id={item.name} />
-            <span className="noselect" style={{ margin: "0 5px" }}>
-              {item.name}
-            </span>
-            {item.tags?.includes("chest") && <FontAwesomeIcon className={"group-1-icon"} icon={faBox} />}
-            {item.tags?.includes("heart") && <FontAwesomeIcon className={"group-1-icon"} icon={faHeart} />}
-            {item.tags?.includes("spider") && <FontAwesomeIcon className={"group-1-icon"} icon={faSpider} />}
-            {item.tags?.includes("shop") && <FontAwesomeIcon className={"group-1-icon"} icon={faSackDollar} />}
-            {item.tags?.includes("song") && <FontAwesomeIcon className={"group-1-icon"} icon={faMusic} />}
-            {item.tags?.includes("cow") && <FontAwesomeIcon className={"group-1-icon"} icon={faCow} />}
-          </label>
+    <ListItem1 sx={{ height: 25, width: "100%", padding: 0, background: "white" }}>
+      <ListItemButton disabled={!isExpanded} sx={{ padding: 1, width: "100%", height: "100%" }} onClick={handleCheckmark} dense>
+        <Checkbox checked={isChecked} edge="start" size="small" color="primary" disableRipple />
+        <ListItemText>{item.name}</ListItemText>
+        {/* {item.tags?.includes("chest") && <FontAwesomeIcon className={CSS.Icon} icon={faBox} />} */}
+        {item.tags?.includes("heart") && <FontAwesomeIcon className={CSS.icon1} icon={faHeart} />}
+        {item.tags?.includes("spider") && <FontAwesomeIcon className={CSS.icon1} icon={faSpider} />}
+        {/* {item.tags?.includes("shop") && <FontAwesomeIcon className={CSS.icon1} icon={faSackDollar} />} */}
+        {item.tags?.includes("song") && <FontAwesomeIcon className={CSS.icon1} icon={faMusic} />}
+        {item.tags?.includes("cow") && <FontAwesomeIcon className={CSS.icon1} icon={faCow} />}
+        <div>
+          {item.tags?.includes("day") && <FontAwesomeIcon className={CSS.icon2} icon={faSun} />}
+          {item.tags?.includes("night") && <FontAwesomeIcon className={CSS.icon2} icon={faMoon} />}
+          {/* {item.tags?.includes("soil") && <FontAwesomeIcon className={CSS.icon2} icon={faSeedling} />} */}
+          {/* {item.tags?.includes("grotto") && <FontAwesomeIcon className={CSS.icon2} icon={faCircleDown} />} */}
+          {item.tags?.includes("bomb") && <FontAwesomeIcon className={CSS.icon2} icon={faBomb} />}
+          {item.tags?.includes("child") && <FontAwesomeIcon className={CSS.icon2} icon={faC} />}
+          {item.tags?.includes("adult") && <FontAwesomeIcon className={CSS.icon2} icon={faA} />}
         </div>
-        <div className="col-md-3">
-          {item.tags?.includes("day") && <FontAwesomeIcon className="group-2-icon float-end" icon={faSun} />}
-          {item.tags?.includes("night") && <FontAwesomeIcon className="group-2-icon float-end" icon={faMoon} />}
-          {item.tags?.includes("soil") && <FontAwesomeIcon className="group-2-icon float-end" icon={faSeedling} />}
-          {item.tags?.includes("grotto") && <FontAwesomeIcon className="group-2-icon float-end" icon={faCircleDown} />}
-          {item.tags?.includes("bomb") && <FontAwesomeIcon className="group-2-icon float-end" icon={faBomb} />}
-          {item.tags?.includes("child") && <FontAwesomeIcon className="group-2-icon float-end" icon={faC} />}
-          {item.tags?.includes("adult") && <FontAwesomeIcon className="group-2-icon float-end" icon={faA} />}
-        </div>
-      </div>
-    </li>
+      </ListItemButton>
+    </ListItem1>
   );
 }
 
