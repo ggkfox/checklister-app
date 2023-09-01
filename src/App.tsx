@@ -1,19 +1,19 @@
 import { useState } from "react";
 import "./App.css";
-import CardsPage from "./components/CardsPage/CardsPage";
 import NavBar from "./components/NavBar/NavBar";
-
-const handleSelectItem = () => {
-  console.log("test");
-};
+import AppDrawer from "./components/AppDrawer/AppDrawer";
+import CardsPage from "./components/CardsPage/CardsPage";
+import React from "react";
+import { Box } from "@mui/material";
 
 function App() {
-  const [alertVisible, setAlertVisibility] = useState(false);
-
   return (
     <>
-      <NavBar></NavBar>
-      <CardsPage></CardsPage>
+      <Box sx={{ display: "flex" }}>
+        <NavBar></NavBar>
+        <AppDrawer></AppDrawer>
+        <CardsPage></CardsPage>
+      </Box>
     </>
   );
 }

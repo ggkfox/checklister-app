@@ -48,8 +48,6 @@
       { "name": "GS reward (30)"  },
       { "name": "GS reward (40)"  },
       { "name": "GS reward (50)"  }
-
-
     ],
     "Sacred Forest Meadow" : [
       { "name": "wolfos Grotto",                "tags": ["chest", "bomb", "grotto"]               },
@@ -94,10 +92,63 @@
       { "name": "Light arrows",                 "tags": ["adult"]                                 }
     ],
     "Lon Lon Ranch": [
-      { "name": "Push boxes HP",                "tags": ["child"]                                 }
+      { "name": "Push boxes HP",                "tags": ["child"]                                 },
+      { "name": "Chicken minigame",             "tags": ["child"]                                 },
+      { "name": "Malon's song",                 "tags": ["child"]                                 },
+      { "name": "In tree GS",                   "tags": ["child"]                                 },
+      { "name": "back of fense GS",             "tags": ["child"]                                 },
+      { "name": "On house wall",                "tags": ["child"]                                 },
+      { "name": "On wall near tower",           "tags": ["child"]                                 }
     ],
-    "Ice Cavern": [
-      { "name": "chest" }
+    "Graveyard": [
+      { "name": "Flower Grave"},
+      { "name": "Dampe gravedigging tour"},
+      { "name": "Play sun's song grave"},
+      { "name": "Composer's grave, song"},
+      { "name": "Composer's grave, torches"},
+      { "name": "Crate HP"},
+      { "name": "Composer grave, song"},
+      { "name": "GS on wall"},
+      { "name": "Soft soil"}
+    ],
+    "Death Mountain Trail": [
+      { "name": "Above dodongo's cavern"},
+      { "name": "Bombable wall near rolling gorron"}, 
+      { "name": "Song of storms grotto"},
+      { "name": "Great fairy"},
+      { "name": "Trade Broken Giant's Knife"},
+      { "name": "Trade Eye Drops"},
+      { "name": "Trade Claim Check"},
+      { "name": "Bomb wall GS"},
+      { "name": "Soft soil GS"},
+      { "name": "Hammer rock near Goron City"},
+      { "name": "Hammer rock in falling rocks path"},
+      { "name": "Grotto Cow"}
+    ],
+    "Death Mountain Crater": [
+      { "name": "Grotto at top"},
+      { "name": "Wall HP"},
+      { "name": "Great fairy"},
+      { "name": "Top of volcano HP"},
+      { "name": "Shiek's song"},
+      { "name": "GS in crate (by top exit)"},
+      { "name": "Soft soil GS"}
+    ],
+    "Goron City": [
+      { "name": "Rolling goron"},
+      { "name": "Darunai's joy"},
+      { "name": "Spinning pot"},
+      { "name": "Rock maze, right chests (2)"},
+      { "name": "Rock maze, left chest"},
+      { "name": "Link the goron"},
+      { "name": "Rock maze, right side crate"},
+      { "name": "Center hanging platform GS"},
+      { "name": "Medigoron"},
+      { "name": "shop"}
+    ],
+    "Zora's River": [
+      { "name": "Open Grotto"},
+      { "name": ""}
     ]
 
   }

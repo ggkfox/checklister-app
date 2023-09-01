@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Item } from "../../../models/Item";
 import ListItem from "./ListItem";
-import CSS from "./ListGroup.module.css";
+// import CSS from "./ListGroup.module.css";
 import { Card, Collapse, Divider, List, ListItemButton, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
@@ -21,7 +21,7 @@ function ListGroup({ items, heading }: props) {
         </Typography>
         {isExpanded ? <ExpandMore /> : <ExpandLess />}
       </ListItemButton>
-      <Collapse in={isExpanded}>
+      <Collapse in={isExpanded} sx={{ paddingBottom: 1 }}>
         <List sx={{ padding: 0 }}>
           {items.map((item) => (
             <>
