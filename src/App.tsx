@@ -10,9 +10,9 @@ function App() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <NavBar></NavBar>
-        <AppDrawer></AppDrawer>
-        <CardsPage></CardsPage>
+        <NavBar />
+        <AppDrawer />
+        <CardsPage />
       </Box>
     </>
   );
