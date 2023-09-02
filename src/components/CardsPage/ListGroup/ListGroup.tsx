@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Item } from "../../../models/Item";
+import { Item } from "../../../models/Types";
 import ListItem from "./ListItem";
 // import CSS from "./ListGroup.module.css";
-import { Card, Collapse, Divider, List, ListItemButton, Typography } from "@mui/material";
+import { Card, Collapse, Divider, Hidden, List, ListItemButton, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore, Key } from "@mui/icons-material";
 
 interface props {
@@ -16,7 +16,7 @@ function ListGroup({ items, heading }: props) {
   return (
     <Card sx={{ boxShadow: 4 }}>
       <ListItemButton sx={{ background: "#f6f6f6", justifyContent: "space-between" }} onClick={() => setExpanded(!isExpanded)}>
-        <Typography sx={{ textAlign: "center", margin: 0 }} variant="h6" gutterBottom>
+        <Typography sx={{ margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} variant="h6" gutterBottom>
           {heading}
         </Typography>
         {isExpanded ? <ExpandMore /> : <ExpandLess />}

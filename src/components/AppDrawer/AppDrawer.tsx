@@ -12,14 +12,14 @@ const drawerWidth = 300;
 const AppDrawer = ({ drawerState, toggleDrawer }: props) => {
   return (
     <Drawer
-      open={drawerState}
-      variant="persistent"
-      anchor="left"
       sx={{
         width: drawerWidth,
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box" },
       }}
+      variant="persistent"
+      anchor="left"
+      open={drawerState}
     >
       <Toolbar />
       <Box p={2} textAlign="center">

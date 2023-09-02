@@ -1,26 +1,36 @@
 import ListGroup from "./ListGroup";
 import data from "../../assets/OoT.json";
+import { Zone, ZoneType } from "../../models/Types";
 // import CSS from "./CardsPage.module.css";
 import { Box, Toolbar } from "@mui/material";
 import Masonry from "@mui/lab/Masonry";
 import React, { useEffect, useState } from "react";
 
-function CardsPage() {
-  const zones = data.zones;
-  // let filteredZones = data.zones;
-  // const [filter, setFilter] = useState<"none" | "overworld" | "dungion">("none");
-  // useEffect(() => {
-  //   // filteredZones = zones.filter("kikori forest");
-  // }, [filter]);
+interface props {
+  zoneFilter: ZoneType;
+}
+
+function CardsPage(props: props) {
+  const { zoneFilter } = props;
+  const zones: Zone[] = data.zones.map((zoneData) => ({
+    ...zoneData,
+    type: zoneData.type as ZoneType,
+  }));
+
+  const [filteredZones, setFilteredZones] = useState(zones);
+
+  useEffect(() => {
+    if (zoneFilter === "overworld") setFilteredZones(zones.filter((zone) => zone.type === "overworld"));
+    else if (zoneFilter === "dungeon") setFilteredZones(zones.filter((zone) => zone.type === "dungeon"));
+    else setFilteredZones(zones);
+  }, [zoneFilter]);
 
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
       <Toolbar />
       <Masonry columns={/*{xl: 5, lg: 4, md: 3, sm: 2, xs: 1}*/ 3} spacing={2}>
-        {Object.entries(zones).map(([zoneName, zoneInfo], index) => (
-          <div key={zoneName}>
-            <ListGroup key={index} heading={zoneName} items={zoneInfo.spots}></ListGroup>
-          </div>
+        {filteredZones.map((zoneInfo, index) => (
+          <ListGroup key={index} heading={zoneInfo.name} items={zoneInfo.items}></ListGroup>
         ))}
       </Masonry>
     </Box>

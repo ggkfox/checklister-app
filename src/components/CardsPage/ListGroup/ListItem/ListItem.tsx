@@ -1,4 +1,4 @@
-import { Item } from "../../../../models/Item";
+import { Item } from "../../../../models/Types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CSS from "./ListItem.module.css";
 import ListItem1 from "@mui/material/ListItem";
