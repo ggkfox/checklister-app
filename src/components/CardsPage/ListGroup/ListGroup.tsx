@@ -3,7 +3,7 @@ import { Item } from "../../../models/Item";
 import ListItem from "./ListItem";
 // import CSS from "./ListGroup.module.css";
 import { Card, Collapse, Divider, List, ListItemButton, Typography } from "@mui/material";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { ExpandLess, ExpandMore, Key } from "@mui/icons-material";
 
 interface props {
   items: Item[];
@@ -23,11 +23,8 @@ function ListGroup({ items, heading }: props) {
       </ListItemButton>
       <Collapse in={isExpanded} sx={{ paddingBottom: 1 }}>
         <List sx={{ padding: 0 }}>
-          {items.map((item) => (
-            <>
-              <Divider sx={{ width: "95%", display: "block", marginRight: "auto", marginLeft: "auto", justifyContent: "center" }} />
-              <ListItem item={item} key={item.name} isExpanded={isExpanded}></ListItem>
-            </>
+          {items.map((item, index) => (
+            <ListItem key={index} item={item} isExpanded={isExpanded}></ListItem>
           ))}
         </List>
       </Collapse>

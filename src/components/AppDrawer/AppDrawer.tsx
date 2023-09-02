@@ -2,12 +2,18 @@ import React from "react";
 import { Drawer, Box, Toolbar } from "@mui/material";
 import { Typography } from "@mui/material";
 
+interface props {
+  drawerState: boolean;
+  toggleDrawer: () => void;
+}
+
 const drawerWidth = 300;
 
-const AppDrawer = () => {
+const AppDrawer = ({ drawerState, toggleDrawer }: props) => {
   return (
     <Drawer
-      variant="permanent"
+      open={drawerState}
+      variant="persistent"
       anchor="left"
       sx={{
         width: drawerWidth,

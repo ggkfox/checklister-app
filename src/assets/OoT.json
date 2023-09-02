@@ -1,14 +1,14 @@
 {
-  "Zones":{
-    "Kikori Forest": [
+  "zones": {
+    "Kikori Forest": {"type" : "overworld" , "spots":[
       { "name": "Mido's house x4",              "tags": ["chest"]                                 },
       { "name": "Sword chest",                  "tags": ["chest", "child"]                        },
       { "name": "Behind house",                 "tags": ["spider", "child", "night"]              },
       { "name": "Soft soil",                    "tags": ["spider", "child", "soil"]               },
       { "name": "On roof",                      "tags": ["spider", "adult", "night"]              },
       { "name": "Indoor cow",                   "tags": ["cow"]                                   }
-    ],
-    "Lost Woods": [
+    ]},
+    "Lost Woods": {"type" : "overworld" , "spots":[
       { "name": "Leaving village",              "tags": ["song"]                                  },
       { "name": "Deku under the bridge",        "tags": ["shop"]                                  },
       { "name": "Grotto salesman",              "tags": ["shop", "bomb", "grotto"]                },
@@ -23,8 +23,8 @@
       { "name": "Soft soil (under bridge)",     "tags": ["spider", "child", "soil"]               },
       { "name": "Soft soil (near theater)",     "tags": ["spider", "child", "soil"]               },
       { "name": "Ride hover plant",             "tags": ["spider", "adult", "night", "soil"]      }
-    ],
-    "Kakariko Village" : [
+    ]},
+    "Kakariko Village" : {"type" : "overworld" , "spots":[
       { "name": "Anju's Chickens",              "tags": ["day"]                                   },
       { "name": "Open Grotto",                  "tags": ["chest"]                                 },
       { "name": "Bomb Grotto",                  "tags": ["chest"]                                 },
@@ -48,14 +48,14 @@
       { "name": "GS reward (30)"  },
       { "name": "GS reward (40)"  },
       { "name": "GS reward (50)"  }
-    ],
-    "Sacred Forest Meadow" : [
+    ]},
+    "Sacred Forest Meadow" : {"type" : "overworld" , "spots":[
       { "name": "wolfos Grotto",                "tags": ["chest", "bomb", "grotto"]               },
       { "name": "Song from Saria",              "tags": ["song", "child"]                         },
       { "name": "Song from Shiek",              "tags": ["song", "adult"]                         },
       { "name": "Maze wall",                    "tags": ["spider", "night", "adult"]              }
-    ],
-    "Hyrule Field": [
+    ]},
+    "Hyrule Field": {"type" : "overworld" , "spots":[
       { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
       { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
       { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
@@ -65,8 +65,8 @@
       { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
       { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
       { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
-    ],
-    "Market": [
+    ]},
+    "Market": {"type" : "overworld" , "spots":[
       { "name": "Slingshot minigame",           "tags": ["child"]                                 },
       { "name": "Find dog",                     "tags": ["child", "night"]                        },
       { "name": "Bombchu game",                 "tags": ["child", "day"]                          },
@@ -76,8 +76,8 @@
       { "name": "Bazaar shop",                  "tags": ["shop", "child", "day"]                  },
       { "name": "Potion shop",                  "tags": ["child", "day"]                          },
       { "name": "Bombchu shop",                 "tags": ["child", "day"]                          }
-    ],
-    "Hyrule Castle": [
+    ]},
+    "Hyrule Castle": {"type" : "overworld" , "spots":[
       { "name": "Talk to Malon",                "tags": ["child"]                                 },
       { "name": "Zelda's Lullaby",              "tags": ["child"]                                 },
       { "name": "Great fairy",                  "tags": ["child"]                                 },
@@ -85,13 +85,13 @@
       { "name": "GS in tree",                   "tags": ["child", "spider"]                       },
       { "name": "Hidden grotto near Talon",     "tags": ["child"]                                 },
       { "name": "GS on rubble",                 "tags": ["adult"]                                 }
-    ],
-    "Temple of Time": [
+    ]},
+    "Temple of Time": {"type" : "overworld" , "spots":[
       { "name": "Master Sword",                 "tags": []                                        },
       { "name": "Prelude of light",             "tags": ["adult"]                                 },
       { "name": "Light arrows",                 "tags": ["adult"]                                 }
-    ],
-    "Lon Lon Ranch": [
+    ]},
+    "Lon Lon Ranch": {"type" : "overworld" , "spots":[
       { "name": "Push boxes HP",                "tags": ["child"]                                 },
       { "name": "Chicken minigame",             "tags": ["child"]                                 },
       { "name": "Malon's song",                 "tags": ["child"]                                 },
@@ -99,8 +99,8 @@
       { "name": "back of fense GS",             "tags": ["child"]                                 },
       { "name": "On house wall",                "tags": ["child"]                                 },
       { "name": "On wall near tower",           "tags": ["child"]                                 }
-    ],
-    "Graveyard": [
+    ]},
+    "Graveyard": {"type" : "overworld" , "spots":[
       { "name": "Flower Grave"},
       { "name": "Dampe gravedigging tour"},
       { "name": "Play sun's song grave"},
@@ -110,8 +110,8 @@
       { "name": "Composer grave, song"},
       { "name": "GS on wall"},
       { "name": "Soft soil"}
-    ],
-    "Death Mountain Trail": [
+    ]},
+    "Death Mountain Trail": {"type" : "overworld" , "spots":[
       { "name": "Above dodongo's cavern"},
       { "name": "Bombable wall near rolling gorron"}, 
       { "name": "Song of storms grotto"},
@@ -124,8 +124,8 @@
       { "name": "Hammer rock near Goron City"},
       { "name": "Hammer rock in falling rocks path"},
       { "name": "Grotto Cow"}
-    ],
-    "Death Mountain Crater": [
+    ]},
+    "Death Mountain Crater": {"type" : "overworld" , "spots":[
       { "name": "Grotto at top"},
       { "name": "Wall HP"},
       { "name": "Great fairy"},
@@ -133,8 +133,8 @@
       { "name": "Shiek's song"},
       { "name": "GS in crate (by top exit)"},
       { "name": "Soft soil GS"}
-    ],
-    "Goron City": [
+    ]},
+    "Goron City": {"type" : "overworld" , "spots":[
       { "name": "Rolling goron"},
       { "name": "Darunai's joy"},
       { "name": "Spinning pot"},
@@ -145,11 +145,11 @@
       { "name": "Center hanging platform GS"},
       { "name": "Medigoron"},
       { "name": "shop"}
-    ],
-    "Zora's River": [
+    ]},
+    "Zora's River": {"type" : "overworld" , "spots":[
       { "name": "Open Grotto"},
       { "name": ""}
-    ]
+    ]}
 
   }
 }

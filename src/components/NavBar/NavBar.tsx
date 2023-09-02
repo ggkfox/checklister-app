@@ -1,14 +1,21 @@
 import React from "react";
 import "./NavBar.css";
-import { AppBar, Toolbar, Typography, Slide, useScrollTrigger } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 
-const NavBar = () => {
+interface props {
+  drawerState: boolean;
+  toggleDrawer: () => void;
+}
+
+const NavBar = ({ drawerState, toggleDrawer }: props) => {
   return (
     <>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Clipped drawer
+            <Button color={!drawerState ? "secondary" : "error"} variant="contained" onClick={toggleDrawer}>
+              {!drawerState ? "Open Help Tool" : "Close Help Tool"}
+            </Button>
           </Typography>
         </Toolbar>
       </AppBar>
