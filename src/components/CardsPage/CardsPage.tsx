@@ -51,7 +51,7 @@ function CardsPage({ drawerOpen, drawerWidth, zoneFilter }: props) {
   return (
     <Main open={drawerOpen} widthOffset={drawerWidth}>
       <Toolbar />
-      <Masonry columns={/*{xl: 5, lg: 4, md: 3, sm: 2, xs: 1}*/ 4} spacing={2}>
+      <Masonry columns={{ xl: 5, lg: 4, md: 3, sm: 2, xs: 1 }} spacing={2}>
         {filteredZones.map((zoneInfo, index) => (
           <ListGroup key={index} heading={zoneInfo.name} items={zoneInfo.items}></ListGroup>
         ))}
