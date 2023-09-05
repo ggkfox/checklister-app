@@ -5,7 +5,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import Masonry from "@mui/lab/Masonry";
-import { useEffect, useState } from "react";
+import { LegacyRef, useEffect, useState } from "react";
+import useMeasure from "react-use/lib/useMeasure";
 
 interface props {
   drawerOpen: boolean;
@@ -35,6 +36,20 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
 }));
 
 function CardsPage({ drawerOpen, drawerWidth, zoneFilter }: props) {
+  const [ref, { width }] = useMeasure() as [LegacyRef<HTMLDivElement>, { width: number }];
+  // Calculate the number of columns based on the width of Main
+  let columns = 1; // Default to 1 column
+
+  if (width >= 1820) {
+    columns = 5; // Set to 5 columns for screens >= 1920px wide
+  } else if (width >= 1180) {
+    columns = 4; // Set to 4 columns for screens >= 1280px wide
+  } else if (width >= 860) {
+    columns = 3; // Set to 3 columns for screens >= 960px wide
+  } else if (width >= 500) {
+    columns = 2; // Set to 2 columns for screens >= 600px wide
+  }
+
   //assign card data and apply filters.
   const zones: Zone[] = data.zones.map((zoneData) => ({
     ...zoneData,
@@ -49,9 +64,9 @@ function CardsPage({ drawerOpen, drawerWidth, zoneFilter }: props) {
   }, [zoneFilter]);
 
   return (
-    <Main open={drawerOpen} widthOffset={drawerWidth}>
+    <Main ref={ref} open={drawerOpen} widthOffset={drawerWidth}>
       <Toolbar />
-      <Masonry columns={{ xl: 5, lg: 4, md: 3, sm: 2, xs: 1 }} spacing={2}>
+      <Masonry columns={columns} spacing={2}>
         {filteredZones.map((zoneInfo, index) => (
           <ListGroup key={index} heading={zoneInfo.name} items={zoneInfo.items}></ListGroup>
         ))}

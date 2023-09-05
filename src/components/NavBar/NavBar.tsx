@@ -8,6 +8,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useMeasure } from "react-use";
 
 interface props {
   drawerOpen: boolean;
@@ -40,6 +41,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, drawerWidth }: props) => {
+  const [ref, { width }] = useMeasure();
   return (
     <>
       <AppBar position="fixed" open={drawerOpen} width={drawerWidth} /*sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}*/>
