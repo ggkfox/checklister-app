@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Item } from "../../../models/Types";
 import ListItem from "./ListItem";
-// import CSS from "./ListGroup.module.css";
-import { Card, Collapse, Divider, Hidden, List, ListItemButton, Typography } from "@mui/material";
-import { ExpandLess, ExpandMore, Key } from "@mui/icons-material";
+import { Card, Collapse, List, ListItemButton, Typography } from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 interface props {
   items: Item[];

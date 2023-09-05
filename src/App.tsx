@@ -4,18 +4,18 @@ import { ZoneType } from "./models/Types";
 import NavBar from "./components/NavBar/NavBar";
 import AppDrawer from "./components/AppDrawer/AppDrawer";
 import CardsPage from "./components/CardsPage/CardsPage";
-import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
 function App() {
+  //Drawer states & functions
   const drawerWidth = 300;
-  const [drawerState, setDrawer] = useState(false);
+  const [drawerOpen, setDrawer] = useState(false);
   const toggleDrawer = () => {
-    setDrawer(!drawerState);
+    setDrawer(!drawerOpen);
     console.log("state");
   };
-
+  //filter button states & functions
   const [zoneFilter, setZoneTypeFilter] = useState<ZoneType>("all");
   const handleZoneFilter = (args: ZoneType) => {
     setZoneTypeFilter(args);
@@ -24,9 +24,10 @@ function App() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <NavBar zoneFilter={zoneFilter} handleZoneFilter={handleZoneFilter} drawerState={drawerState} toggleDrawer={toggleDrawer} drawerWidth={drawerWidth} />
-        <AppDrawer toggleDrawer={toggleDrawer} drawerState={drawerState} />
-        <CardsPage zoneFilter={zoneFilter} />
+        <CssBaseline />
+        <NavBar zoneFilter={zoneFilter} handleZoneFilter={handleZoneFilter} drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} drawerWidth={drawerWidth} />
+        <AppDrawer toggleDrawer={toggleDrawer} drawerOpen={drawerOpen} drawerWidth={drawerWidth} />
+        <CardsPage drawerOpen={drawerOpen} drawerWidth={drawerWidth} zoneFilter={zoneFilter} />
       </Box>
     </>
   );
