@@ -46,15 +46,32 @@ const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, drawer
       <AppBar position="fixed" /*open={drawerOpen} width={drawerWidth}*/ sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <IconButton color="inherit" aria-label="open drawer" onClick={toggleDrawer} edge="start" sx={{ mr: 2 /*...(drawerOpen && { display: "none" })*/ }}>
+            <IconButton
+              color="inherit"
+              disabled={drawerOpen}
+              aria-label="open drawer"
+              onClick={toggleDrawer}
+              edge="start"
+              sx={{ mr: 2 /*...(drawerOpen && { display: "none" })*/ }}
+            >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div" sx={{ mr: 2 }}>
               Fox's Checklister App
             </Typography>
           </div>
-          <Grid container spacing={2} sx={{ justifyContent: "right", alignItems: "center" }}>
-            <Grid item sx={{ paddingTop: 0 }}>
+          <Grid container gap={2} sx={{ justifyContent: "right" }}>
+            <Grid item>
+              <ToggleButtonGroup size="small" exclusive color="primary" aria-label="text button group">
+                <Button sx={{ background: "#777" }} variant="contained">
+                  Child
+                </Button>
+                <Button sx={{ background: "#777" }} variant="contained">
+                  Adult
+                </Button>
+              </ToggleButtonGroup>
+            </Grid>
+            <Grid>
               <ToggleButtonGroup size="small" exclusive color="primary" aria-label="text button group">
                 <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleZoneFilter("overworld")}>
                   Overworld

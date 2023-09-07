@@ -44,54 +44,103 @@ import fireArrow from "./OoT_Fire_Arrow_Icon.png";
 import lightMedallion from "./OoT_Light_Medallion_Icon.png";
 import fireMedallion from "./OoT_Fire_Medallion_Icon.png";
 import longshot from "./OoT_Longshot_Icon.png";
+import greyNote from "./Grey_Note.png";
+import yellowNote from "./Yellow_Note.png";
+import greenNote from "./Green_Note.png";
+import redNote from "./Red_Note.png";
+import blueNote from "./Blue_Note.png";
+import purpleNote from "./Purple_Note.png";
+import orangeNote from "./Orange_Note.png";
+import stick from "./OoT_Deku_Stick_Icon.png";
+import nut from "./OoT_Deku_Nut_Icon.png";
+import magicBean from "./OoT_Magic_Bean_Icon.png";
+import hammer from "./OoT_Megaton_Hammer_Icon.png";
+import egg from "./OoT_Weird_Egg_Icon.png";
+import magic from "./OoT_Magic_Jar_Model.png";
+import kokiriTunic from "./OoT_Kokiri_Tunic_Icon.png";
+import kokiriBoots from "./OoT_Kokiri_Boots_Icon.png";
+import garudaMembershipCard from "./OoT_Gerudo_Token_Icon.png";
 
-const icons = [
-  adultWallet,
-  forestMedallion,
-  masterSword,
-  bigBombBag,
-  giantsKnife,
-  mirrorShield,
-  biggestQuiver,
-  goldenGauntlets,
-  nayrusLove,
-  bomb,
-  goldenScale,
-  ocarinaOfTime,
-  bombchu,
-  goronsBracelet,
-  shadowMedallion,
-  boomerang,
-  goronTunic,
-  silverGauntlets,
-  bottle,
-  hoverBoots,
-  silverScale,
-  brokenGiantsKnife,
-  hylianShield,
-  spiritMedallion,
-  dekuShield,
-  iceArrow,
-  spiritualStoneOfFire,
-  dinsFire,
-  ironBoots,
-  spiritualStoneOfWater,
-  fairyBow,
-  kokiriSword,
-  spiritualStoneOfTheForest,
-  fairyOcarina,
-  lensOfTruth,
-  token,
-  fairySlingshot,
-  letter,
-  waterMedallion,
-  faroresWind,
-  lightArrow,
-  zoraTunic,
-  fireArrow,
-  lightMedallion,
-  fireMedallion,
-  longshot,
+const keyItems = [
+  [
+    stick,
+    nut,
+    bomb,
+    fairyBow,
+    fireArrow,
+    dinsFire,
+    fairySlingshot,
+    // fairyOcarina,
+    ocarinaOfTime,
+    bombchu,
+    longshot,
+    iceArrow,
+    faroresWind,
+    boomerang,
+    lensOfTruth,
+    magicBean,
+    hammer,
+    lightArrow,
+    nayrusLove,
+    letter,
+    bottle,
+    bottle,
+    bottle,
+    egg,
+    egg,
+    kokiriSword,
+    masterSword,
+    // brokenGiantsKnife,
+    giantsKnife,
+    goronsBracelet,
+    // silverGauntlets,
+    // goldenGauntlets,
+    // silverScale,
+    goldenScale,
+    magic,
+    dekuShield,
+    hylianShield,
+    mirrorShield,
+    biggestQuiver,
+    adultWallet,
+    garudaMembershipCard,
+    kokiriTunic,
+    goronTunic,
+    zoraTunic,
+    kokiriBoots,
+    ironBoots,
+    hoverBoots,    
+  ],
+  [
+    spiritualStoneOfTheForest,
+    spiritualStoneOfFire,
+    spiritualStoneOfWater
+  ],
+  [
+    lightMedallion,
+    forestMedallion,
+    fireMedallion,
+    waterMedallion,
+    shadowMedallion,
+    spiritMedallion
+  ],
+  [
+    greyNote,
+    greyNote,
+    greyNote,
+    greyNote,
+    greyNote,
+    greyNote,
+    yellowNote,
+    greenNote,
+    redNote,
+    blueNote,
+    purpleNote,
+    orangeNote,
+  ],
+  [
+    token
+  ]
 ];
 
-export default icons
+export default keyItems;

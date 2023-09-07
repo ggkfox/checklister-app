@@ -5,7 +5,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ItemTracker from "./ItemTracker/ItemTracker";
+import KeyItemTracker from "./ItemTracker/KeyItemTracker";
 
 interface props {
   drawerOpen: boolean;
@@ -48,7 +48,7 @@ const AppDrawer = ({ drawerOpen, toggleDrawer, drawerWidth }: props) => {
         <Typography variant="h6" component="div">
           Items tracker + suggestion logic coming. ^.^
         </Typography>
-        <ItemTracker />
+        <KeyItemTracker />
       </Box>
     </Drawer>
   );

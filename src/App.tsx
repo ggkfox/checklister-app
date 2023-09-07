@@ -9,8 +9,8 @@ import { Box, CssBaseline } from "@mui/material";
 
 function App() {
   //Drawer states & functions
-  const drawerWidth = 300;
-  const [drawerOpen, setDrawer] = useState(false);
+  const drawerWidth = 280;
+  const [drawerOpen, setDrawer] = useState(true);
   const toggleDrawer = () => {
     setDrawer(!drawerOpen);
     console.log("state");
