@@ -5,6 +5,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ItemTracker from "./ItemTracker/ItemTracker";
 
 interface props {
   drawerOpen: boolean;
@@ -38,6 +39,7 @@ const AppDrawer = ({ drawerOpen, toggleDrawer, drawerWidth }: props) => {
       anchor="left"
       open={drawerOpen}
     >
+      <Toolbar />
       <DrawerHeader>
         <IconButton onClick={toggleDrawer}>{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
       </DrawerHeader>
@@ -46,6 +48,7 @@ const AppDrawer = ({ drawerOpen, toggleDrawer, drawerWidth }: props) => {
         <Typography variant="h6" component="div">
           Items tracker + suggestion logic coming. ^.^
         </Typography>
+        <ItemTracker />
       </Box>
     </Drawer>
   );
