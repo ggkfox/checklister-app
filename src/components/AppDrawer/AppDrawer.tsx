@@ -43,10 +43,9 @@ const AppDrawer = ({ drawerOpen, toggleDrawer, drawerWidth }: props) => {
       <DrawerHeader>
         <IconButton onClick={toggleDrawer}>{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
       </DrawerHeader>
-      <Toolbar />
       <Box p={2} textAlign="center">
-        <Typography variant="h6" component="div">
-          Items tracker + suggestion logic coming. ^.^
+        <Typography variant="h5" component="div">
+          Key Items
         </Typography>
         <KeyItemTracker />
       </Box>
