@@ -13,7 +13,7 @@ function ListGroup({ items, heading }: props) {
   const [isExpanded, setExpanded] = useState(true);
 
   return (
-    <Card sx={{ boxShadow: 4 }}>
+    <Card sx={{ boxShadow: "0 0 12px rgba(130, 68, 184, 0.4)" }}>
       <ListItemButton sx={{ background: "#f6f6f6", justifyContent: "space-between" }} onClick={() => setExpanded(!isExpanded)}>
         <Typography sx={{ margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} variant="h6" gutterBottom>
           {heading}
