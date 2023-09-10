@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import keyItems from "../../../assets/ootItems/index";
+import keyItems from "../../../assets/OOT/index";
 import Box from "@mui/material/Box";
 import KeyItem from "./KeyItem";
 

@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import { ZoneType } from "../../models/Types";
+import { AgeType, ZoneType } from "../../models/Types";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -15,6 +15,7 @@ interface props {
   toggleDrawer: () => void;
   zoneFilter: ZoneType;
   handleZoneFilter: (args: ZoneType) => void;
+  handleAgeFilter: (args: AgeType) => void;
   drawerWidth: number;
 }
 
@@ -40,7 +41,7 @@ interface AppBarProps extends MuiAppBarProps {
 //   }),
 // }));
 
-const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, drawerWidth }: props) => {
+const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, handleAgeFilter, drawerWidth }: props) => {
   return (
     <>
       <AppBar position="fixed" /*open={drawerOpen} width={drawerWidth}*/ sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -63,10 +64,13 @@ const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, drawer
           <Grid container gap={2} sx={{ justifyContent: "right" }}>
             <Grid item>
               <ToggleButtonGroup size="small" exclusive color="primary" aria-label="text button group">
-                <Button sx={{ background: "#777" }} variant="contained">
+                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleAgeFilter("adult")}>
                   Child
                 </Button>
-                <Button sx={{ background: "#777" }} variant="contained">
+                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleAgeFilter("all")}>
+                  /
+                </Button>
+                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleAgeFilter("child")}>
                   Adult
                 </Button>
               </ToggleButtonGroup>
@@ -77,7 +81,7 @@ const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, drawer
                   Overworld
                 </Button>
                 <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleZoneFilter("all")}>
-                  All
+                  /
                 </Button>
                 <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleZoneFilter("dungeon")}>
                   Dungeons

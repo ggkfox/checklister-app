@@ -20,7 +20,7 @@
         { "name": "Deku under the bridge",        "tags": ["shop"]                                  },
         { "name": "Grotto salesman",              "tags": ["shop", "bomb", "grotto"]                },
         { "name": "Grotto near Goron City",       "tags": ["chest", "bomb", "grotto"]               },
-        { "name": "Slingshot target",             "tags": ["child"]                                 },
+        { "name": "Slingshot target",             "tags": ["child"],                                "requirements": "slingshot"},
         { "name": "Ocarina memory game",          "tags": ["child"]                                 },
         { "name": "Play song for skull kid",      "tags": ["child"]                                 },
         { "name": "Deku Theater (skull mask)",    "tags": ["child"]                                 },

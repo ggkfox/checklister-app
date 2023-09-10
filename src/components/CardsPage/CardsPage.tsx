@@ -1,6 +1,6 @@
 import ListGroup from "./ListGroup";
-import data from "../../assets/OoT.json";
-import { Zone, ZoneType } from "../../models/Types";
+import data from "../../assets/OOT/spots.json";
+import { AgeType, Zone, ZoneType } from "../../models/Types";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
@@ -12,6 +12,7 @@ interface props {
   drawerOpen: boolean;
   drawerWidth: number;
   zoneFilter: ZoneType;
+  ageFilter: AgeType;
 }
 
 //handle shrinking of main body when sidebar opens.
@@ -26,6 +27,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
     duration: theme.transitions.duration.leavingScreen,
   }),
   marginLeft: `-${widthOffset}px`,
+  backgroundColor: theme.palette.background.default,
   ...(open && {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
@@ -35,7 +37,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   }),
 }));
 
-function CardsPage({ drawerOpen, drawerWidth, zoneFilter }: props) {
+function CardsPage({ drawerOpen, drawerWidth, zoneFilter, ageFilter }: props) {
   const [ref, { width }] = useMeasure() as [LegacyRef<HTMLDivElement>, { width: number }];
   // Calculate the number of columns based on the width of Main
   let columns = 1; // Default to 1 column
@@ -51,24 +53,14 @@ function CardsPage({ drawerOpen, drawerWidth, zoneFilter }: props) {
   }
 
   //assign card data and apply filters.
-  const zones: Zone[] = data.zones.map((zoneData) => ({
-    ...zoneData,
-    type: zoneData.type as ZoneType,
-  }));
-  const [filteredZones, setFilteredZones] = useState(zones);
-
-  useEffect(() => {
-    if (zoneFilter === "overworld") setFilteredZones(zones.filter((zone) => zone.type === "overworld"));
-    else if (zoneFilter === "dungeon") setFilteredZones(zones.filter((zone) => zone.type === "dungeon"));
-    else setFilteredZones(zones);
-  }, [zoneFilter]);
+  const zones: Zone[] = data.zones as Zone[];
 
   return (
     <Main ref={ref} open={drawerOpen} widthOffset={drawerWidth}>
       <Toolbar />
       <Masonry columns={columns} spacing={2}>
-        {filteredZones.map((zoneInfo, index) => (
-          <ListGroup key={index} heading={zoneInfo.name} items={zoneInfo.items}></ListGroup>
+        {zones.map((zoneInfo: Zone, index) => (
+          <ListGroup thisZone={zoneInfo} zoneFilter={zoneFilter} ageFilter={ageFilter} key={index}></ListGroup>
         ))}
       </Masonry>
     </Main>
