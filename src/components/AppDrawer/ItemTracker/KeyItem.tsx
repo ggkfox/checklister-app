@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import Grid from "@mui/material/Grid";
+import React, { useContext, useEffect, useState } from "react";
+import { useItemStateContext } from "../../../contexts/ItemStateContext";
 
-interface props {
-  iconSet: { src: string; style: React.CSSProperties }[];
-  index: number;
+interface Props {
+  iconSet: { name: string; states: { src: string; style: React.CSSProperties }[] };
 }
 
-const KeyItem = ({ iconSet, index }: props) => {
-  const [currentIconIndex, setCurrentIconIndex] = useState(0);
+const KeyItem = ({ iconSet }: Props) => {
+  const { itemStates, incrementItemState } = useItemStateContext();
+  const thisItemState = itemStates[iconSet.name];
+  const [curIcon, setCurIcon] = useState(iconSet.states[thisItemState.currentState]);
+
   const handleClick = () => {
-    setCurrentIconIndex((prevIndex) => (prevIndex + 1) % iconSet.length);
+    incrementItemState(iconSet.name);
   };
 
-  const currentIcon = iconSet[currentIconIndex];
+  useEffect(() => {
+    setCurIcon(iconSet.states[thisItemState.currentState]);
+  }, [itemStates]);
 
-  return <img src={currentIcon.src} alt={`Icon ${currentIconIndex}`} style={{ objectFit: "contain", ...currentIcon.style }} onClick={handleClick} />;
+  return (
+    <>
+      <Grid item sx={{ width: "33px", height: "33px", display: "flex" }}>
+        <img src={curIcon.src} style={{ objectFit: "contain", ...curIcon.style }} onClick={handleClick} />
+      </Grid>
+    </>
+  );
 };
 
 export default KeyItem;

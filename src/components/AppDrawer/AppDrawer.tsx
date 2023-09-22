@@ -1,4 +1,3 @@
-import React from "react";
 import { Drawer, Box, Toolbar } from "@mui/material";
 import { Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
@@ -6,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import KeyItemTracker from "./ItemTracker/KeyItemTracker";
+import { MutableRefObject } from "react";
 
 interface props {
   drawerOpen: boolean;

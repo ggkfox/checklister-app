@@ -7,7 +7,7 @@
         { "name": "Mido's house x4",              "tags": ["chest"]                                 },
         { "name": "Sword chest",                  "tags": ["chest", "child"]                        },
         { "name": "Behind house",                 "tags": ["spider", "child", "night"]              },
-        { "name": "Soft soil",                    "tags": ["spider", "child", "soil"]               },
+        { "name": "Soft soil",                    "tags": ["spider", "child", "soil"],              "requirements": "bottle"},
         { "name": "On roof",                      "tags": ["spider", "adult", "night"]              },
         { "name": "Indoor cow",                   "tags": ["cow"]                                   }
       ]
@@ -18,17 +18,17 @@
       "items":[
         { "name": "Leaving village",              "tags": ["song"]                                  },
         { "name": "Deku under the bridge",        "tags": ["shop"]                                  },
-        { "name": "Grotto salesman",              "tags": ["shop", "bomb", "grotto"]                },
-        { "name": "Grotto near Goron City",       "tags": ["chest", "bomb", "grotto"]               },
+        { "name": "Grotto salesman",              "tags": ["shop", "bomb", "grotto"],               "requirements": "bombs or bombchus"},
+        { "name": "Grotto near Goron City",       "tags": ["chest", "bomb", "grotto"],              "requirements": "bombs or bombchus"},
         { "name": "Slingshot target",             "tags": ["child"],                                "requirements": "slingshot"},
-        { "name": "Ocarina memory game",          "tags": ["child"]                                 },
-        { "name": "Play song for skull kid",      "tags": ["child"]                                 },
+        { "name": "Ocarina memory game",          "tags": ["child"],                                "requirements": "ocarina"},
+        { "name": "Play song for skull kid",      "tags": ["child"],                                "requirements": "ocarina and sariasSong"},
         { "name": "Deku Theater (skull mask)",    "tags": ["child"]                                 },
         { "name": "Deku Theater (mask of truth)", "tags": ["child"]                                 },
         { "name": "Trade Cojiro",                 "tags": ["adult"]                                 },
         { "name": "Trade odd potion",             "tags": ["adult"]                                 },
-        { "name": "Soft soil (under bridge)",     "tags": ["spider", "child", "soil"]               },
-        { "name": "Soft soil (near theater)",     "tags": ["spider", "child", "soil"]               },
+        { "name": "Soft soil (under bridge)",     "tags": ["spider", "child", "soil"],              "requirements": "bottle"},
+        { "name": "Soft soil (near theater)",     "tags": ["spider", "child", "soil"],              "requirements": "bottle"},
         { "name": "Ride hover plant",             "tags": ["spider", "adult", "night", "soil"]      }
       ]
     },
@@ -38,13 +38,13 @@
       "items":[
       { "name": "Anju's Chickens",              "tags": ["day"]                                   },
       { "name": "Open Grotto",                  "tags": ["chest"]                                 },
-      { "name": "Bomb Grotto",                  "tags": ["chest"]                                 },
+      { "name": "Bomb Grotto",                  "tags": ["chest"],                                "requirements": "bombs"},
       { "name": "Man On Roof"                                                                     },
       { "name": "windmill HP",                  "tags": ["heart"]                                 },
       { "name": "House Cow"                                                                       },
       { "name": "House HP",                     "tags": ["heart"]                                 },
       { "name": "Trade pocket cucco"  },
-      { "name": "Trade odd potion"  },
+      { "name": "Trade odd potion",                                                               "requirements": "oddPotion" },
       { "name": "Shooting minigame"  },
       { "name": "Windmill song"  },
       { "name": "Song from Shiek"  },
@@ -64,7 +64,7 @@
       "name":"Sacred Forest Meadow",
       "type" : "overworld",
       "items":[
-        { "name": "wolfos Grotto",                "tags": ["chest", "bomb", "grotto"]               },
+        { "name": "wolfos Grotto",                "tags": ["chest", "bomb", "grotto"],              "requirements": "bombs"},
         { "name": "Song from Saria",              "tags": ["song", "child"]                         },
         { "name": "Song from Shiek",              "tags": ["song", "adult"]                         },
         { "name": "Maze wall",                    "tags": ["spider", "night", "adult"]              }
@@ -75,12 +75,12 @@
       "type" : "overworld",
       "items":[
         { "name": "Grotto by lake hylia",         "tags": ["chest", "grotto"]                       },
-        { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"]                },
-        { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"]               },
-        { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"]               },
-        { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"]                        },
+        { "name": "Hidden Grotto in fences",      "tags": ["shop", "grotto", "bomb"],               "requirements": "bombs or bombchus"},
+        { "name": "south-east grotto in trees",   "tags": ["bomb", "grotto", "chest"],              "requirements": "bombs or bombchus"},
+        { "name": "Grotto w/ underwater",         "tags": ["heart", "grotto", "bomb"],              "requirements": "bombs or bombchus"},
+        { "name": "Grotto left of drawbridge",    "tags": ["grotto", "bomb"],                       "requirements": "bombs or bombchus"},
         { "name": "Ocarina + Song of Time",       "tags": ["song"]                                  },
-        { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"]              },
+        { "name": "Grotto by Kakariko",           "tags": ["spider", "grotto", "bomb"],             "requirements": "bombs"},
         { "name": "Grotto by Gerudo Valley",      "tags": ["grotto", "spider"]                      },
         { "name": "Grotto by Gerudo Valley cow",  "tags": ["grotto", "cow"]                         }
       ]
@@ -89,12 +89,12 @@
       "name":"Market",
       "type" : "overworld",
       "items":[
-        { "name": "Slingshot minigame",           "tags": ["child"]                                 },
+        { "name": "Slingshot minigame",           "tags": ["child"],                                "requirements": "slingshot"},
         { "name": "Find dog",                     "tags": ["child", "night"]                        },
-        { "name": "Bombchu game",                 "tags": ["child", "day"]                          },
-        { "name": "Bombchu game x2",              "tags": ["child", "day"]                          },
+        { "name": "Bombchu game",                 "tags": ["child", "day"],                         "requirements": "bombchus"},
+        { "name": "Bombchu game x2",              "tags": ["child", "day"],                         "requirements": "bombchus"},
         { "name": "treasure chest game",          "tags": ["child", "night"]                        },
-        { "name": "Big Poes",                     "tags": ["adult"]                                 },
+        { "name": "Big Poes",                     "tags": ["adult"],                                "requirements": "( zoraLetter and ((  ocarina and zeldasLullaby ) or scale )) or bottle1 or bottle2 or bottle3"},
         { "name": "Bazaar shop",                  "tags": ["shop", "child", "day"]                  },
         { "name": "Potion shop",                  "tags": ["child", "day"]                          },
         { "name": "Bombchu shop",                 "tags": ["child", "day"]                          }
@@ -105,8 +105,8 @@
       "type" : "overworld",
       "items":[
         { "name": "Talk to Malon",                "tags": ["child"]                                 },
-        { "name": "Zelda's Lullaby",              "tags": ["child"]                                 },
-        { "name": "Great fairy",                  "tags": ["child"]                                 },
+        { "name": "Talk to Zelda (song+letter)",  "tags": ["child"],                                "requirements": "egg1"},
+        { "name": "Great fairy",                  "tags": ["child"],                                "requirements": "bombs or bombchus"},
         { "name": "Great fairy",                  "tags": ["adult"]                                 },
         { "name": "GS in tree",                   "tags": ["child", "spider"]                       },
         { "name": "Hidden grotto near Talon",     "tags": ["child"]                                 },
@@ -117,7 +117,7 @@
       "name": "Temple of Time",
       "type" : "overworld",
       "items":[
-        { "name": "Master Sword",                 "tags": []                                        },
+        { "name": "Master Sword"                                                                    },
         { "name": "Prelude of light",             "tags": ["adult"]                                 },
         { "name": "Light arrows",                 "tags": ["adult"]                                 }
       ]
@@ -127,8 +127,8 @@
       "type" : "overworld",
       "items":[
         { "name": "Push boxes HP",                "tags": ["child"]                                 },
-        { "name": "Chicken minigame",             "tags": ["child"]                                 },
-        { "name": "Malon's song",                 "tags": ["child"]                                 },
+        { "name": "Chicken minigame",             "tags": ["child"],                                "requirements": "egg1"},
+        { "name": "Malon's song",                 "tags": ["child"],                                "requirements": "egg1"},
         { "name": "In tree GS",                   "tags": ["child"]                                 },
         { "name": "back of fense GS",             "tags": ["child"]                                 },
         { "name": "On house wall",                "tags": ["child"]                                 },

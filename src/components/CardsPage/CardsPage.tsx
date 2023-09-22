@@ -18,15 +18,15 @@ interface props {
 //handle shrinking of main body when sidebar opens.
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
-  widthOffset?: number;
-}>(({ theme, open, widthOffset }) => ({
+  widthoffset?: number;
+}>(({ theme, open, widthoffset }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
   transition: theme.transitions.create("margin", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  marginLeft: `-${widthOffset}px`,
+  marginLeft: `-${widthoffset}px`,
   backgroundColor: theme.palette.background.default,
   ...(open && {
     transition: theme.transitions.create("margin", {
@@ -56,7 +56,7 @@ function CardsPage({ drawerOpen, drawerWidth, zoneFilter, ageFilter }: props) {
   const zones: Zone[] = data.zones as Zone[];
 
   return (
-    <Main ref={ref} open={drawerOpen} widthOffset={drawerWidth}>
+    <Main ref={ref} open={drawerOpen} widthoffset={drawerWidth}>
       <Toolbar />
       <Masonry columns={columns} spacing={2}>
         {zones.map((zoneInfo: Zone, index) => (
