@@ -1,23 +1,25 @@
 import Grid from "@mui/material/Grid";
-import React, { useContext, useEffect, useState } from "react";
-import { useItemStateContext } from "../../../contexts/ItemStateContext";
+import React, { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { itemStateFamily } from "../../../Atoms";
+import { ItemStateType } from "../../../models/Types";
 
 interface Props {
   iconSet: { name: string; states: { src: string; style: React.CSSProperties }[] };
 }
 
 const KeyItem = ({ iconSet }: Props) => {
-  const { itemStates, incrementItemState } = useItemStateContext();
-  const thisItemState = itemStates[iconSet.name];
+  const [itemState, setItemState] = useAtom(itemStateFamily(iconSet.name));
+  const thisItemState = itemState;
   const [curIcon, setCurIcon] = useState(iconSet.states[thisItemState.currentState]);
 
   const handleClick = () => {
-    incrementItemState(iconSet.name);
+    setItemState({ currentState: (itemState.currentState + 1) % itemState.numOfStates, numOfStates: itemState.numOfStates });
   };
 
   useEffect(() => {
     setCurIcon(iconSet.states[thisItemState.currentState]);
-  }, [itemStates]);
+  }, [thisItemState.currentState]);
 
   return (
     <>

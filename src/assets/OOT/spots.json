@@ -7,9 +7,9 @@
         { "name": "Mido's house x4",              "tags": ["chest"]                                 },
         { "name": "Sword chest",                  "tags": ["chest", "child"]                        },
         { "name": "Behind house",                 "tags": ["spider", "child", "night"]              },
-        { "name": "Soft soil",                    "tags": ["spider", "child", "soil"],              "requirements": "bottle"},
-        { "name": "On roof",                      "tags": ["spider", "adult", "night"]              },
-        { "name": "Indoor cow",                   "tags": ["cow"]                                   }
+        { "name": "Soft soil",                    "tags": ["spider", "child", "soil"],              "requirements": "( zoraLetter and ((  ocarina and zeldasLullaby ) or scale )) or bottle1 or bottle2 or bottle3"},
+        { "name": "On roof",                      "tags": ["spider", "adult", "night"],             "requirements": "masterSword and ocarina and songOfTime"},
+        { "name": "Indoor cow",                   "tags": ["cow"],                                  "requirements": "masterSword and ocarina and songOfTime and eponasSong"}
       ]
     },
     {
@@ -18,7 +18,7 @@
       "items":[
         { "name": "Leaving village",              "tags": ["song"]                                  },
         { "name": "Deku under the bridge",        "tags": ["shop"]                                  },
-        { "name": "Grotto salesman",              "tags": ["shop", "bomb", "grotto"],               "requirements": "bombs or bombchus"},
+        { "name": "Grotto salesman",              "tags": ["shop", "grotto"],                       "requirements": "bombs or bombchus"},
         { "name": "Grotto near Goron City",       "tags": ["chest", "bomb", "grotto"],              "requirements": "bombs or bombchus"},
         { "name": "Slingshot target",             "tags": ["child"],                                "requirements": "slingshot"},
         { "name": "Ocarina memory game",          "tags": ["child"],                                "requirements": "ocarina"},
@@ -27,8 +27,8 @@
         { "name": "Deku Theater (mask of truth)", "tags": ["child"]                                 },
         { "name": "Trade Cojiro",                 "tags": ["adult"]                                 },
         { "name": "Trade odd potion",             "tags": ["adult"]                                 },
-        { "name": "Soft soil (under bridge)",     "tags": ["spider", "child", "soil"],              "requirements": "bottle"},
-        { "name": "Soft soil (near theater)",     "tags": ["spider", "child", "soil"],              "requirements": "bottle"},
+        { "name": "Soft soil (under bridge)",     "tags": ["spider", "child", "soil"],              "requirements": "( zoraLetter and ((  ocarina and zeldasLullaby ) or scale )) or bottle1 or bottle2 or bottle3"},
+        { "name": "Soft soil (near theater)",     "tags": ["spider", "child", "soil"],              "requirements": "( zoraLetter and ((  ocarina and zeldasLullaby ) or scale )) or bottle1 or bottle2 or bottle3"},
         { "name": "Ride hover plant",             "tags": ["spider", "adult", "night", "soil"]      }
       ]
     },
@@ -45,7 +45,7 @@
       { "name": "House HP",                     "tags": ["heart"]                                 },
       { "name": "Trade pocket cucco"  },
       { "name": "Trade odd potion",                                                               "requirements": "oddPotion" },
-      { "name": "Shooting minigame"  },
+      { "name": "Shooting minigame",                                                              "requirements": "bow" },
       { "name": "Windmill song"  },
       { "name": "Song from Shiek"  },
       { "name": "Tree spider",                  "tags": ["spider", "night","child"]  },
@@ -54,11 +54,11 @@
       { "name": "On Tower Ladder",              "tags": ["spider", "night","child"]  },
       { "name": "Near DMT gate",                "tags": ["spider", "night","child"]  },
       { "name": "On roof of Impa's house",      "tags": ["spider", "night"]  },
-      { "name": "GS reward (10)"  },
-      { "name": "GS reward (20)"  },
-      { "name": "GS reward (30)"  },
-      { "name": "GS reward (40)"  },
-      { "name": "GS reward (50)"  }
+      { "name": "GS reward (10)", "requirements": "false"  },
+      { "name": "GS reward (20)", "requirements": "false"  },
+      { "name": "GS reward (30)", "requirements": "false"  },
+      { "name": "GS reward (40)", "requirements": "false"  },
+      { "name": "GS reward (50)", "requirements": "false"  }
     ]},
     {
       "name":"Sacred Forest Meadow",
@@ -93,7 +93,7 @@
         { "name": "Find dog",                     "tags": ["child", "night"]                        },
         { "name": "Bombchu game",                 "tags": ["child", "day"],                         "requirements": "bombchus"},
         { "name": "Bombchu game x2",              "tags": ["child", "day"],                         "requirements": "bombchus"},
-        { "name": "treasure chest game",          "tags": ["child", "night"]                        },
+        { "name": "treasure chest game",          "tags": ["child", "night"],                       "requirements": "lensOfTruth"},
         { "name": "Big Poes",                     "tags": ["adult"],                                "requirements": "( zoraLetter and ((  ocarina and zeldasLullaby ) or scale )) or bottle1 or bottle2 or bottle3"},
         { "name": "Bazaar shop",                  "tags": ["shop", "child", "day"]                  },
         { "name": "Potion shop",                  "tags": ["child", "day"]                          },
@@ -107,7 +107,7 @@
         { "name": "Talk to Malon",                "tags": ["child"]                                 },
         { "name": "Talk to Zelda (song+letter)",  "tags": ["child"],                                "requirements": "egg1"},
         { "name": "Great fairy",                  "tags": ["child"],                                "requirements": "bombs or bombchus"},
-        { "name": "Great fairy",                  "tags": ["adult"]                                 },
+        { "name": "Great fairy",                  "tags": ["adult"],                                "requirements": "masterSword and ocarina and songOfTime and strength >= 3"},
         { "name": "GS in tree",                   "tags": ["child", "spider"]                       },
         { "name": "Hidden grotto near Talon",     "tags": ["child"]                                 },
         { "name": "GS on rubble",                 "tags": ["adult"]                                 }

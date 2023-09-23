@@ -6,10 +6,10 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import KeyItemTracker from "./ItemTracker/KeyItemTracker";
 import { MutableRefObject } from "react";
+import { useAtom } from "jotai";
+import { drawerAtom } from "../../Atoms";
 
 interface props {
-  drawerOpen: boolean;
-  toggleDrawer: () => void;
   drawerWidth: number;
 }
 
@@ -22,7 +22,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const AppDrawer = ({ drawerOpen, toggleDrawer, drawerWidth }: props) => {
+const AppDrawer = ({ drawerWidth }: props) => {
+  const [drawerOpen, setDrawer] = useAtom(drawerAtom);
+
   const theme = useTheme();
 
   return (
@@ -41,7 +43,13 @@ const AppDrawer = ({ drawerOpen, toggleDrawer, drawerWidth }: props) => {
     >
       <Toolbar />
       <DrawerHeader>
-        <IconButton onClick={toggleDrawer}>{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
+        <IconButton
+          onClick={() => {
+            setDrawer(!drawerOpen);
+          }}
+        >
+          {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
       </DrawerHeader>
       <Box p={2} textAlign="center">
         <Typography variant="h5" component="div">

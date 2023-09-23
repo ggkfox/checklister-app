@@ -9,10 +9,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
+import { useAtom } from "jotai";
+import { drawerAtom } from "../../Atoms";
 
 interface props {
-  drawerOpen: boolean;
-  toggleDrawer: () => void;
   zoneFilter: ZoneType;
   handleZoneFilter: (args: ZoneType) => void;
   handleAgeFilter: (args: AgeType) => void;
@@ -24,24 +24,8 @@ interface AppBarProps extends MuiAppBarProps {
   width: number;
 }
 
-// const AppBar = styled(MuiAppBar, {
-//   shouldForwardProp: (prop) => prop !== "open",
-// })<AppBarProps>(({ theme, open, width }) => ({
-//   transition: theme.transitions.create(["margin", "width"], {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   ...(open && {
-//     width: `calc(100% - ${width}px)`,
-//     marginLeft: `${width}px`,
-//     transition: theme.transitions.create(["margin", "width"], {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//   }),
-// }));
-
-const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, handleAgeFilter, drawerWidth }: props) => {
+const NavBar = ({ zoneFilter, handleZoneFilter, handleAgeFilter, drawerWidth }: props) => {
+  const [drawerOpen, setDrawer] = useAtom(drawerAtom);
   return (
     <>
       <AppBar position="fixed" /*open={drawerOpen} width={drawerWidth}*/ sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -51,9 +35,11 @@ const NavBar = ({ drawerOpen, toggleDrawer, zoneFilter, handleZoneFilter, handle
               color="inherit"
               disabled={drawerOpen}
               aria-label="open drawer"
-              onClick={toggleDrawer}
+              onClick={() => {
+                setDrawer(!drawerOpen);
+              }}
               edge="start"
-              sx={{ mr: 2 /*...(drawerOpen && { display: "none" })*/ }}
+              sx={{ mr: 2 }}
             >
               <MenuIcon />
             </IconButton>

@@ -7,9 +7,10 @@ import { styled } from "@mui/material/styles";
 import Masonry from "@mui/lab/Masonry";
 import { LegacyRef, useEffect, useState } from "react";
 import useMeasure from "react-use/lib/useMeasure";
+import { useAtom } from "jotai";
+import { drawerAtom } from "../../Atoms";
 
 interface props {
-  drawerOpen: boolean;
   drawerWidth: number;
   zoneFilter: ZoneType;
   ageFilter: AgeType;
@@ -37,7 +38,9 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   }),
 }));
 
-function CardsPage({ drawerOpen, drawerWidth, zoneFilter, ageFilter }: props) {
+function CardsPage({ drawerWidth, zoneFilter, ageFilter }: props) {
+  const [drawerOpen, setDrawer] = useAtom(drawerAtom);
+
   const [ref, { width }] = useMeasure() as [LegacyRef<HTMLDivElement>, { width: number }];
   // Calculate the number of columns based on the width of Main
   let columns = 1; // Default to 1 column
