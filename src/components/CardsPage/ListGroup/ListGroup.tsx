@@ -4,6 +4,7 @@ import ListItem from "./ListItem";
 import { Card, Collapse, List, ListItemButton, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Zone } from "../../../models/Types";
+import React from "react";
 
 interface props {
   thisZone: Zone;
@@ -33,4 +34,4 @@ function ListGroup({ thisZone, zoneFilter, ageFilter }: props) {
   );
 }
 
-export default ListGroup;
+export default React.memo(ListGroup);
