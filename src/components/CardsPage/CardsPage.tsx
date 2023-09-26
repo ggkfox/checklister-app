@@ -1,5 +1,5 @@
 import ListGroup from "./ListGroup";
-import data from "../../assets/OOT/spots.json";
+import data from "../../assets/OOT/spots.js";
 import { AgeType, Zone, ZoneType } from "../../models/Types";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";

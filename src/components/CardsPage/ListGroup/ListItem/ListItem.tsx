@@ -14,7 +14,16 @@ interface props {
 }
 
 function ListItem({ item, isExpanded, ageFilter }: props) {
-  const listOfRequirements = useMemo(() => (item.requirements ? item.requirements.split(" ") : []), [item.requirements]);
+  //doctor up string.
+  const addWhitespace = (input: string): string => {
+    return input.replace(/\(/g, " ( ").replace(/\)/g, " ) ").replace(/<=/g, " <= ").replace(/>=/g, " >= ").replace(/==/g, " == ").replace(/!=/g, " != ").trim();
+  };
+  const listOfRequirements = useMemo(() => {
+    if (!item.requirements) return [];
+    const normalizedRequirements = addWhitespace(item.requirements);
+    return normalizedRequirements.split(" ");
+  }, [item.requirements]);
+
   const itemStates = useItemStates(listOfRequirements);
 
   const [isChecked, setChecked] = useState<boolean>(false);

@@ -1,4 +1,4 @@
-import { Drawer, Box, Toolbar } from "@mui/material";
+import { Drawer, Box, Toolbar, Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
@@ -56,6 +56,11 @@ const AppDrawer = ({ drawerWidth }: props) => {
           Key Items
         </Typography>
         <KeyItemTracker />
+        <Button sx={{ marginTop: "40px" }} color="warning" variant="contained">
+          Dissable logic
+          <br />
+          (coming)
+        </Button>
       </Box>
     </Drawer>
   );
