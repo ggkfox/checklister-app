@@ -1,58 +1,68 @@
-//child?
-const adult = ` masterSword `;
-const bottle = `(zoraLetter and ((ocarina and zeldasLullaby) or scale)) or bottle1 or bottle2 or bottle3`;
-const bombs = `(bombs or bombchus)`;
-const fire = `(magic and (fireArrows or dinsFire))`;
-const dinsFire = `(magic and dinsFire)`;
-const goldScale = ` scale==2 `;
-const silverGauntlets = `(${adult} and strength>=2)`
-const goldenGauntlets = ` strength==3 `;
-const accessToBlueFire = ` true `; //must add logic
+const child            = `true`;
+const adult            = `masterSword`;
+const bottle           = `((rutosLetter and ((ocarina and zeldasLullaby) or scale)) or bottle1 or bottle2 or bottle3)`;
+const bombs            = `(bombs or bombchus)`;
+const bombFlower        = `(${bombs} or strength)`
+const fire             = `(magic and (fireArrows or dinsFire))`;
+const dinsFire         = `(magic and dinsFire)`;
+const goldScale        = `scale==2`;
+const silverGauntlets  = `(${adult} and strength>=2)`
+const goldenGauntlets  = `strength==3`;
+const accessToBlueFire = `${bottle}`; //must add logic
+const magicBean        = `(magicBean and ${adult})`;
 
 //possibly ageless items
 //sticks
-const bow = `(${adult} and bow)`
-const blueFire = `((${bow} and iceArrow) or (${bottle} and accessToBlueFire))`; // 
-const hookshot = `(${adult} and hookshot)`;
-const longShot = `(${adult} and hookshot==2)`;
-//boomerang
-const hammer = `(${adult} and hammer)`;
-//ageless swords affect logic???
-//mirrorShield
-const ironBoots = `(${adult} and ironBoots)`;
-const hoverBoots = `(${adult} and hoverBoots)`;
+//swords??
+const bow          = `(${adult} and bow)`
+const iceArrow     = `(${bow} and magic)`
+const blueFire     = `((${bow} and ${iceArrow}) or ${accessToBlueFire})`;
+const hookshot     = `(${adult} and hookshot)`;
+const longShot     = `(${adult} and hookshot==2)`;
+const boomerang    = `(${child} and boomerang)`;
+const hammer       = `(${adult} and hammer)`;
+const mirrorShield = `(${adult} and mirrorShield)`;
+const ironBoots    = `(${adult} and ironBoots)`;
+const hoverBoots   = `(${adult} and hoverBoots)`;
 
-//--also might be easier to make world objects--
-const bombrock = `(bombs or bombchus or ${hammer})`;
-const mudwall = `(${bombs} or ${blueFire})`;
-const redIce = blueFire; //added for ease of use...
-const hammerRock = hammer; //can we lift these?
+const bombRock   = `(${bombs} or ${hammer})`;
+const bombGrotto  = bombRock;
+const mudwall    = `(${bombs} or ${blueFire})`;
+const redIce     = blueFire;                     //added for ease of use...
+const hammerRock = hammer;                       //can we lift these?
 
-const zeldasLullaby = `(ocarina and zeldasLullaby)`;
-const eponasSong = `(ocarina and eponasSong)`;
-const sariasSong = `(ocarina and sariasSong)`;
-const sunsSong = `(ocarina and sunsSong)`;
-const songOfTime = `(ocarina and songOfTime)`;
-const songOfStorms = `(ocarina and songOfStorms)`;
-const preludeOfLight = `(ocarina and preludeOfLight)`;
-const minuetOfForest = `(ocarina and minuetOfForest)`;
-const boleroOfFire = `(ocarina and boleroOfFire)`;
-const serenadeOfWater = `(ocarina and serenadeOfWater)`;
+const zeldasLullaby    = `(ocarina and zeldasLullaby)`;
+const eponasSong       = `(ocarina and eponasSong)`;
+const epona            = `${adult} and eponasSong`;
+const sariasSong       = `(ocarina and sariasSong)`;
+const sunsSong         = `(ocarina and sunsSong)`;
+const songOfTime       = `(ocarina and songOfTime)`;
+const songOfStorms     = `(ocarina and songOfStorms)`;
+const preludeOfLight   = `(ocarina and preludeOfLight)`;
+const minuetOfForest   = `(ocarina and minuetOfForest)`;
+const boleroOfFire     = `(ocarina and boleroOfFire)`;
+const serenadeOfWater  = `(ocarina and serenadeOfWater)`;
 const nocturneOfShadow = `(ocarina and nocturneOfShadow)`;
-const requiemOfSpirit = `(ocarina and requiemOfSpirit)`;
+const requiemOfSpirit  = `(ocarina and requiemOfSpirit)`;
 
+//zones
+const accessToGoronCity         = `(${bombRock} or ${dinsFire} or zeldasLetter)`;                                                //adult + balero of fire?
+const accessToZorasRiver        = `(${bombRock} or scale or ${ironBoots} or ${hoverBoots})`;                                     //bombRocks there as adult?
+const accessToZorasDomain       = `((${accessToZorasRiver} and (${zeldasLullaby} or ${hoverBoots})) or scale or ${ironBoots})`;
+const accessToZorasFountain     = `(${accessToZorasDomain} and rutosLetter)`;                                                    //or open king setting
+const accessToGerudoFortress    = `(${adult} and (${epona} or ${longShot}))`;
+const accessToHauntedWastelands = `(${accessToGerudoFortress} and gerudoMembershipCard)`;                                        //should i require hookshot/hoverboots?
+const accessToDesertColosus     = `((${accessToHauntedWastelands} and lenseOfTruth) or ${requiemOfSpirit})`
+  
 //----questions----
 //is the masterSword required to be adult? or just getting inside? if starting as adult, do u need sword to become child?
 //can you: hoverboots into zora's domain -> iceArrow king zora -> give rutoLetter as adult?
 //should hoverboots into zora's domain be included?
-//should i just add requirements to zones?
 //do i need to make a child requirement? does being a child allow access to zones in different ways? (i.e. zorasDomain, fishingHole, spiritTemple)
 
 //----toDo----
 //apply type to data object. 
-//make the string parser add spaces around parenthesis. 
 //note: ageless items will make botw iron boots logic weird (at least with my implementation). perhaps simply double up some items with adult tags (i.e. iron boots checks and so does the spot).
-//add ocarina to all songs
 
 const data = {
   zones: [
@@ -80,11 +90,11 @@ const data = {
         { name: `Grotto. rock by Goron City warp`,        requirements: bombs},
         { name: `Target in the woods`,                    requirements: `slingshot`},
         { name: `Ocarina memory game`,                    requirements: `ocarina`},
-        { name: `Skull kid (Saria's song)`,               requirements: `ocarina and sariasSong`},
+        { name: `Skull kid (Saria's song)`,               requirements: `(${child} and ${sariasSong})`},
         { name: `Deku Theater, skull mask`,               requirements: `ocarina`},
         { name: `Deku Theater, mask of truth`,            requirements: `ocarina`},
-        { name: `Trade quest turn in Cojiro`,             requirements: `${adult} and ocarina`},
-        { name: `Trade quest turn in odd potion`,         requirements: `${adult} and oddPotion`},
+        { name: `Trade quest turn in Cojiro`,             requirements: ` `},
+        { name: `Trade quest turn in odd potion`,         requirements: ` `},
         { name: `Bean patch by bridge`,                   requirements: bottle},
         { name: `Bean patch by deku theater`,             requirements: bottle},
         { name: `Above deku theater bean patch`,          requirements: `${adult} and magicBeans`}
@@ -97,7 +107,7 @@ const data = {
         { name: `Wolfos grotto`,                          requirements: bombs},
         { name: `Song from Saria`},
         { name: `Song from Sheik`},
-        { name: `On the wall above the maze`,             requirements: `${adult} and hookshot`}
+        { name: `On the wall above the maze`,             requirements: `${adult} and ${hookshot}`}
       ]
     },
     {
@@ -107,13 +117,13 @@ const data = {
         { name: `Open grotto near lake hylia`},
         { name: `Deku salesman`,                          requirements: bombs},
         { name: `Southeast grotto, under rock`,           requirements: bombs},
-        { name: `Tektite grotto`,                         requirements: `${bombs} and (ironBoots or scale==2 or longShot)`},
+        { name: `Tektite grotto`,                         requirements: `${bombRock} and (${ironBoots} or ${goldScale} or ${longShot})`},
         { name: `Grotto west of castle town`,             requirements: bombs},
-        { name: `Ocarina of time`},
-        { name: `Ocarina of time, song`},
+        { name: `Ocarina of time`,                        requirements: `spiritualStoneOfTheForest and spiritualStoneOfFire and spiritualStoneOfWater`},
+        { name: `Ocarina of time, song`,                  requirements: `spiritualStoneOfTheForest and spiritualStoneOfFire and spiritualStoneOfWater`},
         { name: `Grotto near kakariko, near tree`,        requirements: bombs},
-        { name: `Grotto near gerudo valley`,              requirements: `((${bombs} and boomerang) or (adult and hammer and hookshot)) and fire`},
-        { name: `Grotto near gerudo valley`,              requirements: `(${bombs} or (adult and hammer)) and fire and ocarina and eponasSong`}
+        { name: `Grotto near gerudo valley`,              requirements: `((${bombs} and ${boomerang}) or (${hammer} and ${hookshot})) and ${fire}`},
+        { name: `Grotto near gerudo valley`,              requirements: `${bombGrotto} and ${fire} and ${eponasSong}`}
       ]
     },
     {
@@ -124,7 +134,7 @@ const data = {
         { name: `Save Richard the dog`},
         { name: `Bombchu bowling (2)`,                    requirements: `bombchus`},
         { name: `Treasure chest minigame`,                requirements: `lenseOfTruth`},
-        { name: `Big poes`,                               requirements: `${adult} and ${bottle}`},
+        { name: `Big poes`,                               requirements: `${adult} and ${bottle}`}, //need epona???
         { name: `Pot room, back crate`},
         { name: `Shop, bazaar`,                           requirements: ` `},
         { name: `Shop, potion`,                           requirements: ` `},
@@ -136,22 +146,22 @@ const data = {
       type : `overworld`, 
       items: [
         { name: `Talk to Malon`},
-        // { name: `Use weird egg (if enabled)`,             requirements: `egg1`},
-        { name: `Great fairy`,                            requirements: `${bombs} and ocarina and zeldasLullaby`}, //can ageless hammer break this?
-        { name: `Great fairy`},
-        { name: `Zelda's lullaby`,                        requirements: `egg1`},
-        { name: `In tree near entrance`},
-        { name: `Song of storms grotto`},
-        { name: `On the side of pillar`}
+        // { name: `Use weird egg (if enabled)`,             requirements: `weirdEgg`},
+        { name: `Great fairy`,                            requirements: `${child} and ${bombs} and ${zeldasLullaby}`}, //can ageless hammer break this?
+        { name: `Great fairy`,                            requirements: `${adult} and ${goldenGauntlets} and ${zeldasLullaby}`},
+        { name: `Zelda's lullaby`,                        requirements: `weirdEgg`},
+        { name: `In tree near entrance`,                  requirements: child},
+        { name: `Song of storms grotto`,                  requirements: `${child} and ${songOfStorms}`},
+        { name: `On the side of pillar`,                  requirements: adult}
       ]
     },
     {
       name: `Temple of Time`,
       type : `overworld`, 
       items: [
-        { name: `Master Sword (if enabled)`},
-        { name: `Prelude of light`},
-        { name: `Light arrows`}
+        { name: `Master Sword (if enabled)`,              requirements: `${songOfTime}`}, //do u get the item if MS is shuffled?
+        { name: `Prelude of light`,                       requirements: `forestMedallion`}, //or is it blue warp??
+        { name: `Light arrows`,                           requirements: `shadowMedallion and spiritMedallion`}
       ]
     },
     {
@@ -159,8 +169,8 @@ const data = {
       type : `overworld`, 
       items: [
         { name: `Silo, rear of the ranch`},
-        { name: `Chicken minigame`,                       requirements: `egg1`},
-        { name: `Malon's song`,                           requirements: `egg1 and ocarina`},
+        { name: `Chicken minigame`,                       requirements: `weirdEgg`},
+        { name: `Malon's song`,                           requirements: `weirdEgg and ocarina`},
         { name: `Tree near entrance`},
         { name: `Backside of the fenced-in area`},
         { name: `On building near the entrance`,          requirements: `boomerang`},
@@ -175,15 +185,15 @@ const data = {
       items: [
         { name: `Anju'S chickens`},
         { name: `Impa's cow hp`},
-        { name: `Redead grotto`,                          requirements: `bombs`},
+        { name: `Redead grotto`,                          requirements: `bombRock`},
         { name: `Open grotto, near potion shop`},
         { name: `Talk to Anju`,                           requirements: adult},
         // { name: `Use pocket egg (if enabled)`            requirements: `egg2`},
-        { name: `Trade quest turn in pocket cucco`,       requirements: `${adult} and egg2`},
-        { name: `Trade quest turn in odd potion`,         requirements: `${adult} and oddPotion`},
-        { name: `Talk to man on the roof`,                requirements: `${adult} and hookshot`}, //tricks???
+        { name: `Trade quest turn in pocket cucco`,       requirements: ` `},
+        { name: `Trade quest turn in odd potion`,         requirements: ` `},
+        { name: `Talk to man on the roof`,                requirements: hookshot}, //tricks???
         { name: `Archery range`,                          requirements: `${adult} and bow`},
-        { name: `Windmill hp`,                            requirements: `ocarina and songOfTime`}, //is this a trick?
+        { name: `Windmill hp`,                            requirements: `${adult} and ${songOfTime}`}, //is this a trick?
         { name: `Gold skulltula reward: 10`,              requirements: ` `},
         { name: `Gold skulltula reward: 20`,              requirements: ` `},
         { name: `Gold skulltula reward: 30`,              requirements: ` `},
@@ -222,12 +232,12 @@ const data = {
       type : `overworld`, 
       items: [
         { name: `Bombable wall`,                          requirements: `${bombs} or (${adult} and hammer)`},
-        { name: `Song of storms grotto`,                  requirements: `(${bombs} or (dinsFire and magic)) and (ocarina and songOfStorm)`}, //can access DMT via balero of fire?
+        { name: `Song of storms grotto`,                  requirements: `(${bombs} or ${dinsFire}) and (ocarina and songOfStorm)`}, //can access DMT via balero of fire?
         { name: `Great fairy at the summit`},
         { name: `Above dodongos cavern`,                  requirements: `bombs or (dinsFire and magic)`},
-        { name: `Trade quest, turn in broken sword`,      requirements: `${adult} and brokenGiantsKnife`}, //what happens if swords are progressive?
-        { name: `Trade quest, turn in eye drops`,         requirements: `${adult} and eyeDrops`},
-        { name: `Trade quest turn in claim check`,        requirements: `${adult} and claimCheck`},
+        { name: `Trade quest, turn in broken sword`,      requirements: ` `}, //what happens if swords are progressive?
+        { name: `Trade quest, turn in eye drops`,         requirements: ` `},
+        { name: `Trade quest turn in claim check`,        requirements: ` `},
         { name: `Bombable wall, near entrance`,           requirements: bombs}, // can hammer break this wall?
         { name: `Bean patch, dodongo's cavern`,           requirements: `${bombs} and ${bottle}`}, //this blocked by bombable rock?
         { name: `Hammer rock, above DC`},
@@ -254,30 +264,30 @@ const data = {
       items: [
         { name: `Rolling goron`},
         { name: `Darunia's joy`,                          requirements: `sariasSong`},
-        { name: `Spinning pot`,                           requirements: bombs}, //child requirement?
-        { name: `Rock maze, right side (2)`},
-        { name: `Rock maze, left side`},
-        { name: `Link the goron`},
-        { name: `Rock maze, right side crate`},
+        { name: `Spinning pot`,                           requirements: bombFlower}, //child requirement?
+        { name: `Rock maze, right side (2)`,              requirements: bombRock},
+        { name: `Rock maze, left side`,                   requirements: hammer}, //silver gauntlets???
+        { name: `Link the goron`,                         requirements: `${adult} and ${bombFlower}`},
+        { name: `Rock maze, right side crate`,            requirements: bombRock},
         { name: `Back of pedestal in the center`},
         { name: `Medigoron`},
-        { name: `Shop`,                     requirements: ` `}
+        { name: `Shop`,                                   requirements: ` `}
       ]
     },
     {
       name: `Zora River`,
       type : `overworld`, 
       items: [
-        { name: `Open grotto`},
-        { name: `Lower river heart piece`},
-        { name: `Upper river heart piece`},
-        { name: `Frogs, song of storms`},
-        { name: `Frogs, minigame`},
-        { name: `Bean salesman`},
+        { name: `Open grotto`,                            requirements: accessToZorasRiver},
+        { name: `Lower river heart piece`,                requirements: accessToZorasRiver},
+        { name: `Upper river heart piece`,                requirements: accessToZorasRiver},
+        { name: `Frogs, song of storms`,                  requirements: `(${accessToZorasRiver} and ${songOfStorms})`},
+        { name: `Frogs, minigame`,                        requirements: `(${accessToZorasRiver} and ${zeldasLullaby} and eponasSong and sariasSong and sunsSong and songOfStorms and songOfTime)`},
+        { name: `Bean salesman`,                          requirements: accessToZorasRiver},
         { name: `Tree near entrance`},
-        { name: `Upper river, on the ladder`},
-        { name: `On wall near the open grotto`},
-        { name: `Upper river, high on the wall`}
+        { name: `Upper river, on the ladder`,             requirements: `(${accessToZorasRiver} and child and (boomerang or ${bombs} or slingshot or ${dinsFire} or ${bow} or ${hookshot}))`}, //can u kill it with sticks?
+        { name: `On wall near the open grotto`,           requirements: accessToZorasRiver},
+        { name: `Upper river, high on the wall`,          requirements: `(${accessToZorasRiver} and ${adult} and hookshot)`}
       ]
     },
     {
@@ -287,7 +297,7 @@ const data = {
         { name: `Diving Minigame`},
         { name: `Light torches`},
         { name: `Melt king zora`},
-        { name: `Trade quest, turn in prescription`},
+        { name: `Trade quest, turn in prescription`,        requirements: ` `},
         { name: `Top of the waterfall`},
         { name: `Shop`,                       requirements: ` `}
       ]
@@ -296,30 +306,30 @@ const data = {
       name: `Zora's Fountain`,
       type : `overworld`, 
       items: [
-        { name: `Great fairy`},
-        { name: `Ice platform`},
-        { name: `Bottom of the lake`},
-        { name: `Tree near great fairy`},
-        { name: `On wall to the right of entrance`},
-        { name: `Tunnel under silver rock`}
+        { name: `Great fairy`,                          requirements: `${accessToZorasFountain} and ${bombs}`},
+        { name: `Ice platform`,                         requirements: `${accessToZorasFountain} and ${adult}`},
+        { name: `Bottom of the lake`,                   requirements: `${accessToZorasFountain} and ${ironBoots}`}, //is it there as child???
+        { name: `Tree near great fairy`,                requirements: `${accessToZorasFountain} and ${child}`},
+        { name: `On wall to the right of entrance`,     requirements: `${accessToZorasFountain} and ${child}`},
+        { name: `Tunnel under silver rock`,             requirements: `${accessToZorasFountain} and ${silverGauntlets}`}
       ]
     },
     {
       name: `Lake Hylia`,
       type : `overworld`, 
       items: [
-        { name: `Lab diving (gold scale)`},
-        { name: `Jnderwater bottle`},
+        { name: `Lab diving (gold scale)`,              requirements: `${goldScale}`},
+        { name: `Underwater bottle`,                    requirements: `scale or ${ironBoots}`},
         { name: `Fishing`},
-        { name: `Fishing`},
-        { name: `Rooftop heart piece`},
+        { name: `Fishing`,                              requirements: magicBean},
+        { name: `Rooftop heart piece`,                  requirements: `(${magicBean} or (ocarina and ${hookshot}))`},
         { name: `Shoot the sun`},
         { name: `Bean patch`},
         { name: `Back of the lab`},
         { name: `On the little island`},
         { name: `Top of the tree`},
         { name: `Crate in the lab`},
-        { name: `Trade quest, turn in eyeball frog`}
+        { name: `Trade quest, turn in eyeball frog`, requirements: ` `}
       ]
     },
     {
@@ -328,13 +338,13 @@ const data = {
       items: [
         { name: `Crate heart piece`},
         { name: `Waterfall heart piece`},
-        { name: `Chest behind hammer rocks`},
-        { name: `Bean patch, bottom of canyon`},
-        { name: `On waterfall near entrance`},
-        { name: `Underside of rock arch`},
-        { name: `Behind carpenter's tent`},
-        { name: `Trade quest, turn in poacher's saw`},
-        { name: `Bottom of canyon`}
+        { name: `Chest behind hammer rocks`,            requirements: `(${accessToGerudoFortress} and ${hammer})`},
+        { name: `Bean patch, bottom of canyon`,         requirements: bottle},
+        { name: `On waterfall near entrance`,           requirements: `(${child} and boomerang)`},
+        { name: `Underside of rock arch`,               requirements: `(${accessToGerudoFortress} and (${hookshot} or ${boomerang}))`},
+        { name: `Behind carpenter's tent`,              requirements: `(${accessToGerudoFortress} and (${hookshot} or ${boomerang}))`},
+        { name: `Trade quest, turn in poacher's saw`,   requirements: ` `},
+        { name: `Bottom of canyon`,                     requirements: eponasSong}
       ]
     },
     {
@@ -342,18 +352,18 @@ const data = {
       type : `overworld`, 
       items: [
         { name: `Chest on the roof`},
-        { name: `Horseback archery (2)`},
-        { name: `Top of the fortress`},
-        { name: `Target on horse archery range`},
-        { name: `Gerudo Card (if enabled)`}
+        { name: `Horseback archery (2)`,                requirements: `${epona} and bow`},
+        { name: `Top of the fortress`,                  requirements: accessToGerudoFortress}, //hookshot or boomerang? hoverboots?
+        { name: `Target on horse archery range`,        requirements: `${accessToGerudoFortress} and ${hookshot}`}, //or boomerang?
+        { name: `Gerudo Card (if enabled)`,             requirements: accessToGerudoFortress} //do we need bow or hookshot to knock out guards???
       ]
     },
     {
       name: `Haunted Wastelands`,
       type : `overworld`, 
       items: [
-        { name: `Light torches`},
-        { name: `Inside building`}
+        { name: `Light torches`,                        requirements: `(${accessToHauntedWastelands} and ${fire})`},
+        { name: `Inside building`,                      requirements: `(${accessToHauntedWastelands} and (${hookshot} or ${boomerang}))`}
       ]
     },
     {

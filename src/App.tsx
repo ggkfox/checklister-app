@@ -9,7 +9,7 @@ import { Box, CssBaseline } from "@mui/material";
 
 function App() {
   //Drawer states & functions
-  const drawerWidth = 280;
+  const drawerWidth = 290;
 
   //filters
   const [zoneFilter, setZoneTypeFilter] = useState<ZoneType>("all");

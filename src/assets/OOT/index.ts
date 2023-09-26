@@ -1,4 +1,6 @@
+import childWallet from "./icons/OoT_Child_Wallet_Icon.png";
 import adultWallet from "./icons/OoT_Adult_Wallet_Icon.png";
+import giantsWallet from "./icons/OoT_Giant's_Wallet_Icon.png";
 import forestMedallion from "./icons/OoT_Forest_Medallion_Icon.png";
 import masterSword from "./icons/OoT_Master_Sword_Icon.png";
 import bigBombBag from "./icons/OoT_Big_Bomb_Bag_Icon.png";
@@ -35,7 +37,7 @@ import fairyOcarina from "./icons/OoT_Fairy_Ocarina_Icon.png";
 import lensOfTruth from "./icons/OoT_Lens_of_Truth_Icon.png";
 import token from "./icons/OoT_Token_Icon.png";
 import slingshot from "./icons/OoT_Fairy_Slingshot_Icon.png";
-import letter from "./icons/OoT_Letter_Icon.png";
+import rutosLetter from "./icons/OoT_Letter_Icon.png";
 import waterMedallion from "./icons/OoT_Water_Medallion_Icon.png";
 import faroresWind from "./icons/OoT_Farore's_Wind_Icon.png";
 import lightArrow from "./icons/OoT_Light_Arrow_Icon.png";
@@ -59,11 +61,22 @@ import egg from "./icons/OoT_Weird_Egg_Icon.png";
 import magic from "./icons/OoT_Magic_Jar_Model.png";
 import kokiriTunic from "./icons/OoT_Kokiri_Tunic_Icon.png";
 import kokiriBoots from "./icons/OoT_Kokiri_Boots_Icon.png";
-import garudaMembershipCard from "./icons/OoT_Gerudo_Token_Icon.png";
+import gerudoMembershipCard from "./icons/OoT_Gerudo_Token_Icon.png";
+import cucco from "./icons/OoT_Cucco_Icon.png";
+import cojiro from "./icons/OoT_Cojiro_Icon.png";
+import oddMushroom from "./icons/OoT_Odd_Mushroom_Icon.png";
+import oddPotion from "./icons/OoT_Odd_Potion_Icon.png";
+import poachersSaw from "./icons/OoT_Poacher's_Saw_Icon.png";
+import prescription from "./icons/OoT_Prescription_Icon.png";
+import eyeballFrog from "./icons/OoT_Eyeball_Frog_Icon.png";
+import eyeDrops from "./icons/OoT_World's_Finest_Eye_Drops_Icon.png";
+import claimCheck from "./icons/OoT_Claim_Check_Icon.png";
+import zeldasLetter from "./icons/OoT_Zelda's_Letter_Icon.png";
 import React from "react";
 
 const grayout: React.CSSProperties = {filter: 'grayscale(50%) brightness(30%) opacity(.4)'};
 const coloredDropShadow: React.CSSProperties = {filter: 'drop-shadow(0 0 5px #8244b8) brightness(115%)'};
+const goldFilter: React.CSSProperties = {filter: 'drop-shadow(0 0 5px #8244b8) hue-rotate(90deg) brightness(115%)'};
 
 const keyItems = [
   [
@@ -76,7 +89,7 @@ const keyItems = [
     { name: "slingshot", states: [{ src: slingshot, style: grayout}, {src: slingshot, style: coloredDropShadow} ]},
     { name: "ocarina", states: [{ src: fairyOcarina, style: grayout}, {src: fairyOcarina, style: coloredDropShadow}, {src: ocarinaOfTime, style: coloredDropShadow} ]},
     { name: "bombchus", states: [{ src: bombchu, style: grayout}, {src: bombchu, style: coloredDropShadow} ]},
-    { name: "hookshot", states: [{ src: longshot, style: grayout}, {src: longshot, style: coloredDropShadow}, {src: longshot, style: {filter: 'drop-shadow(0 0 5px #8244b8) hue-rotate(90deg) brightness(115%)'}} ]},
+    { name: "hookshot", states: [{ src: longshot, style: grayout}, {src: longshot, style: coloredDropShadow}, {src: longshot, style: goldFilter} ]},
     { name: "iceArrow", states: [{ src: iceArrow, style: grayout}, {src: iceArrow, style: coloredDropShadow} ]},
     { name: "faroresWind", states: [{ src: faroresWind, style: grayout}, {src: faroresWind, style: coloredDropShadow} ]},
     { name: "boomerang", states: [{ src: boomerang, style: grayout}, {src: boomerang, style: coloredDropShadow} ]},
@@ -85,12 +98,12 @@ const keyItems = [
     { name: "hammer", states: [{ src: hammer, style: grayout}, {src: hammer, style: coloredDropShadow} ]},
     { name: "lightArrow", states: [{ src: lightArrow, style: grayout}, {src: lightArrow, style: coloredDropShadow} ]},
     { name: "nayrusLove", states: [{ src: nayrusLove, style: grayout}, {src: nayrusLove, style: coloredDropShadow} ]},
-    { name: "zoraLetter", states: [{ src: letter, style: grayout}, {src: letter, style: coloredDropShadow} ]},
+    { name: "rutosLetter", states: [{ src: rutosLetter, style: grayout}, {src: rutosLetter, style: coloredDropShadow} ]},
     { name: "bottle1", states: [{ src: bottle, style: grayout}, {src: bottle, style: coloredDropShadow} ]},
     { name: "bottle2", states: [{ src: bottle, style: grayout}, {src: bottle, style: coloredDropShadow} ]},
     { name: "bottle3", states: [{ src: bottle, style: grayout}, {src: bottle, style: coloredDropShadow} ]},
-    { name: "egg1", states: [{ src: egg, style: grayout}, {src: egg, style: coloredDropShadow} ]},
-    { name: "egg2", states: [{ src: egg, style: grayout}, {src: egg, style: coloredDropShadow} ]},
+    { name: "weirdEgg", states: [{ src: egg, style: grayout}, {src: cucco, style: coloredDropShadow} ]},
+    { name: "zeldasLetter", states: [{ src: zeldasLetter, style: grayout}, {src: zeldasLetter, style: coloredDropShadow} ]},
     { name: "kokiriSword", states: [{ src: kokiriSword, style: grayout}, {src: kokiriSword, style: coloredDropShadow} ]},
     { name: "masterSword", states: [{ src: masterSword, style: grayout}, {src: masterSword, style: coloredDropShadow} ]},
     { name: "brokenGiantsKnife", states: [{ src: brokenGiantsKnife, style: grayout}, { src: brokenGiantsKnife, style: coloredDropShadow}, {src: giantsKnife, style: coloredDropShadow} ]},
@@ -101,8 +114,8 @@ const keyItems = [
     { name: "hylianShield", states: [{ src: hylianShield, style: grayout}, {src: hylianShield, style: coloredDropShadow} ]},
     { name: "mirrorShield", states: [{ src: mirrorShield, style: grayout}, {src: mirrorShield, style: coloredDropShadow} ]},
     { name: "quiver", states: [{ src: biggestQuiver, style: grayout}, {src: biggestQuiver, style: coloredDropShadow} ]},
-    { name: "wallet", states: [{ src: adultWallet, style: grayout}, {src: adultWallet, style: coloredDropShadow} ]},
-    { name: "garudaMembershipCard", states: [{ src: garudaMembershipCard, style: grayout}, {src: garudaMembershipCard, style: coloredDropShadow} ]},
+    { name: "wallet", states: [{ src: childWallet, style: grayout}, {src: adultWallet, style: coloredDropShadow}, {src: giantsWallet, style: coloredDropShadow} ]},
+    { name: "gerudoMembershipCard", states: [{ src: gerudoMembershipCard, style: grayout}, {src: gerudoMembershipCard, style: coloredDropShadow} ]},
     { name: "kokiriTunic", states: [{src: kokiriTunic, style: coloredDropShadow} ]},
     { name: "goronTunic", states: [{ src: goronTunic, style: grayout}, {src: goronTunic, style: coloredDropShadow} ]},
     { name: "zoraTunic", states: [{ src: zoraTunic, style: grayout}, {src: zoraTunic, style: coloredDropShadow} ]},
@@ -110,6 +123,17 @@ const keyItems = [
     { name: "ironBoots", states: [{ src: ironBoots, style: grayout}, {src: ironBoots, style: coloredDropShadow} ]},
     { name: "hoverBoots", states: [{ src: hoverBoots, style: grayout}, {src: hoverBoots, style: coloredDropShadow} ]},
    ],
+  //  [
+  //   { name: "pocketEgg", states: [{ src: egg, style: grayout}, {src: cucco, style: coloredDropShadow} ]},
+  //   { name: "cojiro", states: [{ src: cojiro, style: grayout}, {src: cojiro, style: coloredDropShadow} ]},
+  //   { name: "oddMushroom", states: [{ src: oddMushroom, style: grayout}, {src: oddMushroom, style: coloredDropShadow} ]},
+  //   { name: "oddPotion", states: [{ src: oddPotion, style: grayout}, {src: oddPotion, style: coloredDropShadow} ]},
+  //   { name: "poachersSaw", states: [{ src: poachersSaw, style: grayout}, {src: poachersSaw, style: coloredDropShadow} ]},
+  //   { name: "prescription", states: [{ src: prescription, style: grayout}, {src: prescription, style: coloredDropShadow} ]},
+  //   { name: "eyeballFrog", states: [{ src: eyeballFrog, style: grayout}, {src: eyeballFrog, style: coloredDropShadow} ]},
+  //   { name: "eyeDrops", states: [{ src: eyeDrops, style: grayout}, {src: eyeDrops, style: coloredDropShadow} ]},
+  //   { name: "claimCheck", states: [{ src: claimCheck, style: grayout}, {src: claimCheck, style: coloredDropShadow} ]},
+  //  ],
    [
      { name: "spiritualStoneOfTheForest", states: [{ src: spiritualStoneOfTheForest, style: grayout}, {src: spiritualStoneOfTheForest, style: coloredDropShadow} ]},
      { name: "spiritualStoneOfFire", states: [{ src: spiritualStoneOfFire, style: grayout}, {src: spiritualStoneOfFire, style: coloredDropShadow} ]},

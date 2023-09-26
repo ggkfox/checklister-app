@@ -2,7 +2,6 @@ import Grid from "@mui/material/Grid";
 import React, { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { itemStateFamily } from "../../../Atoms";
-import { ItemStateType } from "../../../models/Types";
 
 interface Props {
   iconSet: { name: string; states: { src: string; style: React.CSSProperties }[] };

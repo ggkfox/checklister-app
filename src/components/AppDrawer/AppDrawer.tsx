@@ -57,7 +57,7 @@ const AppDrawer = ({ drawerWidth }: props) => {
         </Typography>
         <KeyItemTracker />
         <Button sx={{ marginTop: "40px" }} color="warning" variant="contained">
-          Dissable logic
+          Disable logic
           <br />
           (coming)
         </Button>
