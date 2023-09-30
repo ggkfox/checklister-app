@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { AgeType, ZoneType, ItemStateType } from "./models/Types";
+import { AgeType, ZoneType } from "./models/Types";
 import NavBar from "./components/NavBar/NavBar";
 import AppDrawer from "./components/AppDrawer/AppDrawer";
 import CardsPage from "./components/CardsPage/CardsPage";

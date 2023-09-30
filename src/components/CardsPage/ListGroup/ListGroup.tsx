@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AgeType, Item, ZoneType } from "../../../models/Types";
+import { AgeType, ZoneType } from "../../../models/Types";
 import ListItem from "./ListItem";
 import { Card, Collapse, List, ListItemButton, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
@@ -26,7 +26,7 @@ function ListGroup({ thisZone, zoneFilter, ageFilter }: props) {
       <Collapse in={isExpanded} sx={{ paddingBottom: 1 }}>
         <List sx={{ padding: 0 }}>
           {thisZone.items.map((item, index) => (
-            <ListItem key={index} item={item} isExpanded={isExpanded} ageFilter={ageFilter}></ListItem>
+            <ListItem key={index} item={item} isExpanded={isExpanded} ageFilter={ageFilter} zoneName={thisZone.name} index={index}></ListItem>
           ))}
         </List>
       </Collapse>

@@ -13,10 +13,3 @@ export interface Item {
 export type ZoneType = "all" | "overworld" | "dungeon";
 
 export type AgeType = "all" | "child" | "adult";
-
-export interface ItemStateType {
-  [itemName: string]: {
-    currentState: number;
-    numOfStates: number;
-  };
-}

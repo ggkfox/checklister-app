@@ -1,14 +1,14 @@
 import Grid from "@mui/material/Grid";
 import React, { useEffect, useState } from "react";
 import { useAtom } from "jotai";
-import { itemStateFamily } from "../../../Atoms";
+import { getItemState } from "../../../Atoms";
 
 interface Props {
   iconSet: { name: string; states: { src: string; style: React.CSSProperties }[] };
 }
 
 const KeyItem = ({ iconSet }: Props) => {
-  const [itemState, setItemState] = useAtom(itemStateFamily(iconSet.name));
+  const [itemState, setItemState] = useAtom(getItemState(iconSet.name));
   const thisItemState = itemState;
   const [curIcon, setCurIcon] = useState(iconSet.states[thisItemState.currentState]);
 

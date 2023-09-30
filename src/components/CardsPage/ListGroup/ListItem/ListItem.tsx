@@ -5,16 +5,24 @@ import CSS from "./ListItem.module.css";
 import { Box, Divider, ListItem as ListItem1, ListItemButton, ListItemText, Checkbox } from "@mui/material";
 import { useEffect, useState, useMemo } from "react";
 import { Parser } from "expr-eval";
-import { useItemStates } from "../../../../Atoms";
+import { getItemState, useMultipleItemStates } from "../../../../Atoms";
+import { useAtom } from "jotai";
 
 interface props {
   item: Item;
   isExpanded: boolean;
   ageFilter: AgeType;
+  zoneName: string;
+  index: number;
 }
 
-function ListItem({ item, isExpanded, ageFilter }: props) {
-  //doctor up string.
+function ListItem({ item, isExpanded, ageFilter, zoneName, index }: props) {
+  //this spot state.
+  const spotState = useMemo(() => getItemState(`${zoneName.replace(/\s+/g, "")}${index}`), [zoneName, index]);
+  const [{ currentState: isChecked }, setChecked] = useAtom(spotState);
+  const handleCheckmark = () => setChecked((prevChecked) => ({ currentState: Number(!prevChecked.currentState), numOfStates: 2 }));
+
+  //handle requirements
   const addWhitespace = (input: string): string => {
     return input.replace(/\(/g, " ( ").replace(/\)/g, " ) ").replace(/<=/g, " <= ").replace(/>=/g, " >= ").replace(/==/g, " == ").replace(/!=/g, " != ").trim();
   };
@@ -24,29 +32,18 @@ function ListItem({ item, isExpanded, ageFilter }: props) {
     return normalizedRequirements.split(" ");
   }, [item.requirements]);
 
-  const itemStates = useItemStates(listOfRequirements);
-
-  const [isChecked, setChecked] = useState<boolean>(false);
-  const handleCheckmark = () => setChecked((prevChecked) => !prevChecked);
+  const itemStates = useMultipleItemStates(listOfRequirements);
 
   const scope = useMemo(() => {
     const scopedItemStates: { [key: string]: number } = {};
-    // Fetch the requirements from item or use an empty string if not available
-    const requirementsString = item.requirements || "";
-    // Extract the variable names from the requirements string using a regex match
-    const requirementVars = requirementsString.match(/([a-zA-Z_]\w*)/g) || [];
-    // For each variable, if it exists in itemStates, assign its current state,
-    // otherwise assign a default value
-    requirementVars.forEach((varName) => {
-      scopedItemStates[varName] = itemStates[varName]?.currentState || 0;
+    listOfRequirements.forEach((token) => {
+      if (itemStates[token]) scopedItemStates[token] = itemStates[token].currentState || 0;
     });
-
     return scopedItemStates;
-  }, [item.requirements, itemStates]);
+  }, [listOfRequirements, itemStates]);
 
   const checkIfCanDo = (): boolean => {
-    if (!item.requirements) return true;
-
+    if (!item?.requirements) return true;
     try {
       const parser = new Parser({
         operators: {
@@ -54,13 +51,12 @@ function ListItem({ item, isExpanded, ageFilter }: props) {
           comparison: true,
         },
       });
-
       const expr = parser.parse(item.requirements);
       const result = expr.evaluate(scope);
-
       return result === true || result >= 1;
     } catch (error) {
-      console.error("Error evaluating requirements:", error);
+      console.error("error for item:", item.name);
+      console.error("Error item's requirements:", item.requirements);
       return false;
     }
   };
@@ -75,8 +71,8 @@ function ListItem({ item, isExpanded, ageFilter }: props) {
       <Divider sx={{ width: "95%", display: "block", marginRight: "auto", marginLeft: "auto", justifyContent: "center" }} />
       <ListItem1 sx={{ height: 25, width: "100%", padding: 0 }}>
         <ListItemButton disabled={!isExpanded} sx={{ padding: 1, width: "100%", height: "100%" }} onClick={handleCheckmark} dense>
-          <Checkbox checked={isChecked} edge="start" size="small" color="primary" disableRipple />
-          <ListItemText sx={{ ...(isChecked && { textDecoration: "line-through" }) }}>{item.name}</ListItemText>
+          <Checkbox checked={!!isChecked} edge="start" size="small" color="primary" disableRipple />
+          <ListItemText sx={{ ...(!!isChecked && { textDecoration: "line-through" }) }}>{item.name}</ListItemText>
           {/* Display logic for icons can be further refactored, but for now, I've just cleaned up the current structure. */}
           {item.tags?.includes("heart") && <FontAwesomeIcon className={CSS.icon1} icon={faHeart} />}
           {item.tags?.includes("spider") && <FontAwesomeIcon className={CSS.icon1} icon={faSpider} />}

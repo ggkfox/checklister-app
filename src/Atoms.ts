@@ -1,12 +1,21 @@
-import { atom, useAtom } from "jotai";
+import { atom } from "jotai";
 import { atomFamily } from "jotai/utils";
-import { ItemStateType } from "./models/Types";
 import keyItems from "./assets/OOT";
+import data from "./assets/OOT/spots"
 
-export const drawerAtom = atom(true);
 
-export const itemStateFamily = atomFamily((iconName: string) => {
-  const initStates: ItemStateType = keyItems.reduce((result: ItemStateType, group) => {
+const drawerAtom = atom(true);
+
+interface ItemStateType {
+  [itemName: string]: {
+    currentState: number;
+    numOfStates: number;
+  };
+}
+
+const myStates = (() => {
+  //initialize
+  const itemResult = keyItems.reduce((result: ItemStateType, group) => {
     group.forEach((icon) => {
       result[icon.name] = {
         currentState: 0,
@@ -15,20 +24,32 @@ export const itemStateFamily = atomFamily((iconName: string) => {
     });
     return result;
   }, {});
-  return atom(initStates[iconName] || {});
+  const totalResults = data.zones.reduce((result: ItemStateType, zone, index) => {
+    const zoneName = zone.name.replace(/\s+/g, '');
+    result[`${zoneName}${index}`] = {
+      currentState: 0, //spots are numbers for type uniformity, but used like booleans. 
+      numOfStates: 2,
+    };
+    return result;
+  }, itemResult);
+
+  return totalResults;
+})();
+
+const getItemState = atomFamily((iconName: string) => {
+  return atom(myStates[iconName] || {});
 });
+import { useAtom } from 'jotai';
 
-type RequirementInput = string | string[];
-
-export const useItemStates = (listOfRequirements: RequirementInput): ItemStateType => {
-  let itemStates: ItemStateType = {};
-  
+const useMultipleItemStates = (listOfRequirements: string | string[]) => {
+  const itemStates: { [key: string]: any } = {};
   const requirementsArray = Array.isArray(listOfRequirements) ? listOfRequirements : [listOfRequirements];
-
   requirementsArray.forEach((req) => {
-    const state = useAtom(itemStateFamily(req))[0];
+    const [state] = useAtom(getItemState(req));
     itemStates[req] = state;
   });
 
   return itemStates;
 };
+
+export { drawerAtom, getItemState, useMultipleItemStates }
