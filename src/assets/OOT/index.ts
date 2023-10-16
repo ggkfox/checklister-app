@@ -72,11 +72,25 @@ import eyeballFrog from "./icons/OoT_Eyeball_Frog_Icon.png";
 import eyeDrops from "./icons/OoT_World's_Finest_Eye_Drops_Icon.png";
 import claimCheck from "./icons/OoT_Claim_Check_Icon.png";
 import zeldasLetter from "./icons/OoT_Zelda's_Letter_Icon.png";
+import smallKey from "./icons/OoT_Small_Key_Icon.png";
+import bossKey from "./icons/OoT_Boss_Key_Icon.png";
 import React from "react";
 
 const grayout: React.CSSProperties = {filter: 'grayscale(50%) brightness(30%) opacity(.4)'};
 const coloredDropShadow: React.CSSProperties = {filter: 'drop-shadow(0 0 5px #8244b8) brightness(115%)'};
 const goldFilter: React.CSSProperties = {filter: 'drop-shadow(0 0 5px #8244b8) hue-rotate(90deg) brightness(115%)'};
+
+const generateSmallKeyStates = (numKeys: number) => {
+  const states: { src: string; style: React.CSSProperties }[] = [];
+  for (let i = 0; i <= numKeys; i++) { // Updated loop to include 0
+    states.push({
+      src: smallKey,
+      style: i === 0 ? grayout : coloredDropShadow, // Apply grayout style to the first element
+    });
+  }
+  return states;
+};
+
 
 const keyItems = [
   [
@@ -140,12 +154,24 @@ const keyItems = [
      { name: "spiritualStoneOfWater", states: [{ src: spiritualStoneOfWater, style: grayout}, {src: spiritualStoneOfWater, style: coloredDropShadow} ]},
   ],
   [
-    { name: "lightMedallion", states: [{ src: lightMedallion, style: grayout}, {src: lightMedallion, style: coloredDropShadow} ]},
+    { name: "forestTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
+    { name: "fireTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(8)},   //sometimes 7
+    { name: "waterTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},  //sometimes 5
+    { name: "shadowTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
+    { name: "spiritTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
+    { name: "GCSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},
+    { name: "forestTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "fireTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "waterTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "shadowTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "spiritTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "GCBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
     { name: "forestMedallion", states: [{ src: forestMedallion, style: grayout}, {src: forestMedallion, style: coloredDropShadow} ]},
     { name: "fireMedallion", states: [{ src: fireMedallion, style: grayout}, {src: fireMedallion, style: coloredDropShadow} ]},
     { name: "waterMedallion", states: [{ src: waterMedallion, style: grayout}, {src: waterMedallion, style: coloredDropShadow} ]},
     { name: "shadowMedallion", states: [{ src: shadowMedallion, style: grayout}, {src: shadowMedallion, style: coloredDropShadow} ]},
     { name: "spiritMedallion", states: [{ src: spiritMedallion, style: grayout}, {src: spiritMedallion, style: coloredDropShadow} ]},
+    { name: "lightMedallion", states: [{ src: lightMedallion, style: grayout}, {src: lightMedallion, style: coloredDropShadow} ]},
   ],
   [
     { name: "zeldasLullaby", states: [{ src: greyNote, style: grayout}, {src: greyNote, style: coloredDropShadow} ]},
