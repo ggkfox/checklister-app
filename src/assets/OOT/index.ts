@@ -74,6 +74,7 @@ import claimCheck from "./icons/OoT_Claim_Check_Icon.png";
 import zeldasLetter from "./icons/OoT_Zelda's_Letter_Icon.png";
 import smallKey from "./icons/OoT_Small_Key_Icon.png";
 import bossKey from "./icons/OoT_Boss_Key_Icon.png";
+import bunnyHood from "./icons/OoT_Bunny_Hood_Icon.png";
 import React from "react";
 
 const grayout: React.CSSProperties = {filter: 'grayscale(50%) brightness(30%) opacity(.4)'};
@@ -136,6 +137,7 @@ const keyItems = [
     { name: "kokiriBoots", states: [{src: kokiriBoots, style: coloredDropShadow} ]},
     { name: "ironBoots", states: [{ src: ironBoots, style: grayout}, {src: ironBoots, style: coloredDropShadow} ]},
     { name: "hoverBoots", states: [{ src: hoverBoots, style: grayout}, {src: hoverBoots, style: coloredDropShadow} ]},
+    { name: "bunnyHood", states: [{ src: bunnyHood, style: grayout}, {src: bunnyHood, style: coloredDropShadow} ]},
    ],
   //  [
   //   { name: "pocketEgg", states: [{ src: egg, style: grayout}, {src: cucco, style: coloredDropShadow} ]},
@@ -155,11 +157,14 @@ const keyItems = [
   ],
   [
     { name: "forestTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
-    { name: "fireTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(8)},   //sometimes 7
-    { name: "waterTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},  //sometimes 5
+    { name: "fireTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(8)},
+    { name: "waterTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},
     { name: "shadowTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
     { name: "spiritTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
     { name: "GCSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},
+    // { name: "iceCavern", isCounter: true, states: generateSmallKeyStates(3)},
+    { name: "botwSmallKeys", isCounter: true, states: generateSmallKeyStates(3)},
+    { name: "gerudoTrainingGrounds", isCounter: true, states: generateSmallKeyStates(6)},
     { name: "forestTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
     { name: "fireTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
     { name: "waterTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},

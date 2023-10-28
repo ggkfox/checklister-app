@@ -9,25 +9,17 @@ interface Props {
 
 const KeyItem = ({ iconSet }: Props) => {
   const [itemState, setItemState] = useAtom(getItemState(iconSet.name));
-  const thisItemState = itemState;
-  const [curIcon, setCurIcon] = useState(iconSet.states?.[thisItemState.currentState] || null);
+  const [nextState, setNextState] = useState((itemState.currentState + 1) % itemState.numOfStates);
 
-  const handleClick = () => {
-    console.log("Current State:", itemState.currentState); // Add this line for debugging
-    console.log(iconSet.isCounter);
-    setItemState({ currentState: (itemState.currentState + 1) % itemState.numOfStates, numOfStates: itemState.numOfStates });
-  };
+  const [curIcon, setCurIcon] = useState(iconSet.states?.[itemState.currentState] || null);
+  const [nextIcon, setNextIcon] = useState(iconSet.states?.[nextState] || null);
 
-  useEffect(() => {
-    setCurIcon(iconSet.states?.[thisItemState.currentState] || null);
-  }, [thisItemState.currentState]);
-
-  const renderContent = () => {
+  const renderContent = (arg: any): JSX.Element => {
     const imgStyle: React.CSSProperties = {
       objectFit: "contain",
       width: "100%",
       height: "100%",
-      ...curIcon?.style,
+      ...arg?.style,
     };
 
     if (iconSet.isCounter && itemState.currentState > 0) {
@@ -47,17 +39,32 @@ const KeyItem = ({ iconSet }: Props) => {
       return (
         <>
           <span style={numberOverlay}>{itemState.currentState}</span>
-          <img src={curIcon?.src} style={imgStyle} />
+          <img src={arg?.src} style={imgStyle} />
         </>
       );
     } else {
-      return <img src={curIcon?.src} style={imgStyle} />;
+      return <img src={arg?.src} style={imgStyle} />;
     }
   };
 
+  const [curSrc, setCurSrc] = useState<JSX.Element | null>(renderContent(curIcon));
+  const [nextSrc, setNextSrc] = useState<JSX.Element | null>(renderContent(nextIcon));
+
+  const handleClick = () => {
+    setCurSrc(nextSrc);
+    setItemState({ currentState: nextState, numOfStates: itemState.numOfStates });
+  };
+
+  useEffect(() => {
+    setCurIcon(nextIcon);
+    setNextState((itemState.currentState + 1) % itemState.numOfStates);
+    setNextIcon(iconSet.states?.[nextState] || null);
+    setNextSrc(renderContent(nextIcon));
+  }, [itemState.currentState]);
+
   return (
     <Grid item sx={{ width: "33px", height: "33px", position: "relative" }} onClick={handleClick}>
-      {renderContent()}
+      {curSrc}
     </Grid>
   );
 };

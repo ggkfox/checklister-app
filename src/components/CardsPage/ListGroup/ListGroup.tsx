@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { AgeType, ZoneType } from "../../../models/Types";
-import ListItem from "./ListItem";
+// import Spot from "./Spot";
 import { Card, Collapse, List, ListItemButton, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Zone } from "../../../models/Types";
 import React from "react";
+import Spot from "./Spot";
 
 interface props {
   thisZone: Zone;
@@ -16,7 +17,7 @@ function ListGroup({ thisZone, zoneFilter, ageFilter }: props) {
   const [isExpanded, setExpanded] = useState(true);
 
   return (
-    <Card sx={{ boxShadow: "0 0 12px rgba(130, 68, 184, 0.4)", ...(zoneFilter !== "all" && thisZone.type !== zoneFilter && { display: "none" }) }}>
+    <Card sx={{ boxShadow: "0 0 12px rgba(130, 68, 184, 0.4)", maxWidth: "600px", ...(zoneFilter !== "all" && thisZone.type !== zoneFilter && { display: "none" }) }}>
       <ListItemButton sx={{ justifyContent: "space-between" }} onClick={() => setExpanded(!isExpanded)}>
         <Typography sx={{ margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} variant="h6" gutterBottom>
           {thisZone.name}
@@ -26,7 +27,7 @@ function ListGroup({ thisZone, zoneFilter, ageFilter }: props) {
       <Collapse in={isExpanded} sx={{ paddingBottom: 1 }}>
         <List sx={{ padding: 0 }}>
           {thisZone.items.map((item, index) => (
-            <ListItem key={index} item={item} isExpanded={isExpanded} ageFilter={ageFilter} zoneName={thisZone.name} index={index}></ListItem>
+            <Spot key={index} item={item} isExpanded={isExpanded} ageFilter={ageFilter} zoneName={thisZone.name} index={index}></Spot>
           ))}
         </List>
       </Collapse>

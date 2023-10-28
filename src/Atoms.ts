@@ -1,5 +1,7 @@
 import { atom } from "jotai";
 import { atomFamily } from "jotai/utils";
+import { useAtom } from 'jotai';
+import { createPersistedAtomFamily } from './persistedAtom';
 import keyItems from "./assets/OOT";
 import data from "./assets/OOT/spots"
 
@@ -38,10 +40,9 @@ const myStates = (() => {
   return totalResults;
 })();
 
-const getItemState = atomFamily((iconName: string) => {
-  return atom(myStates[iconName] || {});
+const getItemState = createPersistedAtomFamily((iconName: string) => {
+  return myStates[iconName] || {};
 });
-import { useAtom } from 'jotai';
 
 const useMultipleItemStates = (listOfRequirements: string | string[]) => {
   const itemStates: { [key: string]: any } = {};

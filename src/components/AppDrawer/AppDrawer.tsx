@@ -59,7 +59,7 @@ const AppDrawer = ({ drawerWidth }: props) => {
         <Button sx={{ marginTop: "40px" }} color="warning" variant="contained">
           Disable logic
           <br />
-          (coming)
+          (placeholder)
         </Button>
       </Box>
     </Drawer>
