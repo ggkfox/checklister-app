@@ -6,8 +6,11 @@ import AppDrawer from "./components/AppDrawer/AppDrawer";
 import CardsPage from "./components/CardsPage/CardsPage";
 import keyItems from "./assets/OOT/index";
 import { Box, CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { colorModeContext, useMode } from "./theme";
 
 function App() {
+  const { theme, colorMode } = useMode();
   //Drawer states & functions
   const drawerWidth = 290;
 
@@ -22,14 +25,16 @@ function App() {
   };
 
   return (
-    <>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <NavBar zoneFilter={zoneFilter} handleZoneFilter={handleZoneFilter} handleAgeFilter={handleAgeFilter} drawerWidth={drawerWidth} />
-        <AppDrawer drawerWidth={drawerWidth} />
-        <CardsPage drawerWidth={drawerWidth} zoneFilter={zoneFilter} ageFilter={ageFilter} />
-      </Box>
-    </>
+    <colorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <Box sx={{ display: "flex" }}>
+          <CssBaseline />
+          <NavBar zoneFilter={zoneFilter} handleZoneFilter={handleZoneFilter} handleAgeFilter={handleAgeFilter} drawerWidth={drawerWidth} />
+          <AppDrawer drawerWidth={drawerWidth} />
+          <CardsPage drawerWidth={drawerWidth} zoneFilter={zoneFilter} ageFilter={ageFilter} />
+        </Box>
+      </ThemeProvider>
+    </colorModeContext.Provider>
   );
 }
 

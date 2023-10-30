@@ -1,5 +1,4 @@
-import { styled } from "@mui/material/styles";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { AgeType, ZoneType } from "../../models/Types";
 import Grid from "@mui/material/Grid";
@@ -11,6 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import { useAtom } from "jotai";
 import { drawerAtom } from "../../Atoms";
+import { useTheme } from "@mui/material/styles";
 
 interface props {
   zoneFilter: ZoneType;
@@ -26,9 +26,11 @@ interface AppBarProps extends MuiAppBarProps {
 
 const NavBar = ({ zoneFilter, handleZoneFilter, handleAgeFilter, drawerWidth }: props) => {
   const [drawerOpen, setDrawer] = useAtom(drawerAtom);
+  const theme = useTheme();
+
   return (
     <>
-      <AppBar position="fixed" /*open={drawerOpen} width={drawerWidth}*/ sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+      <AppBar position="fixed" sx={{ zIndex: theme.zIndex.drawer + 1, backgroundColor: theme.palette.background.paper }}>
         <Toolbar>
           <div style={{ display: "flex", alignItems: "center" }}>
             <IconButton

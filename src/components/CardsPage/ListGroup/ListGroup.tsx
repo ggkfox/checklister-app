@@ -6,6 +6,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Zone } from "../../../models/Types";
 import React from "react";
 import Spot from "./Spot";
+import { useTheme } from "@mui/material";
 
 interface props {
   thisZone: Zone;
@@ -15,9 +16,10 @@ interface props {
 
 function ListGroup({ thisZone, zoneFilter, ageFilter }: props) {
   const [isExpanded, setExpanded] = useState(true);
+  const theme = useTheme();
 
   return (
-    <Card sx={{ boxShadow: "0 0 12px rgba(130, 68, 184, 0.4)", maxWidth: "600px", ...(zoneFilter !== "all" && thisZone.type !== zoneFilter && { display: "none" }) }}>
+    <Card sx={{ boxShadow: theme.palette.primary.light, maxWidth: "600px", ...(zoneFilter !== "all" && thisZone.type !== zoneFilter && { display: "none" }) }}>
       <ListItemButton sx={{ justifyContent: "space-between" }} onClick={() => setExpanded(!isExpanded)}>
         <Typography sx={{ margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} variant="h6" gutterBottom>
           {thisZone.name}

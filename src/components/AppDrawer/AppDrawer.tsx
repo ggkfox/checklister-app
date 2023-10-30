@@ -30,6 +30,7 @@ const AppDrawer = ({ drawerWidth }: props) => {
   return (
     <Drawer
       sx={{
+        background: "primary",
         width: drawerWidth,
         flexShrink: 0,
         "& .MuiDrawer-paper": {

@@ -7,6 +7,7 @@ import { useRequirementsInfo } from "./requirementsUtil";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon, faC, faA, faBomb, faMusic, faSpider, faHeart, faCow } from "@fortawesome/free-solid-svg-icons";
 import { Box, Divider, ListItem, ListItemButton, ListItemText, Checkbox, Button, Hidden } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 interface Props {
   item: Item;
@@ -25,6 +26,7 @@ const Spot: React.FC<Props> = ({ item, isExpanded, ageFilter, zoneName, index })
   const [isEditable, setIsEditable] = useState(false);
   const [textValue, setTextValue] = useState("");
   const textInputRef = useRef<HTMLInputElement>(null);
+  const theme = useTheme();
 
   // Requirements and scope
   const { canDo, itemStates } = useRequirementsInfo(item.requirements);
@@ -69,7 +71,7 @@ const Spot: React.FC<Props> = ({ item, isExpanded, ageFilter, zoneName, index })
             minHeight: "10px",
             width: "100%",
             padding: 0,
-            ...(highlight && { backgroundColor: "rgba(138, 218, 255, 0.2)" }),
+            ...(highlight && { backgroundColor: theme.palette.primary.light }),
           }}
         >
           <ListItemButton
