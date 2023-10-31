@@ -13,10 +13,10 @@ export const Tokens = (mode: 'light' | 'dark') => ({
       500: "#CB92CE",
     },
     gray: {
-      500: "#B2B2B2",
+      500: "#929292",
     },
     teal: {
-      500: "#9DC1CC",
+      500: "#a0d9eb",
     }
   }
   : 
@@ -32,7 +32,7 @@ export const Tokens = (mode: 'light' | 'dark') => ({
       500: "#B2B2B2",
     },
     teal: {
-      500: "#9DC1CC",
+      500: "#a0d9eb",
     }
   }),
 });

@@ -52,26 +52,26 @@ const NavBar = ({ zoneFilter, handleZoneFilter, handleAgeFilter, drawerWidth }: 
           <Grid container gap={2} sx={{ justifyContent: "right" }}>
             <Grid item>
               <ToggleButtonGroup size="small" exclusive color="primary" aria-label="text button group">
-                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleAgeFilter("adult")}>
+                <Button sx={{ background: theme.palette.secondary.main }} variant="contained" onClick={() => handleAgeFilter("adult")}>
                   Child
                 </Button>
-                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleAgeFilter("all")}>
+                <Button sx={{ background: theme.palette.secondary.main }} variant="contained" onClick={() => handleAgeFilter("all")}>
                   /
                 </Button>
-                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleAgeFilter("child")}>
+                <Button sx={{ background: theme.palette.secondary.main }} variant="contained" onClick={() => handleAgeFilter("child")}>
                   Adult
                 </Button>
               </ToggleButtonGroup>
             </Grid>
             <Grid>
               <ToggleButtonGroup size="small" exclusive color="primary" aria-label="text button group">
-                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleZoneFilter("overworld")}>
+                <Button sx={{ background: theme.palette.secondary.main }} variant="contained" onClick={() => handleZoneFilter("overworld")}>
                   Overworld
                 </Button>
-                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleZoneFilter("all")}>
+                <Button sx={{ background: theme.palette.secondary.main }} variant="contained" onClick={() => handleZoneFilter("all")}>
                   /
                 </Button>
-                <Button sx={{ background: "#777" }} variant="contained" onClick={() => handleZoneFilter("dungeon")}>
+                <Button sx={{ background: theme.palette.secondary.main }} variant="contained" onClick={() => handleZoneFilter("dungeon")}>
                   Dungeons
                 </Button>
               </ToggleButtonGroup>

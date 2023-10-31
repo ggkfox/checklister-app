@@ -123,14 +123,14 @@ const canAccessGraveyard              = canAccessKakarikoVillage;
 const DMTCMainToSide                  = `(${hoverBoots} or ${hookshot} or ${magicPlant})`;
 const DMTCSideToMain                  = `(${hoverBoots} or ${hookshot})`;
 const DMTCSideToTop                   = `(${adult} or ${hammer} or ${hoverBoots})`;
-const DMTCTopToSide                   = `(${adult} and ${hoverBoots})`; 
+const DMTCTopToSide                   = `(${adult} and ${hoverBoots})`;
 const DMTCMainToTop                   = `${magicPlant}`;
 const DMTCTopToMain                   = `(${hookshot} and ocarina)`;
 const DMTToSummit                     = `(${hammerRock} or ${magicPlant})`;
 const GoronCityToCraterSide           = `(${adult} and ${zeldasLullaby} and ${silverGauntlets})`;
 const canAccessDMTAndCity             = `(${adult} or zeldasLetter or ${bombRock} or ${dinsFire} or (${boleroOfFire} and ${DMTCMainToSide}))`;
 const canAccessDMCraterMain           = `(${boleroOfFire} or (${canAccessDMTAndCity} and (${GoronCityToCraterSide} and ${DMTCSideToMain}) or (${DMTToSummit} and (${DMTCTopToMain} or (${DMTCTopToSide} and ${DMTCSideToMain})))))`;
-const canAccessDMTSummit              = `((${canAccessDMTAndCity} and ${DMTToSummit}) or (${canAccessDMTAndCity} and ${GoronCityToCraterSide} and ${DMTCSideToTop}) or (${boleroOfFire} and ${DMTCMainToTop}) or (${boleroOfFire} and (${DMTCMainToSide} and ${DMTCSideToTop})))`;
+const canAccessDMTSummit              = `((${canAccessDMTAndCity} and ${DMTToSummit}) or (${canAccessDMTAndCity} and ${GoronCityToCraterSide} and ${DMTCSideToTop}) or (${boleroOfFire} and ${DMTCMainToTop}) or (${boleroOfFire} and (${DMTCMainToSide} and ${DMTCSideToTop})))`;  //seperate child/adult (bc its breaking bean patch)
 const canAccessDMCraterTop            = canAccessDMTSummit;
 const canAccessDMCraterSide           = `((${canAccessDMTAndCity} and ${GoronCityToCraterSide}) or (${canAccessDMCraterTop} and ${DMTCTopToSide}) or (${canAccessDMCraterMain} and ${DMTCMainToSide}))`;
 const canAccessGerudoValley           = canAccessHyruleField;
@@ -284,11 +284,11 @@ const data: { zones: Zone[] } = {
       type: `overworld`,
       items: [
         { name: `Slingshot minigame`, requirements: `${canAccessMarket}` },
-        { name: `Save Richard the dog`, requirements: `${canAccessMarket} and ${child}` },
+        { name: `Richard the dog`, requirements: `${canAccessMarket} and ${child}` },
         { name: `Bombchu bowling (2)`, requirements: `${canAccessMarket} and ${child} and bombchus` },
         { name: `Treasure chest minigame`, requirements: `${canAccessMarket} and ${lenseOfTruth}` },
         { name: `Big poes`, requirements: `${canAccessMarket} and ${adult} and ${bottle}` }, //need epona???
-        { name: `Pot room, back crate`, requirements: `${canAccessMarket}` },
+        { name: `Pot room, back crate`, requirements: `${canAccessMarket}`,  tags: ["spider"] },
         { name: `Shop, bazaar`, requirements: `false` },
         { name: `Shop, potion`, requirements: `false` },
         { name: `Shop, bombchu`, requirements: `false` }
@@ -340,7 +340,7 @@ const data: { zones: Zone[] } = {
         { name: `Impa's cow hp`, requirements: `${canAccessKakarikoVillage}` },
         { name: `Redead grotto`, requirements: `${canAccessKakarikoVillage} and ${bombRock} and ${canKillRedead}` },
         { name: `Open grotto, near potion shop`, requirements: `${canAccessKakarikoVillage}` },
-        { name: `Talk to Anju`, requirements: `${canAccessKakarikoVillage} and ${adult}` },
+        { name: `Talk to Anju`, requirements: `${canAccessKakarikoVillage} and ${adult}`, tags: ["adult"] },
         // { name: `Use pocket egg (if enabled)`            requirements: `egg2`},
         { name: `Trade quest turn in pocket cucco`, requirements: `${canAccessKakarikoVillage} and false`, tags: ["adult"] },
         { name: `Trade quest turn in odd potion`, requirements: `${canAccessKakarikoVillage} and false`, tags: ["adult"] },
@@ -404,13 +404,13 @@ const data: { zones: Zone[] } = {
       items: [
         { name: `Rolling goron`, requirements: `${canAccessDMTAndCity} and DodongosCavern11` },
         { name: `Darunia's joy`, requirements: `${canAccessDMTAndCity} and ${sariasSong}` },
-        { name: `Spinning pot`, requirements: `${canAccessDMTAndCity} and ${bombFlower}` }, //child requirement?
+        { name: `Spinning pot`, requirements: `${canAccessDMTAndCity} and (bombs or strength) and (${dinsFire} or (${zeldasLullaby} and ${sticks}))` },
         { name: `Rock maze, right side (2)`, requirements: `${canAccessDMTAndCity} and ${bombRock}` },
         { name: `Rock maze, left side`, requirements: `${canAccessDMTAndCity} and ${hammer}` }, //silver gauntlets???
         { name: `Link the goron`, requirements: `${canAccessDMTAndCity} and ${adult} and ${bombFlower}` },
         { name: `Rock maze, right side crate`, requirements: `${canAccessDMTAndCity} and ${bombRock}`, tags: ["spider"] },
         { name: `Back of pedestal in the center`, requirements: `${canAccessDMTAndCity} and ${adult}`, tags: ["spider"] },
-        { name: `Medigoron`, requirements: `${canAccessDMTAndCity}` },
+        { name: `Medigoron`, requirements: `${canAccessDMTAndCity} and wallet` },
         { name: `Shop`, requirements: `false` }
       ]
     },
@@ -424,7 +424,7 @@ const data: { zones: Zone[] } = {
         { name: `Heart piece on top of the volcano`, requirements: `${canAccessDMCraterMain} and ${magicPlant}` }, //can potentially reach this only as adult. 
         { name: `Sheik's song`, requirements: `${canAccessDMCraterMain} and ${adult}` },
         { name: `Crate at the top of the crater`, requirements: canAccessDMCraterTop, tags: ["spider"] },
-        { name: `Bean patch`, requirements: `${canAccessDMCraterMain} and ${bottle}`, tags: ["spider"] } //only as child. 
+        { name: `Bean patch`, requirements: `${canAccessDMCraterMain} and ${bottle} and ${boleroOfFire}`, tags: ["spider"] } //bolero is bandade til i seperate child/adult zones
       ]
     },
     {

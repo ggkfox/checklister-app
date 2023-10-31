@@ -56,11 +56,14 @@ const KeyItem = ({ iconSet }: Props) => {
   };
 
   useEffect(() => {
+    const newNextState = (itemState.currentState + 1) % itemState.numOfStates;
+    const newNextIcon = iconSet.states?.[newNextState] || null;
+
     setCurIcon(nextIcon);
-    setNextState((itemState.currentState + 1) % itemState.numOfStates);
-    setNextIcon(iconSet.states?.[nextState] || null);
-    setNextSrc(renderContent(nextIcon));
-  }, [itemState.currentState]);
+    setNextState(newNextState);
+    setNextIcon(newNextIcon);
+    setNextSrc(renderContent(newNextIcon));
+  }, [itemState.currentState, nextIcon]);
 
   return (
     <Grid item sx={{ width: "33px", height: "33px", position: "relative" }} onClick={handleClick}>

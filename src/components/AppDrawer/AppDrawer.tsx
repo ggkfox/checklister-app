@@ -4,8 +4,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import KeyItemTracker from "./ItemTracker/KeyItemTracker";
-import { MutableRefObject } from "react";
+import KeyItemGrid from "./ItemTracker/KeyItemGrid";
 import { useAtom } from "jotai";
 import { drawerAtom } from "../../Atoms";
 
@@ -24,17 +23,22 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const AppDrawer = ({ drawerWidth }: props) => {
   const [drawerOpen, setDrawer] = useAtom(drawerAtom);
-
   const theme = useTheme();
 
   return (
     <Drawer
+      PaperProps={{
+        style: {
+          backgroundColor: theme.palette.secondary.main,
+          width: drawerWidth,
+        },
+      }}
       sx={{
-        background: "primary",
+        color: theme.palette.secondary.main,
+        backgroundColor: theme.palette.secondary.main,
         width: drawerWidth,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: drawerWidth,
           boxSizing: "border-box",
         },
       }}
@@ -56,8 +60,8 @@ const AppDrawer = ({ drawerWidth }: props) => {
         <Typography variant="h5" component="div">
           Key Items
         </Typography>
-        <KeyItemTracker />
-        <Button sx={{ marginTop: "40px" }} color="warning" variant="contained">
+        <KeyItemGrid />
+        <Button sx={{ backgroundColor: theme.palette.success.main, marginTop: "40px" }} variant="contained">
           Disable logic
           <br />
           (placeholder)
