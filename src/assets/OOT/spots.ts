@@ -1,31 +1,10 @@
 import { Zone } from "../../models/Types";
+import { settings, itemSettings } from "./settings";
 
 //settings
-const childWallet         = `false`;
-const startAsAdult        = `false`;
-const agelessSwords       = `false`;
-const agelessShields      = `false`;
-const agelessTunic        = `false`;
-const agelessBoots        = `false`;
-const agelessStrength     = `false`;
-const agelessSticks       = `false`;
-const agelessBommerang    = `false`;
-const agelessHammer       = `false`;
-const agelessHookshot     = `false`;
-const lightArrowsForLight = `false`;
-const BlueFireArrows      = `false`;
-const openDoorOfTime      = `false`; const doorOfTimeReqStones = `(not openDoorOfTime and false)`;
-const openDekuTree        = `false`;
-const openKakarikoGate    = `false`;
-const openKingZoraAsChild = `false`;
-const openKingZoraAsAdult = `(openKingZoraAsChild or false)`; //only pressent option if first is true. 
-const dekuTreeAsAdult     = `false`;
-const wellAsAdult         = `false`;
-const fireTempleAsChild   = `false`;
-const fastBunnyHood       = `false`;
 
-const child = `(not startAsAdult or (TempleofTime0 and masterSword))`;
-const adult = `(startAsAdult or (TempleofTime0 and masterSword))`;
+const child = `(not ${settings.startAsAdult} or (TempleofTime0 and masterSword))`;
+const adult = `(${settings.startAsAdult} or (TempleofTime0 and masterSword))`;
 
 //songs, equipment, and items
 
@@ -41,35 +20,36 @@ const boleroOfFire     = `(ocarina and boleroOfFire)`;
 const serenadeOfWater  = `(ocarina and serenadeOfWater)`;
 const nocturneOfShadow = `(ocarina and nocturneOfShadow)`;
 const requiemOfSpirit  = `(ocarina and requiemOfSpirit)`;
-const kokiriSword      = `(${child} and kokiriSword)`;
-const masterSword      = `(${adult} and masterSword)`;
-const goronSword       = `(${adult} and goronSword)`;
-const goronTunic       = `(${adult} and goronTunic)`;
-const zoraTunic        = `(${adult} and zoraTunic)`;
-const dekuShield       = `(${child} and dekuShield)`;
-const mirrorShield     = `(${adult} and mirrorShield)`;
-const ironBoots        = `(${adult} and ironBoots)`;
-const hoverBoots       = `(${adult} and hoverBoots)`;
-const silverGauntlets  = `(${adult} and strength>=2)`;
+const kokiriSword      = `((${child} or ${itemSettings.agelessSwords}) and kokiriSword)`;
+const masterSword      = `((${adult} or ${itemSettings.agelessSwords}) and masterSword)`;
+const goronSword       = `((${adult} or ${itemSettings.agelessSwords}) and goronSword)`;
+const goronTunic       = `((${adult} or ${itemSettings.agelessTunic}) and goronTunic)`;
+const zoraTunic        = `((${adult} or ${itemSettings.agelessTunic}) and zoraTunic)`;
+const dekuShield       = `((${child} or ${itemSettings.agelessShields}) and dekuShield)`;
+const hylianShield     = `hylianShield`;
+const mirrorShield     = `((${adult} or ${itemSettings.agelessTunic}) and mirrorShield)`;
+const ironBoots        = `((${adult} or ${itemSettings.agelessBoots}) and ironBoots)`;
+const hoverBoots       = `((${adult} or ${itemSettings.agelessBoots}) and hoverBoots)`;
+const silverGauntlets  = `((${adult} or ${itemSettings.agelessStrength}) and strength>=2)`;
 const goldenGauntlets  = `(${adult} and strength==3)`;
-const sticks           = `(${child} and sticks)`;
+const sticks           = `((${child} or ${itemSettings.agelessSticks}) and sticks)`;
 const nuts             = `(nuts)`;
 const slingshot        = `(${child} and slingshot)`;
 const explosives       = `(bombs or bombchus)`;
 const dinsFire         = `(magic and dinsFire)`;
-const boomerang        = `(${child} and boomerang)`;
-const hookshot         = `(${adult} and hookshot)`;
-const longShot         = `(${adult} and hookshot==2)`;
+const boomerang        = `((${child} or ${itemSettings.agelessBommerang}) and boomerang)`;
+const hookshot         = `((${adult} or ${itemSettings.agelessHookshot}) and hookshot)`;
+const longshot         = `((${adult} or ${itemSettings.agelessHookshot}) and hookshot==2)`;
 const bow              = `(${adult} and bow)`;
 const fireArrows       = `(${bow} and magic and fireArrows)`;
 const iceArrows        = `(${bow} and magic and iceArrows)`;
 const lightArrows      = `(${bow} and magic and lightArrows)`;
-const hammer           = `(${adult} and hammer)`;
+const hammer           = `((${adult} or ${itemSettings.agelessHammer}) and hammer)`;
 const lenseOfTruth     = `(magic and lenseOfTruth)`;
 const goldScale        = `scale==2`;
 const magicPlant       = `(magicBeans and ${child} and ${adult})`;
 const epona            = `(${adult} and ${eponasSong})`;
-const bunnyHood        = `(${fastBunnyHood} and bunnyHood)`;
+const bunnyHood        = `(${itemSettings.fastBunnyHood} and bunnyHood)`;
 
 
 
@@ -81,8 +61,8 @@ const combat                = `(${swords} or ${sticks} or ${explosives} or ${ham
 const childRange            = `(${slingshot} or ${boomerang})`;
 const adultRange            = `(${bow} or ${hookshot})`;
 const rangedAttack          = `(${slingshot} or ${boomerang} or ${bow} or ${hookshot})`; //FLAWED!!!
-const childCollectRangedGS  = `(${boomerang} or (${agelessHookshot} and ${hookshot}))`;
-const adultCollectRangedGS  = `(${hookshot} or (${agelessBommerang} and ${boomerang}))`;
+const childCollectRangedGS  = `(${boomerang} or (${itemSettings.agelessHookshot} and ${hookshot}))`;
+const adultCollectRangedGS  = `(${hookshot} or (${itemSettings.agelessBommerang} and ${boomerang}))`;
 const shieldDeflect         = `(${dekuShield} or (${adult} and hylianShield))`;
 const bottle                = `(bottle1 or bottle2 or bottle3 or (rutosLetter and (${zeldasLullaby} or scale)))`;
 const fire                  = `(${fireArrows} or ${dinsFire})`;
@@ -96,95 +76,110 @@ const mudwall               = `(${explosives} or ${blueFire} or ${hammer})`;
 const mudwallNearBombFlower = `(${mudwall} or strength)`;
 const redIce                = blueFire;
 const hammerRock            = hammer;
+const pierre                = `(${adult} and ocarina)`; //auto pierre even if start as adult?
 
 //enemies
-const GSAsChild         = `(${kokiriSword} or (${agelessSwords} and ${swords}))`;
+const GSAsChild         = `(${kokiriSword} or (${itemSettings.agelessSwords} and ${swords}))`;
 const dekuScrub         = `(${shieldDeflect} or ${hammer} or ${nuts}) `;
 const dekuSalesman      = `(${dekuScrub} or ${combat} or ${rangedAttack})`;
 const canKillSkulltula  = `(${combat} or ${rangedAttack})`;
+const canKillWolfos     = `(${adult} or ${combat})`;
 const canKillRedead     = `(${swords} or ${sticks} or ${dinsFire} or ${hammer})`;
 const canKillBarinade   = `(${boomerang} and (${sticks} or ${kokiriSword}))`;
 const canKillBongoBongo = `(${slingshot} or ${bow})`;
 //DMT Entrance/Exit Conditions
 
+
+
+//ZoneMacro
+const DMTCMainToSide_C                = `(${hoverBoots} or ${hookshot})`;
+const DMTCSideToMain                  = `(${hoverBoots} or ${hookshot} or ${bunnyHood})`;
+const DMTCSideToTop                   = `true`;
+const DMTCTopToMain_A                 = `(${pierre})`;
+const DMTCTopToSide_C                 = `(${bunnyHood})`;
+const DMTCTopToSide_A                 = `(${hoverBoots} or ${bunnyHood})`;
+const DMTToSummit_C                   = `(${hammerRock})`;
+const DMTToSummit_A                   = `(${hammerRock} or ${magicPlant})`;
 //zones
 const canAccessKokiriForest           = `true`;
 const canAccessLostWoods              = canAccessKokiriForest;
-const canAccessLostWoodsDeep          = `(${child} or (${adult} and (${sariasSong} or ${minuetOfForest})))`;
-const canAccessSacredForestMeadow     = `${canAccessLostWoodsDeep}`;
-const canAccessSacredForestMeadowDeep = `(${minuetOfForest} or (${canAccessSacredForestMeadow} and (${adult} or ${combat})))`;
-const canAccessHyruleField            = canAccessKokiriForest;
+const canAccessLostWoodsDeep_C        = `true`;
+const canAccessLostWoodsDeep_A        = `(${adult} and (${minuetOfForest} or ${sariasSong}))`;
+const canAccessSacredMeadowDeep_C     = `(${canAccessLostWoodsDeep_C} and ${canKillWolfos})`;
+const canAccessSacredMeadowDeep_A     = canAccessLostWoodsDeep_A;
+const canAccessHyruleField            = `(${settings.startAsAdult} or ${settings.openForestExit} or DekuTree8 or scale or (${itemSettings.agelessBoots} and ironBoots) or ${dinsFire} or ${bombRock} or ${preludeOfLight} or ${serenadeOfWater} or ${nocturneOfShadow} or (${boleroOfFire} and ${DMTCMainToSide_C}))`;
 const canAccessMarket                 = canAccessHyruleField;
 const canAccessTempleOfTime           = canAccessMarket;
 const canAccessCastleGrounds          = canAccessMarket;
 const canAccessLonLonRanch            = canAccessHyruleField;
 const canAccessKakarikoVillage        = canAccessHyruleField;
 const canAccessGraveyard              = canAccessKakarikoVillage;
-const DMTCMainToSide                  = `(${hoverBoots} or ${hookshot} or ${magicPlant})`;
-const DMTCSideToMain                  = `(${hoverBoots} or ${hookshot})`;
-const DMTCSideToTop                   = `(${adult} or ${hammer} or ${hoverBoots})`;
-const DMTCTopToSide                   = `(${adult} and ${hoverBoots})`;
-const DMTCMainToTop                   = `${magicPlant}`;
-const DMTCTopToMain                   = `(${hookshot} and ocarina)`;
-const DMTToSummit                     = `(${hammerRock} or ${magicPlant})`;
-const GoronCityToCraterSide           = `(${adult} and ${zeldasLullaby} and ${silverGauntlets})`;
-const canAccessDMTAndCity             = `(${adult} or zeldasLetter or ${bombRock} or ${dinsFire} or (${boleroOfFire} and ${DMTCMainToSide}))`;
-const canAccessDMCraterMain           = `(${boleroOfFire} or (${canAccessDMTAndCity} and (${GoronCityToCraterSide} and ${DMTCSideToMain}) or (${DMTToSummit} and (${DMTCTopToMain} or (${DMTCTopToSide} and ${DMTCSideToMain})))))`;
-const canAccessDMTSummit              = `((${canAccessDMTAndCity} and ${DMTToSummit}) or (${canAccessDMTAndCity} and ${GoronCityToCraterSide} and ${DMTCSideToTop}) or (${boleroOfFire} and ${DMTCMainToTop}) or (${boleroOfFire} and (${DMTCMainToSide} and ${DMTCSideToTop})))`;  //seperate child/adult (bc its breaking bean patch)
-const canAccessDMCraterTop            = canAccessDMTSummit;
-const canAccessDMCraterSide           = `((${canAccessDMTAndCity} and ${GoronCityToCraterSide}) or (${canAccessDMCraterTop} and ${DMTCTopToSide}) or (${canAccessDMCraterMain} and ${DMTCMainToSide}))`;
+//DMT       ???should only transitions require tunic???
+const GoronCityToCraterSide_A         = `(${adult} and ${zeldasLullaby} and ${silverGauntlets})`;
+const canAccessDMTAndCity_C           = `(${child} and (zeldasLetter or ${bombRock} or ${dinsFire} or (${child} and ${boleroOfFire} and ${DMTCMainToSide_C})))`;
+const canAccessDMTAndCity_A           = adult;
+const canAccessDMCMain_C              = `((${child} and ${boleroOfFire}) or (${canAccessDMTAndCity_C} and ${DMTToSummit_C} and ${DMTCTopToSide_C} and ${DMTCSideToMain}))`;
+const canAccessDMCMain_A              = `((${adult} and ${boleroOfFire}) or (${canAccessDMTAndCity_A} and (${GoronCityToCraterSide_A} and ${DMTCSideToMain}) or (${DMTToSummit_A} and (${DMTCTopToMain_A} or (${DMTCTopToSide_A} and ${DMTCSideToMain})))))`;
+const DMTCMainToSide_A                = `(${hoverBoots} or ${hookshot} or (${magicPlant} and ${canAccessDMTAndCity_A} and ${canAccessDMTAndCity_C}))`;
+const DMTCMainToTop_A                 = `(${magicPlant} and ${canAccessDMCMain_A} and ${canAccessDMCMain_C})`;
+const canAccessDMCTop_C               = `((${canAccessDMTAndCity_C} and ${DMTToSummit_C}) or (${child} and ${boleroOfFire} and ${DMTCMainToSide_C} and ${DMTCSideToTop}))`;
+const canAccessDMCTop_A               = `((${canAccessDMTAndCity_A} and (${DMTToSummit_A} or (${GoronCityToCraterSide_A} and ${DMTCSideToTop})))    or    (${adult} and ${boleroOfFire} and (${DMTCMainToTop_A} or (${DMTCMainToSide_A} and ${DMTCSideToTop}))))`;
+const canAccessDMCSide_C              = `((${canAccessDMCTop_C} and ${DMTCTopToSide_C}) or (${canAccessDMCMain_C} and ${DMTCMainToSide_C}))`
+const canAccessDMCSide_A              = `((${canAccessDMTAndCity_A} and ${GoronCityToCraterSide_A}) or (${canAccessDMCTop_A} and ${DMTCTopToSide_A}) or (${canAccessDMCMain_A} and ${DMTCMainToSide_A}))`;
+//Gerudo Valley
 const canAccessGerudoValley           = canAccessHyruleField;
-const canAccessGerudoFortress         = `(${canAccessGerudoValley} and (${epona} or ${longShot}))`;
+const canAccessGerudoFortress         = `(${canAccessGerudoValley} and (${epona} or ${longshot}))`;
 const canAccessHauntedWasteland       = `(${canAccessGerudoFortress} and gerudoMembershipCard and (${hookshot} or ${hoverBoots}))`;
 const canAccessDesertColossus         = `(${requiemOfSpirit} or (${canAccessHauntedWasteland} and ${lenseOfTruth}))`;
+//Zoras Area
 const canAccessLakeHylia              = `(${canAccessHyruleField} or ${canAccessGerudoValley})`;
-const canAccessZorasRiverChild        = `(${bombRock} or scale or (${agelessBoots} and (${ironBoots} or ${hoverBoots})))`;
-const canAccessZorasDomainChild       = `((${canAccessZorasRiverChild} and (${zeldasLullaby} or (${agelessBoots} and ${hoverBoots})))      or      (${canAccessLakeHylia} and (scale or (${agelessBoots} and ${ironBoots}))) )`;                                                    //seperate child/adult
-const canAccessZorasFountainChild     = `(${canAccessZorasDomainChild} and (rutosLetter or ${openKingZoraAsChild}))`;
-const canAccessZorasRiverAdult        = `${canAccessHyruleField} and ${adult}`;
-const canAccessZorasDomainAdult       = `(${canAccessZorasRiverAdult} and (${zeldasLullaby} or ${hoverBoots}))`;
-const canAccessZorasFountainAdult     = `(${canAccessZorasDomainAdult} and (${canAccessZorasFountainChild} or ${openKingZoraAsAdult}))`;
+const canAccessZorasRiver_C           = `(${child} and ((${canAccessHyruleField} and (${bombRock} or (${itemSettings.agelessBoots} and ${hoverBoots}))) or (${canAccessLostWoods} and (scale or (${itemSettings.agelessBoots} and (${ironBoots}))))))`; //scale from lake implied. 
+const canAccessZorasRiver_A           = `(${adult} and ${canAccessHyruleField})`
+const canAccessZorasDomain_C          = `(${canAccessZorasRiver_C} and ${zeldasLullaby})`;
+const canAccessZorasDomain_A          = `(${canAccessZorasRiver_A} and ${zeldasLullaby})`;
+const canAccessZorasFountain_C        = `(${canAccessZorasDomain_C} and (${settings.openKingZoraAsChild} or rutosLetter))`;
+const canAccessZorasFountain_A        = `(${canAccessZorasDomain_A} and (${settings.openKingZoraAsAdult} or ${canAccessZorasFountain_C}))`;
+const canAccessInsideJabusBelly       = `(${canAccessZorasFountain_C} and ${bottle})`;        //add inside switch
+const canAccessInsideJabuDeep         = `(${canAccessInsideJabusBelly} and ${boomerang})`;
+const canAccessIceCavern              = canAccessZorasFountain_A;
+
 
 //note for ER.... ((ER and zoneFound) or (!ER and logic))
 
 // Temples and Dungeons
 //Deku Tree
-const canAccessDekuTree             = `(${canAccessKokiriForest})`;
+const canAccessDekuTree             = `(${canAccessKokiriForest} and (${settings.openDekuTree} or (${swords} and (${dekuShield} or ${hylianShield}))))`;
 const canAccessDekuTreeBasement     = `(${canAccessDekuTree} and (${combat} or ${nuts} or ${boomerang} or ${hookshot}))`;
 const canAccessDekuTreeBasementBack = `(${canAccessDekuTreeBasement} and ${dekuScrub} and ${stickFire} and (${slingshot} or ${bow}))`;
 const canAccessDekuTreeBoss         = `(${canAccessDekuTreeBasementBack})`;  //or (AdultAccess and dekuScrub and (sticks or fire))
 //DDC
-const canAccessDodongosCavern         = `(${canAccessDMTAndCity} and ${bombFlower})`;
+const canAccessDodongosCavern         = `(${canAccessDMTAndCity_A} or (${canAccessDMTAndCity_C} and ${bombFlower}))`;
 const canAccessDodongosCavernLeftSide = `(${canAccessDodongosCavern} and (${adult} or (${mudwallNearBombFlower} and ${stickFire})))`;
 const canAccessDodongosCavernUpStairs = `(${canAccessDodongosCavernLeftSide} and ${bombFlower})`;
 const canAccessDodongosCavernUpDeep   = `(${canAccessDodongosCavernUpStairs} and (${bow} or ${slingshot}))`;
 const canAccessDodongosCavernLobby2   = `(${canAccessDodongosCavernUpDeep} and ${explosives})`;
-//JabuJabu
-const canAccessInsideJabusBelly = `(${canAccessZorasFountainChild} and ${bottle})`;        //add inside switch
-const canAccessInsideJabuDeep   = `(${canAccessInsideJabusBelly} and ${boomerang})`;
 //Forest
-const canAccessForestTemple            = `(${canAccessSacredForestMeadow} and ${hookshot})`;
+const canAccessForestTemple            = `((${canAccessSacredMeadowDeep_C} or ${canAccessSacredMeadowDeep_A}) and ${hookshot})`;
 const canAccessForestTempleBlockRoom   = `(${canAccessForestTemple} and forestTempleSmallKeys>=1)`;
 const canAccessforestTempleBlockRoomUp = `(${canAccessForestTempleBlockRoom} and strength)`;
 const canAccessHallway                 = `(${canAccessforestTempleBlockRoomUp} and forestTempleSmallKeys>=2)`;
 const canAccessRedPoeRoom              = `(${canAccessHallway} and forestTempleSmallKeys>=3)`;
 const canAccessFallingCeilingRoom      = `(${canAccessRedPoeRoom} and forestTempleSmallKeys>=5 and (${bow} or ${dinsFire}))`;
 const canAccessUpperCoartyardLeft      = `((${canAccessForestTempleBlockRoom} and ${hoverBoots}) or (${canAccessHallway} and ${bow}))`;
-const canAccessCoartyardLeft           = `(${canAccessForestTemple} and (${songOfTime} or (${bow} and (${ironBoots} or ${longShot}))))`;
+const canAccessCoartyardLeft           = `(${canAccessForestTemple} and (${songOfTime} or (${bow} and (${ironBoots} or ${longshot}))))`;
 const canAccessCoartyardRight          = `(${canAccessForestTemple} and (${bow} or ${canAccessCoartyardLeft} or ${canAccessFallingCeilingRoom}))`;
 const canAccessForestTempleBasement    = `(ForestTemple12 and ForestTemple14 and ${canAccessFallingCeilingRoom})`;
 //fire
-const canAccessFireTemple            = `(${canAccessDMCraterMain})`;
+const canAccessFireTemple            = `(${canAccessDMCMain_A} or (${canAccessDMCMain_A} and ${settings.fireTempleAsChild}))`;
 const canAccessFireTempleBridgeRoom  = `(${canAccessFireTemple} and fireTempleSmallKeys>=1)`;
 const canAccessFireTempleBoulderRoom = `(${canAccessFireTempleBridgeRoom} and fireTempleSmallKeys>=3 and ${adult} and strength and (${explosives} or ${rangedAttack}))`;
 const canAccessFireTempleP4          = `(${canAccessFireTempleBoulderRoom} and fireTempleSmallKeys>=5)`;
 const canAccessFireTempleP5          = `(${canAccessFireTempleP4})`;
 //ice
-const canAccessIceCavern = canAccessZorasFountainAdult;
 //water
-const canAccessWaterTemple = `(${canAccessLakeHylia} and ((${ironBoots} and ${hookshot}) or (${goldScale} and ${longShot})))`;
+const canAccessWaterTemple = `(${canAccessLakeHylia} and ((${ironBoots} and ${hookshot}) or (${goldScale} and ${longshot})))`;
 //Botw
-const canAccessBottomOfTheWell = `(${songOfStorms} or (${agelessBoots} and ${ironBoots}))`;
+const canAccessBottomOfTheWell = `(${songOfStorms} or (${itemSettings.agelessBoots} and ${ironBoots}))`;
 //Shadow
 const canAccessShadowTemple      = `(${nocturneOfShadow} and ${dinsFire} and (${hoverBoots} or ${hookshot}) and ${lenseOfTruth})`;
 const canAccessShadowPastPit     = `(${canAccessShadowTemple} and ${hoverBoots})`;
@@ -239,28 +234,28 @@ const data: { zones: Zone[] } = {
       items: [
         { name: `Lost woods bridge`, requirements: `${canAccessLostWoods} and ${child} and ${canAccessHyruleField}` },
         { name: `Deku Salesman, by bridge`, requirements: `${canAccessLostWoods} and ${dekuScrub}` },
-        { name: `Deku Salesman, rock near exit`, requirements: `${canAccessLostWoodsDeep} and ${explosives}` },
-        { name: `Grotto. rock by Goron City warp`, requirements: `${canAccessLostWoods} and ${explosives}` },
-        { name: `Target in the woods`, requirements: `${canAccessLostWoods} and ${slingshot}` },
-        { name: `Ocarina memory game`, requirements: `${canAccessLostWoods} and ocarina` },
-        { name: `Skull kid (Saria's song)`, requirements: `${canAccessLostWoods} and ${child} and ${sariasSong}` },
-        { name: `Deku Theater, skull mask`, requirements: `${canAccessLostWoodsDeep} and ocarina` },
-        { name: `Deku Theater, mask of truth`, requirements: `${canAccessLostWoodsDeep} and ocarina` },
-        { name: `Trade quest turn in Cojiro`, requirements: `${canAccessLostWoods} and false` },
-        { name: `Trade quest turn in odd potion`, requirements: `${canAccessLostWoods} and false` },
-        { name: `Bean patch by bridge`, requirements: `${canAccessLostWoods} and ${bottle}`, tags: ["spider"] },
-        { name: `Bean patch by deku theater`, requirements: `${canAccessLostWoodsDeep} and ${bottle}`, tags: ["spider"] },
-        { name: `Above deku theater bean patch`, requirements: `${canAccessLostWoodsDeep} and ${adult} and ${magicPlant}`, tags: ["spider"] }
+        { name: `Deku Salesman, rock near exit`, requirements: `(${canAccessLostWoodsDeep_C} or ${canAccessLostWoodsDeep_A}) and ${bombRock}` },
+        { name: `Grotto. rock by Goron City warp`, requirements: `${canAccessLostWoods} and ${bombRock}` },
+        { name: `Target in the woods`, requirements: `${canAccessLostWoods} and ${child} and ${slingshot}`, tags: ["child"] },
+        { name: `Ocarina memory game`, requirements: `${canAccessLostWoods} and ${child} and ocarina`, tags: ["child"] },
+        { name: `Skull kid (Saria's song)`, requirements: `${canAccessLostWoods} and ${child} and ${sariasSong}`, tags: ["child"] },
+        { name: `Deku Theater, skull mask`, requirements: `${canAccessLostWoodsDeep_C} and ocarina`, tags: ["child"] },
+        { name: `Deku Theater, mask of truth`, requirements: `${canAccessLostWoodsDeep_C} and ocarina` },
+        { name: `Trade quest turn in Cojiro`, requirements: `${canAccessLostWoods} and ${adult} and false` },
+        { name: `Trade quest turn in odd potion`, requirements: `${canAccessLostWoods} and ${adult} and false` },
+        { name: `Bean patch by bridge`, requirements: `${canAccessLostWoods} and ${child} and ${bottle}`, tags: ["spider, child"] },
+        { name: `Bean patch by deku theater`, requirements: `${canAccessLostWoodsDeep_C} and ${bottle}`, tags: ["spider, child"] },
+        { name: `Above deku theater bean patch`, requirements: `${canAccessLostWoodsDeep_A} and ${canAccessLostWoodsDeep_C} and ${magicPlant}`, tags: ["spider"] }
       ]
     },
     {
       name: `Sacred Forest Meadow`,
       type: `overworld`,
       items: [
-        { name: `Wolfos grotto`, requirements: `${canAccessSacredForestMeadow} and ${explosives}` },
-        { name: `Song from Saria`, requirements: `${canAccessSacredForestMeadowDeep} and HyruleCastleGrounds3` },
-        { name: `Song from Sheik`, requirements: `${canAccessSacredForestMeadowDeep} and ${adult}` },
-        { name: `On the wall above the maze`, requirements: `${canAccessSacredForestMeadowDeep} and ${adult} and ${adultCollectRangedGS}`, tags: ["spider", "adult"] }
+        { name: `Wolfos grotto`, requirements: `(${canAccessLostWoodsDeep_C} or ${canAccessLostWoodsDeep_A}) and ${bombRock}` },
+        { name: `Song from Saria`, requirements: `${canAccessSacredMeadowDeep_C} and HyruleCastleGrounds3` },
+        { name: `Song from Sheik`, requirements: `${canAccessSacredMeadowDeep_A}` },
+        { name: `On the wall above the maze`, requirements: `${canAccessSacredMeadowDeep_A} and ${adultCollectRangedGS}`, tags: ["spider", "adult"] }
       ]
     },
     {
@@ -268,15 +263,15 @@ const data: { zones: Zone[] } = {
       type: `overworld`,
       items: [
         { name: `Open grotto near lake hylia`, requirements: canAccessHyruleField },
-        { name: `Deku salesman`, requirements: `${canAccessHyruleField} and ${explosives}` },
-        { name: `Southeast grotto, under rock`, requirements: `${canAccessHyruleField} and ${explosives}` },
-        { name: `Tektite grotto`, requirements: `${canAccessHyruleField} and ${bombRock} and (${ironBoots} or ${goldScale} or ${longShot})` },
-        { name: `Grotto west of castle town`, requirements: `${canAccessHyruleField} and ${explosives}` },
-        { name: `Ocarina of time`, requirements: `${canAccessHyruleField} and spiritualStoneOfTheForest and spiritualStoneOfFire and spiritualStoneOfWater` },
-        { name: `Ocarina of time, song`, requirements: `${canAccessHyruleField} and spiritualStoneOfTheForest and spiritualStoneOfFire and spiritualStoneOfWater` },
-        { name: `Grotto near kakariko, near tree`, requirements: `${canAccessHyruleField} and ${bombRock} and (${boomerang} or ${hookshot})`, tags: ["spider"] }, //child???
-        { name: `Grotto near gerudo valley`, requirements: `${canAccessHyruleField} and ${fire} and ((${explosives} and ${boomerang}) or (${hammer} and ${hookshot}))`, tags: ["spider"] },
-        { name: `Grotto near gerudo valley`, requirements: `${canAccessHyruleField} and ${bombGrotto} and ${fire} and ${eponasSong}` }
+        { name: `Deku salesman`, requirements: `${canAccessHyruleField} and ${bombRock}` },
+        { name: `Southeast grotto, under rock`, requirements: `${canAccessHyruleField} and ${bombRock}` },
+        { name: `Tektite grotto`, requirements: `${canAccessHyruleField} and ${bombRock} and (${ironBoots} or ${goldScale} or ${longshot})` },
+        { name: `Grotto west of castle town`, requirements: `${canAccessHyruleField} and ${bombRock}` },
+        { name: `Ocarina of time`, requirements: `${canAccessHyruleField} and ${child} and spiritualStoneOfTheForest and spiritualStoneOfFire and spiritualStoneOfWater`, tags: ["child"] },
+        { name: `Ocarina of time, song`, requirements: `${canAccessHyruleField} and ${child} and spiritualStoneOfTheForest and spiritualStoneOfFire and spiritualStoneOfWater`, tags: ["child"] },
+        { name: `Grotto near kakariko, near tree`, requirements: `${canAccessHyruleField} and ${bombRock} and (${boomerang} or ${hookshot})`, tags: ["spider"] },
+        { name: `Grotto near gerudo valley`, requirements: `${canAccessHyruleField} and ${fire} and (  (${adult} and ${hammer} and (${hookshot} or (${itemSettings.agelessBommerang} and ${boomerang})))     or     (${child} and (${explosives} or (${itemSettings.agelessHammer} and ${hammer})) and (${boomerang} or (${itemSettings.agelessHookshot} and ${hookshot})))    )`, tags: ["spider"] },
+        { name: `Grotto near gerudo valley`, requirements: `${canAccessHyruleField} and ${bombGrotto} and ${fire} and ${eponasSong}` },
       ]
     },
     {
@@ -358,7 +353,7 @@ const data: { zones: Zone[] } = {
         { name: `Side of skulltula house`, requirements: `${canAccessKakarikoVillage}`, tags: ["spider", "child"] },
         { name: `Partially built house`, requirements: `${canAccessKakarikoVillage}`, tags: ["spider", "child"] },
         { name: `Side of shop by DMT`, requirements: `${canAccessKakarikoVillage}`, tags: ["spider", "child"] },
-        { name: `Ladder on the lookout tower`, requirements: `${canAccessKakarikoVillage} and ${slingshot} or bombchus or ${boomerang} or (${agelessHookshot} and ${hookshot})`, tags: ["spider", "child"] }, //can do with boomerang???
+        { name: `Ladder on the lookout tower`, requirements: `${canAccessKakarikoVillage} and ${slingshot} or bombchus or ${boomerang} or (${itemSettings.agelessHookshot} and ${hookshot})`, tags: ["spider", "child"] }, //can do with boomerang???
         { name: `On top of Impa's house`, requirements: `${canAccessKakarikoVillage} and ${adult} and ${hookshot}`, tags: ["spider", "adult"] },
         { name: `Impa's house`, requirements: `${canAccessKakarikoVillage} and ${eponasSong}` },
         { name: `Shop, bazaar`, requirements: `${canAccessKakarikoVillage} and false` },
@@ -374,7 +369,7 @@ const data: { zones: Zone[] } = {
         { name: `Redead grave (play sun's song)`, requirements: `${canAccessGraveyard} and ${sunsSong}` },
         { name: `Dampe digging game`, requirements: `${canAccessGraveyard}`, tags: ["adult"] },
         { name: `Dampe race (2)`, requirements: `${canAccessGraveyard} and ${adult}` },
-        { name: `Crate hp, above bean patch`, requirements: `${canAccessGraveyard} and (${longShot} or ${magicPlant})` },
+        { name: `Crate hp, above bean patch`, requirements: `${canAccessGraveyard} and (${longshot} or ${magicPlant})` },
         { name: `Composer grave, song`, requirements: `${canAccessGraveyard} and ${zeldasLullaby} and ${combat}` },
         { name: `Back right wall`, requirements: `${canAccessGraveyard} and ${boomerang}`, tags: ["spider"] },
         { name: `Bean patch`, requirements: `${canAccessGraveyard} and ${bottle}`, tags: ["spider"] }
@@ -384,33 +379,33 @@ const data: { zones: Zone[] } = {
       name: `Death Mountain Trail`,
       type: `overworld`,
       items: [
-        { name: `Bombable wall`, requirements: `${canAccessDMTAndCity} and ${bombRock}` },
-        { name: `Song of storms grotto`, requirements: `${canAccessDMTAndCity} and ${songOfStorms}` }, //can access DMT via balero of fire?
-        { name: `Great fairy at the summit`, requirements: `${canAccessDMTSummit} and ${explosives} and ${zeldasLullaby}` },
-        { name: `Above dodongos cavern`, requirements: `${canAccessDMTAndCity} and ${bombFlower}` },
-        { name: `Trade quest, turn in broken sword`, requirements: `${canAccessDMTSummit} and false` }, //what happens if swords are progressive?
-        { name: `Trade quest, turn in eye drops`, requirements: `${canAccessDMTSummit} and false` },
-        { name: `Trade quest turn in claim check`, requirements: `${canAccessDMTSummit} and false` },
-        { name: `Bombable wall, near entrance`, requirements: `${canAccessDMTAndCity} and ${explosives}`, tags: ["spider"] }, // can hammer break this wall?
-        { name: `Bean patch, dodongo's cavern`, requirements: `${canAccessDMTAndCity} and ${explosives} and ${bottle}`, tags: ["spider"] }, //this blocked by bombable rock?
-        { name: `Hammer rock, above DC`, requirements: `${canAccessDMTAndCity} and ${adult} and ${hammer}`, tags: ["spider"] },
-        { name: `Hammer rock, path to summit`, requirements: `${canAccessDMTAndCity} and ${adult} and ${hammer}`, tags: ["spider"] },
-        { name: `Grotto heading towards summit`, requirements: `${canAccessDMTSummit} and ${explosives} and ${eponasSong}` } //accessable w/ baleroOfFire + ageless hoverboots?
+        { name: `Bombable wall`, requirements: `(${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}) and ${bombRock}` },
+        { name: `Song of storms grotto`, requirements: `(${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}) and ${songOfStorms}` },
+        { name: `Great fairy at the summit`, requirements: `(${canAccessDMCTop_A} or ${canAccessDMCTop_C}) and ${bombRock} and ${zeldasLullaby}` },
+        { name: `Above dodongos cavern`, requirements: `${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}` },
+        { name: `Trade quest, turn in broken sword`, requirements: `${canAccessDMCTop_A} and false`, tags: ["adult"] }, //what happens if swords are progressive?
+        { name: `Trade quest, turn in eye drops`, requirements: `${canAccessDMCTop_A} and false`, tags: ["adult"] },
+        { name: `Trade quest turn in claim check`, requirements: `${canAccessDMCTop_A} and false`, tags: ["adult"] },
+        { name: `Bombable wall, near entrance`, requirements: `(${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}) and ${bombRock}`, tags: ["spider"] },
+        { name: `Bean patch, dodongo's cavern`, requirements: `${canAccessDMTAndCity_C} and ${bombFlower} and ${bottle}`, tags: ["spider, child"] },
+        { name: `Hammer rock, above DC`, requirements: `${canAccessDMTAndCity_A} and ${hammer}`, tags: ["spider, adult"] },
+        { name: `Hammer rock, path to summit`, requirements: `${canAccessDMCTop_A} and ${hammer}`, tags: ["spider, adult"] },
+        { name: `Grotto heading towards summit`, requirements: `(${canAccessDMCTop_A} or ${canAccessDMCTop_C}) and ${bombRock} and ${eponasSong}` }
       ]
     },
     {
       name: `Goron City`,
       type: `overworld`,
       items: [
-        { name: `Rolling goron`, requirements: `${canAccessDMTAndCity} and DodongosCavern11` },
-        { name: `Darunia's joy`, requirements: `${canAccessDMTAndCity} and ${sariasSong}` },
-        { name: `Spinning pot`, requirements: `${canAccessDMTAndCity} and (bombs or strength) and (${dinsFire} or (${zeldasLullaby} and ${sticks}))` },
-        { name: `Rock maze, right side (2)`, requirements: `${canAccessDMTAndCity} and ${bombRock}` },
-        { name: `Rock maze, left side`, requirements: `${canAccessDMTAndCity} and ${hammer}` }, //silver gauntlets???
-        { name: `Link the goron`, requirements: `${canAccessDMTAndCity} and ${adult} and ${bombFlower}` },
-        { name: `Rock maze, right side crate`, requirements: `${canAccessDMTAndCity} and ${bombRock}`, tags: ["spider"] },
-        { name: `Back of pedestal in the center`, requirements: `${canAccessDMTAndCity} and ${adult}`, tags: ["spider"] },
-        { name: `Medigoron`, requirements: `${canAccessDMTAndCity} and wallet` },
+        { name: `Rolling goron`, requirements: `${canAccessDMTAndCity_C} and ${bombFlower} and DodongosCavern11`, tags: ["child"] },
+        { name: `Darunia's joy`, requirements: `${canAccessDMTAndCity_C} and ${zeldasLullaby} and ${sariasSong}`, tags: ["child"] },
+        { name: `Spinning pot`, requirements: `${canAccessDMTAndCity_C} and (bombs or strength) and (${dinsFire} or (${zeldasLullaby} and ${sticks}))`, tags: ["child"] },
+        { name: `Rock maze, right side (2)`, requirements: `(${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}) and ${bombRock}` },
+        { name: `Rock maze, left side`, requirements: `(${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}) and ${hammer}` },
+        { name: `Link the goron`, requirements: `${canAccessDMTAndCity_A} and ${bombFlower}`, tags: ["adult"] },
+        { name: `Rock maze, right side crate`, requirements: `(${canAccessDMTAndCity_A} or ${canAccessDMTAndCity_C}) and ${bombRock}`, tags: ["spider, child"] },
+        { name: `Back of pedestal in the center`, requirements: `${canAccessDMTAndCity_A}`, tags: ["spider, adult"] },
+        { name: `Medigoron`, requirements: `${canAccessDMTAndCity_A} and wallet`, tags: ["adult"] },
         { name: `Shop`, requirements: `false` }
       ]
     },
@@ -418,53 +413,53 @@ const data: { zones: Zone[] } = {
       name: `Death Mountain Crater`,
       type: `overworld`,
       items: [
-        { name: `Upper grotto`, requirements: `${canAccessDMCraterTop} and ${explosives}` },
-        { name: `Wall heart piece`, requirements: `${canAccessDMCraterTop} and ${goronTunic}` },
-        { name: `Great fairy`, requirements: `${canAccessDMCraterSide} and ${hammer}` },
-        { name: `Heart piece on top of the volcano`, requirements: `${canAccessDMCraterMain} and ${magicPlant}` }, //can potentially reach this only as adult. 
-        { name: `Sheik's song`, requirements: `${canAccessDMCraterMain} and ${adult}` },
-        { name: `Crate at the top of the crater`, requirements: canAccessDMCraterTop, tags: ["spider"] },
-        { name: `Bean patch`, requirements: `${canAccessDMCraterMain} and ${bottle} and ${boleroOfFire}`, tags: ["spider"] } //bolero is bandade til i seperate child/adult zones
+        { name: `Upper grotto`, requirements: `(${canAccessDMCTop_A} or ${canAccessDMCTop_C}) and ${bombRock}` },
+        { name: `Wall heart piece`, requirements: `(${canAccessDMCTop_A} or ${canAccessDMCTop_C}) and ${goronTunic}` },
+        { name: `Great fairy`, requirements: `(${canAccessDMCSide_A} or ${canAccessDMCSide_C}) and ${hammer} and ${zeldasLullaby}` },
+        { name: `Heart piece on top of the volcano`, requirements: `${canAccessDMCMain_A} and ${canAccessDMCMain_C} and ${magicPlant}` },
+        { name: `Sheik's song`, requirements: `${canAccessDMCMain_A}` },
+        { name: `Crate at the top of the crater`, requirements: `${canAccessDMCTop_C}`, tags: ["spider, child"] },
+        { name: `Bean patch`, requirements: `${canAccessDMCMain_C} and ${bottle}`, tags: ["spider, child"] },
       ]
     },
     {
       name: `Zora River`,
       type: `overworld`,
       items: [
-        { name: `Open grotto`, requirements: `${canAccessZorasRiverChild} or ${canAccessZorasRiverAdult}` },
-        { name: `Lower river heart piece`, requirements: `${canAccessZorasRiverChild} or (${canAccessZorasRiverAdult} and (${hoverBoots} or ${bunnyHood}))` },
-        { name: `Upper river heart piece`, requirements: `${canAccessZorasRiverChild} or (${canAccessZorasRiverAdult} and (${hoverBoots} or ${bunnyHood}))` },
-        { name: `Frogs, song of storms`, requirements: `${canAccessZorasRiverChild} and ${songOfStorms}` },
-        { name: `Frogs, minigame`, requirements: `${canAccessZorasRiverChild} and ${zeldasLullaby} and eponasSong and sariasSong and sunsSong and songOfStorms and songOfTime` },
-        { name: `Bean salesman`, requirements: canAccessZorasRiverChild },
+        { name: `Open grotto`, requirements: `${canAccessZorasRiver_C} or ${canAccessZorasRiver_A}` },
+        { name: `Lower river heart piece`, requirements: `${canAccessZorasRiver_C} or (${canAccessZorasRiver_A} and (${hoverBoots} or ${bunnyHood}))` },
+        { name: `Upper river heart piece`, requirements: `${canAccessZorasRiver_C} or (${canAccessZorasRiver_A} and (${hoverBoots} or ${bunnyHood}))` },
+        { name: `Frogs, song of storms`, requirements: `${canAccessZorasRiver_C} and ${songOfStorms}` },
+        { name: `Frogs, minigame`, requirements: `${canAccessZorasRiver_C} and ${zeldasLullaby} and eponasSong and sariasSong and sunsSong and songOfStorms and songOfTime` },
+        { name: `Bean salesman`, requirements: canAccessZorasRiver_C },
         { name: `Tree near entrance`, requirements: canAccessHyruleField, tags: ["spider", "child"] },
-        { name: `Upper river, on the ladder`, requirements: `${canAccessZorasRiverChild}`, tags: ["spider"] }, //can u kill it with sticks?
-        { name: `On wall near the open grotto`, requirements: `${canAccessZorasRiverAdult} and (${hookshot} or (${agelessBommerang} and ${boomerang}))`, tags: ["spider", "adult"] },
-        { name: `Upper river, high on the wall`, requirements: `${canAccessZorasRiverAdult} and ${hookshot}`, tags: ["spider", "adult"] }
+        { name: `Upper river, on the ladder`, requirements: `${canAccessZorasRiver_C}`, tags: ["spider"] }, //can u kill it with sticks?
+        { name: `On wall near the open grotto`, requirements: `${canAccessZorasRiver_A} and (${hookshot} or (${itemSettings.agelessBommerang} and ${boomerang}))`, tags: ["spider", "adult"] },
+        { name: `Upper river, high on the wall`, requirements: `${canAccessZorasRiver_A} and ${hookshot}`, tags: ["spider", "adult"] },
       ]
     },
     {
       name: `Zora's Domain`,
       type: `overworld`,
       items: [
-        { name: `Diving Minigame`, requirements: `${canAccessZorasDomainChild}` },
-        { name: `Light torches`, requirements: `${canAccessZorasDomainChild} and ${sticks}` }, //can do with bunney hood + dins fire
-        { name: `Melt king zora`, requirements: `${canAccessZorasDomainAdult} and ${blueFire}` },
+        { name: `Diving Minigame`, requirements: `${canAccessZorasDomain_C}` },
+        { name: `Light torches`, requirements: `${canAccessZorasDomain_C} and ${sticks}` }, //can do with bunney hood + dins fire
+        { name: `Melt king zora`, requirements: `${canAccessZorasDomain_A} and ${blueFire}` },
         { name: `Trade quest, turn in prescription`, requirements: `false` },
-        { name: `Top of the waterfall`, requirements: `${canAccessZorasDomainAdult} and (${adultRange} or ${dinsFire})`, tags: ["spider"] },
-        { name: `Shop`, requirements: `false` }
+        { name: `Top of the waterfall`, requirements: `${canAccessZorasDomain_A} and (${adultRange} or ${dinsFire})`, tags: ["spider"] },
+        { name: `Shop`, requirements: `false` },
       ]
     },
     {
       name: `Zora's Fountain`,
       type: `overworld`,
       items: [
-        { name: `Great fairy`, requirements: `(${canAccessZorasFountainChild} and (${explosives} or (${agelessStrength} and ${silverGauntlets} and ${agelessHammer} and ${hammer}))) or (${canAccessZorasFountainAdult} and (${explosives} or (${hammer} and ${silverGauntlets})))` },
-        { name: `Ice platform`, requirements: `${canAccessZorasFountainAdult}` },
-        { name: `Bottom of the lake`, requirements: `${canAccessZorasFountainAdult} and ${ironBoots}` },
-        { name: `Tree near great fairy`, requirements: `${canAccessZorasFountainChild}`, tags: ["spider", "child"] },
-        { name: `On wall to the right of entrance`, requirements: `${canAccessZorasFountainChild} and ${boomerang} or (${agelessHookshot} and ${hookshot})`, tags: ["spider", "child"] },
-        { name: `Tunnel under silver rock`, requirements: `${canAccessZorasFountainAdult} and ${silverGauntlets} and ${bombRock} and (${hookshot} or (${agelessBommerang} and ${boomerang}))`, tags: ["spider", "adult"] }
+        { name: `Great fairy`, requirements: `(${canAccessZorasFountain_C} and (${explosives} or (${itemSettings.agelessStrength} and ${silverGauntlets} and ${itemSettings.agelessHammer} and ${hammer}))) or (${canAccessZorasFountain_C} and (${explosives} or (${hammer} and ${silverGauntlets})))` },
+        { name: `Ice platform`, requirements: `${canAccessZorasFountain_C}` },
+        { name: `Bottom of the lake`, requirements: `${canAccessZorasFountain_C} and ${ironBoots}` },
+        { name: `Tree near great fairy`, requirements: `${canAccessZorasFountain_C}`, tags: ["spider", "child"] },
+        { name: `On wall to the right of entrance`, requirements: `${canAccessZorasFountain_C} and ${boomerang} or (${itemSettings.agelessHookshot} and ${hookshot})`, tags: ["spider", "child"] },
+        { name: `Tunnel under silver rock`, requirements: `${canAccessZorasFountain_C} and ${silverGauntlets} and ${bombRock} and (${hookshot} or (${itemSettings.agelessBommerang} and ${boomerang}))`, tags: ["spider", "adult"] },
       ]
     },
     {
@@ -476,13 +471,13 @@ const data: { zones: Zone[] } = {
         { name: `Fishing`, requirements: `${canAccessLakeHylia}` },
         { name: `Fishing`, requirements: `${canAccessLakeHylia} and ${adult} and (${magicPlant} or (ocarina and ${hookshot}) or WaterTemple15)` },
         { name: `Rooftop heart piece`, requirements: `${canAccessLakeHylia} and ${adult} and (${magicPlant} or (ocarina and ${hookshot}))` },
-        { name: `Shoot the sun`, requirements: `${canAccessLakeHylia} and ${adult} and ${bow} and ((ocarina and ${longShot}) or WaterTemple15)` },
+        { name: `Shoot the sun`, requirements: `${canAccessLakeHylia} and ${adult} and ${bow} and ((ocarina and ${longshot}) or WaterTemple15)` },
         { name: `Bean patch`, requirements: `${canAccessLakeHylia} and ${child} and ${bottle}`, tags: ["spider", "child"] },
         { name: `Back of the lab`, requirements: `${canAccessLakeHylia} and ${child} and ${boomerang}`, tags: ["spider", "child"] }, //hoverboots? ageless hookshot?
         { name: `On the little island`, requirements: `${canAccessLakeHylia}`, tags: ["spider", "child"] }, //cankillgs
-        { name: `Top of the tree`, requirements: `${canAccessLakeHylia} and ${adult} and ${longShot}`, tags: ["spider", "adult"] },
+        { name: `Top of the tree`, requirements: `${canAccessLakeHylia} and ${adult} and ${longshot}`, tags: ["spider", "adult"] },
         { name: `Crate in the lab`, requirements: `${canAccessLakeHylia} and ${adult} and ${ironBoots} and ${hookshot}`, tags: ["spider"] }, //is it there as child???
-        { name: `Trade quest, turn in eyeball frog`, requirements: `false` }
+        { name: `Trade quest, turn in eyeball frog`, requirements: `false` },
       ]
     },
     {
@@ -497,7 +492,7 @@ const data: { zones: Zone[] } = {
         { name: `Underside of rock arch`, requirements: `${canAccessGerudoFortress} and (${hookshot} or ${boomerang})`, tags: ["spider"] },
         { name: `Behind carpenter's tent`, requirements: `${canAccessGerudoFortress} and (${hookshot} or ${boomerang})`, tags: ["spider"] },
         { name: `Trade quest, turn in poacher's saw`, requirements: `false` },
-        { name: `Bottom of canyon`, requirements: `${canAccessGerudoValley} and ${eponasSong}` }
+        { name: `Bottom of canyon`, requirements: `${canAccessGerudoValley} and ${eponasSong}` },
       ]
     },
     {
@@ -508,7 +503,7 @@ const data: { zones: Zone[] } = {
         { name: `Horseback archery (2)`, requirements: `${canAccessGerudoFortress} and ${epona} and ${bow}` },
         { name: `Top of the fortress`, requirements: `${canAccessGerudoFortress}`, tags: ["spider"] }, //hookshot or boomerang? hoverboots?
         { name: `Target on horse archery range`, requirements: `${canAccessGerudoFortress} and ${hookshot}`, tags: ["spider"] }, //or boomerang?
-        { name: `Gerudo Card (if enabled)`, requirements: `${canAccessGerudoFortress}` } //do we need bow or hookshot to knock out guards???
+        { name: `Gerudo Card (if enabled)`, requirements: `${canAccessGerudoFortress}` }, //do we need bow or hookshot to knock out guards???
       ]
     },
     {
@@ -516,7 +511,7 @@ const data: { zones: Zone[] } = {
       type: `overworld`,
       items: [
         { name: `Light torches`, requirements: `${canAccessHauntedWasteland} and ${fire}` },
-        { name: `Inside building`, requirements: `${canAccessHauntedWasteland} and (${hookshot} or ${boomerang})`, tags: ["spider"] }
+        { name: `Inside building`, requirements: `${canAccessHauntedWasteland} and (${hookshot} or ${boomerang})`, tags: ["spider"] },
       ]
     },
     {
@@ -528,7 +523,7 @@ const data: { zones: Zone[] } = {
         { name: `Sheik's song`, requirements: `${canAccessDesertColossus} and ${adult}` },
         { name: `Bean patch`, requirements: `${requiemOfSpirit} and ${bottle}`, tags: ["spider"] },
         { name: `Palm tree by dried pond`, requirements: `${canAccessDesertColossus} and ${adult} and (${hookshot} or ${boomerang})`, tags: ["spider"] },
-        { name: `Top of the sand dune`, requirements: `${canAccessDesertColossus} and ${adult} and ${magicPlant}`, tags: ["spider"] }
+        { name: `Top of the sand dune`, requirements: `${canAccessDesertColossus} and ${adult} and ${magicPlant}`, tags: ["spider"] },
       ]
     },
     {
@@ -543,7 +538,7 @@ const data: { zones: Zone[] } = {
         { name: `Basement on vine wall`, requirements: `${canAccessDekuTreeBasement} and (${combat} or ${rangedAttack})`, tags: ["spider"] },
         { name: `Basement on the bars`, requirements: `${canAccessDekuTreeBasement} and (${combat} or ${rangedAttack})`, tags: ["spider"] },
         { name: `Basement, back room`, requirements: `${canAccessDekuTreeBasementBack} and ${dekuScrub} and ${slingshot}`, tags: ["spider"] },
-        { name: `Queen Gohma`, requirements: `${canAccessDekuTreeBasement} and (${sticks} or ${fire}) and (${slingshot} or ${nuts})` }
+        { name: `Queen Gohma`, requirements: `${canAccessDekuTreeBasement} and (${sticks} or ${fire}) and (${slingshot} or ${nuts})` },
       ]
     },
     {
@@ -554,7 +549,7 @@ const data: { zones: Zone[] } = {
         { name: `Lower right scarecrow song`, requirements: `${canAccessDodongosCavern}`, tags: ["spider"] },// and (strength or ${mudwall})     //statue jump requires nothing?
         { name: `Lower right bombable wall`, requirements: `${canAccessDodongosCavern} and ${mudwall}`, tags: ["spider"] },
         { name: `Lower left, bombable wall`, requirements: `${canAccessDodongosCavernLeftSide}` }, //this area already requires mudwall or strength
-        { name: `Left side, above the stairs`, requirements: `${canAccessDodongosCavernLeftSide} and ${longShot}`, tags: ["spider"] },
+        { name: `Left side, above the stairs`, requirements: `${canAccessDodongosCavernLeftSide} and ${longshot}`, tags: ["spider"] },
         { name: `Left side, on vines`, requirements: `${canAccessDodongosCavernLeftSide} and (${explosives} or ${rangedAttack})`, tags: ["spider"] },
         { name: `Upper right, bomb flower platform`, requirements: `${canAccessDodongosCavern}` },
         //2 deku salesman. require mudwall
@@ -562,7 +557,7 @@ const data: { zones: Zone[] } = {
         { name: `Upper lobby, across the bridge`, requirements: `${canAccessDodongosCavern} and ${mudwall}` },
         { name: `Inside the dodongo face, back room`, requirements: `${canAccessDodongosCavernLobby2}`, tags: ["spider"] },
         { name: `Room before King Dodongo`, requirements: `${canAccessDodongosCavernLobby2}` },
-        { name: `King Dodongo`, requirements: `${canAccessDodongosCavernLobby2} and (bombs or strength)` } //no bombchus
+        { name: `King Dodongo`, requirements: `${canAccessDodongosCavernLobby2} and (bombs or strength)` }, //no bombchus
       ]
     },
     {
@@ -575,7 +570,7 @@ const data: { zones: Zone[] } = {
         { name: `Tentacle area, left room`, requirements: `${canAccessInsideJabusBelly} and ${boomerang}` },
         { name: `Tentacle area, back left room`, requirements: `${canAccessInsideJabusBelly} and ${boomerang}` },  //should i require this and subsequent spots require "tentacle area, left room"?
         { name: `Room before Barinade`, requirements: `${canAccessInsideJabusBelly} and ${boomerang}`, tags: ["spider"] },
-        { name: `Barinade`, requirements: `${canAccessInsideJabusBelly} and ${canKillBarinade}` }
+        { name: `Barinade`, requirements: `${canAccessInsideJabusBelly} and ${canKillBarinade}` },
       ]
     },
     {
@@ -591,7 +586,7 @@ const data: { zones: Zone[] } = {
         { name: `Courtyard, on the grassy hill`, requirements: `${canAccessCoartyardRight} and (${hookshot} or (${canAccessFallingCeilingRoom} and (${explosives} or ${rangedAttack})))`, tags: ["spider"] },
         { name: `Courtyard, in the well`, requirements: `${canAccessCoartyardLeft}` },
         { name: `Upper courtyard, side room`, requirements: `${canAccessUpperCoartyardLeft}` },
-        { name: `Upper courtyard, high on the wall`, requirements: `(${canAccessCoartyardLeft} and ${longShot}) or (${canAccessUpperCoartyardLeft} and ${adultCollectRangedGS})`, tags: ["spider"] },
+        { name: `Upper courtyard, high on the wall`, requirements: `(${canAccessCoartyardLeft} and ${longshot}) or (${canAccessUpperCoartyardLeft} and ${adultCollectRangedGS})`, tags: ["spider"] },
         { name: `Eye switch near block puzzle`, requirements: `${canAccessforestTempleBlockRoomUp} and ${bow}` },
         { name: `Boss key chest`, requirements: `${canAccessHallway} and ${bow}` },
         { name: `Red poe (Joelle)`, requirements: `${canAccessRedPoeRoom} and ${bow}` },
@@ -600,7 +595,7 @@ const data: { zones: Zone[] } = {
         { name: `Falling ceiling room`, requirements: `${canAccessFallingCeilingRoom}` },
         { name: `Spinning room in the basement`, requirements: `${canAccessForestTempleBasement}` },
         { name: `Spinning room in the basement`, requirements: `${canAccessForestTempleBasement} and ${adultCollectRangedGS}`, tags: ["spider"] },
-        { name: `Phantom Ganon`, requirements: `${canAccessForestTempleBasement} and forestTempleBossKey and (${bow} or ${slingshot} or ${hookshot}) and ${swords}` }
+        { name: `Phantom Ganon`, requirements: `${canAccessForestTempleBasement} and forestTempleBossKey and (${bow} or ${slingshot} or ${hookshot}) and ${swords}` },
       ]
     },
     {
@@ -627,7 +622,7 @@ const data: { zones: Zone[] } = {
         //key (7) or hoverboots/bunnyHood + hammer
         { name: `Fire wall maze, center room`, requirements: `${canAccessFireTemple} and ${songOfTime} and ${hammer}` },
         { name: `Hammer chest`, requirements: `${canAccessFireTemple} and (${explosives} or ${hammer})` }, //AND scarecrow fight
-        { name: `Volvagia`, requirements: `${canAccessFireTemple} and (${hoverBoots} or (${hammer}))` } //and able to get knock down pillar
+        { name: `Volvagia`, requirements: `${canAccessFireTemple} and (${hoverBoots} or (${hammer}))` }, //and able to get knock down pillar
       ]
     },
     {
@@ -641,7 +636,7 @@ const data: { zones: Zone[] } = {
         { name: `Right room`, requirements: `${canAccessIceCavern} and ${canAccessBlueFire} and ${adultCollectRangedGS}`, tags: ["spider"] },
         { name: `Block puzzle room`, requirements: `${canAccessIceCavern} and ${canAccessBlueFire} and ${adultCollectRangedGS}`, tags: ["spider"] },
         { name: `Wolfos chest`, requirements: `${canAccessIceCavern} and ${canAccessBlueFire}` },
-        { name: `Sheik's song`, requirements: `${canAccessIceCavern} and ${canAccessBlueFire}` }
+        { name: `Sheik's song`, requirements: `${canAccessIceCavern} and ${canAccessBlueFire}` },
       ]
     },
     {
@@ -663,7 +658,7 @@ const data: { zones: Zone[] } = {
         { name: `Top floor. dark Link`, requirements: `${canAccessWaterTemple}` },
         { name: `River chest after dark Link`, requirements: `${canAccessWaterTemple}` },
         { name: `River after dark Link`, requirements: `${canAccessWaterTemple}`, tags: ["spider"] },
-        { name: `Morpha`, requirements: `${canAccessWaterTemple}` }
+        { name: `Morpha`, requirements: `${canAccessWaterTemple}` },
       ]
     },
     {
@@ -686,7 +681,7 @@ const data: { zones: Zone[] } = {
         { name: `Back right room, like like`, requirements: `${canAccessBottomOfTheWell} and ${lenseOfTruth} and ${childCollectRangedGS} and (botwSmallKeys>=3 or (botwSmallKeys==2 and not(BottomoftheWell4 and BottomoftheWell5)) or (botwSmallKeys==1 and not(BottomoftheWell4 or BottomoftheWell5)))`, tags: ["spider"] },
         { name: `Basement, behind rocks`, requirements: `${canAccessBottomOfTheWell} and ${explosives} or (stength and (botwSmallKeys>=3 or (botwSmallKeys==2 and not(BottomoftheWell4 and BottomoftheWell5)) or (botwSmallKeys==1 and not(BottomoftheWell4 or BottomoftheWell5))))` },
         { name: `Invisible chest in deadhand room`, requirements: `${canAccessBottomOfTheWell} and ${lenseOfTruth}` },
-        { name: `Deadhand`, requirements: `${canAccessBottomOfTheWell} and ${swords}` }
+        { name: `Deadhand`, requirements: `${canAccessBottomOfTheWell} and ${swords}` },
       ]
     },
     {
@@ -708,11 +703,11 @@ const data: { zones: Zone[] } = {
         { name: `Fan area, end room invisible chest`,     requirements: `${canAccessWindRoom} and ${canKillRedead}` },
         { name: `Fan area, gibdos room chest`,            requirements: `${canAccessWindRoom} and ${canKillRedead}` },
         { name: `Fan area, gibdos room debris`,           requirements: `${canAccessWindRoom}` },
-        { name: `Before boat, scarecrow song`,            requirements: `${canAccessShadowTempleRiver} and ocarina and ${longShot}`, tags: ["spider"] },
+        { name: `Before boat, scarecrow song`,            requirements: `${canAccessShadowTempleRiver} and ocarina and ${longshot}`, tags: ["spider"] },
         { name: `Invisible maze, invisible floormaster`,  requirements: `${canAccessShadowTempleDeep}` },
         { name: `Invisible maze, spike trap (2)`,         requirements: `${canAccessShadowTempleDeep} and ${dinsFire}` },
         { name: `Triple skull room`,                      requirements: `${canAccessShadowTempleDeep}`, tags: ["spider"] },
-        { name: `Bongo Bongo`,                            requirements: `${canAccessShadowTempleDeep} and (${bow} or (ocarina and ${longShot})) and shadowTempleSmallKeys>=5 and shadowTempleBossKey and ${canKillBongoBongo}` }
+        { name: `Bongo Bongo`,                            requirements: `${canAccessShadowTempleDeep} and (${bow} or (ocarina and ${longshot})) and shadowTempleSmallKeys>=5 and shadowTempleBossKey and ${canKillBongoBongo}` },
       ]
     },
     {
@@ -735,7 +730,7 @@ const data: { zones: Zone[] } = {
         { name: `Lock maze, left side chest 1`, requirements: `${canAccessGerudoTrainingGrounds}` },
         { name: `Lock maze, left side chest 2`, requirements: `${canAccessGerudoTrainingGrounds}` },
         { name: `Lock maze, left side chest 3`, requirements: `${canAccessGerudoTrainingGrounds}` },
-        { name: `Lock maze, left side chest 4`, requirements: `${canAccessGerudoTrainingGrounds}` }
+        { name: `Lock maze, left side chest 4`, requirements: `${canAccessGerudoTrainingGrounds}` },
       ]
     },
     {
@@ -763,7 +758,7 @@ const data: { zones: Zone[] } = {
         { name: `Mirror shield chest`, requirements: `${canAccessSpiritTempleAdult}` },
         { name: `Boss key room`, requirements: `${canAccessSpiritTempleAdult}` },
         { name: `Mirror room`, requirements: `${canAccessSpiritTempleAdult}` },
-        { name: `Twinrova`, requirements: `${canAccessSpiritTempleAdult}` }
+        { name: `Twinrova`, requirements: `${canAccessSpiritTempleAdult}` },
       ]
     },
     {
@@ -778,7 +773,7 @@ const data: { zones: Zone[] } = {
         { name: `Light trial, lullaby room chest`, requirements: `${canAccessGanonsCastle}` },
         { name: `Spirit trial, before bars`, requirements: `${canAccessGanonsCastle}` },
         { name: `Spirit trial, after bars`, requirements: `${canAccessGanonsCastle}` },
-        { name: `Boss key chest`, requirements: `${canAccessGanonsCastle}` }
+        { name: `Boss key chest`, requirements: `${canAccessGanonsCastle}` },
       ]
     }
   ]

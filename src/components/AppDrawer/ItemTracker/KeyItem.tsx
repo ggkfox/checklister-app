@@ -14,7 +14,7 @@ const KeyItem = ({ iconSet }: Props) => {
   const [curIcon, setCurIcon] = useState(iconSet.states?.[itemState.currentState] || null);
   const [nextIcon, setNextIcon] = useState(iconSet.states?.[nextState] || null);
 
-  const renderContent = (arg: any): JSX.Element => {
+  const renderContent = (arg: any, index: number): JSX.Element => {
     const imgStyle: React.CSSProperties = {
       objectFit: "contain",
       width: "100%",
@@ -38,7 +38,7 @@ const KeyItem = ({ iconSet }: Props) => {
 
       return (
         <>
-          <span style={numberOverlay}>{itemState.currentState}</span>
+          <span style={numberOverlay}>{index}</span>
           <img src={arg?.src} style={imgStyle} />
         </>
       );
@@ -47,8 +47,8 @@ const KeyItem = ({ iconSet }: Props) => {
     }
   };
 
-  const [curSrc, setCurSrc] = useState<JSX.Element | null>(renderContent(curIcon));
-  const [nextSrc, setNextSrc] = useState<JSX.Element | null>(renderContent(nextIcon));
+  const [curSrc, setCurSrc] = useState<JSX.Element | null>(renderContent(curIcon, itemState.currentState));
+  const [nextSrc, setNextSrc] = useState<JSX.Element | null>(renderContent(nextIcon, (itemState.currentState + 1) % itemState.numOfStates));
 
   const handleClick = () => {
     setCurSrc(nextSrc);
@@ -62,7 +62,7 @@ const KeyItem = ({ iconSet }: Props) => {
     setCurIcon(nextIcon);
     setNextState(newNextState);
     setNextIcon(newNextIcon);
-    setNextSrc(renderContent(newNextIcon));
+    setNextSrc(renderContent(newNextIcon, newNextState));
   }, [itemState.currentState, nextIcon]);
 
   return (

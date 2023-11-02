@@ -26,7 +26,7 @@ export const useScopedItemStates = (listOfRequirements: string[]) => {
   }, [listOfRequirements, itemStates]);
 };
 
-export const checkIfCanDo = (requirements: string | undefined, scope: any): boolean => {
+export const checkIfCanDo = (itemName: string, requirements: string | undefined, scope: any): boolean => {
   if (!requirements) return true;
   try {
     const parser = new Parser({ operators: { logical: true, comparison: true } });
@@ -34,16 +34,16 @@ export const checkIfCanDo = (requirements: string | undefined, scope: any): bool
     const result = expr.evaluate(scope);
     return result === true || result >= 1;
   } catch (error) {
-    console.error("Error in item's requirements:", requirements);
+    console.error("Error in", itemName, "requirements:", requirements);
     return false;
   }
 };
 
 // Main hook to use in component
-export const useRequirementsInfo = (requirements: string | undefined) => {
+export const useRequirementsInfo = (itemName: string, requirements: string | undefined) => {
   const listOfRequirements = useParsedRequirements(requirements);
   const scope = useScopedItemStates(listOfRequirements);
   const itemStates = useMultipleItemStates(listOfRequirements);
-  const canDo = checkIfCanDo(requirements, scope);
+  const canDo = checkIfCanDo(itemName, requirements, scope);
   return { canDo, itemStates };
 };

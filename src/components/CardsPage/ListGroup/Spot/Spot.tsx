@@ -29,7 +29,7 @@ const Spot: React.FC<Props> = ({ item, isExpanded, ageFilter, zoneName, index })
   const theme = useTheme();
 
   // Requirements and scope
-  const { canDo, itemStates } = useRequirementsInfo(item.requirements);
+  const { canDo, itemStates } = useRequirementsInfo(item.name, item.requirements);
 
   useEffect(() => {
     setHighlight(canDo && !isChecked);
