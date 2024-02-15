@@ -6,7 +6,7 @@ body {
 
 /* For Chrome, Safari, and newer versions of Opera */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
