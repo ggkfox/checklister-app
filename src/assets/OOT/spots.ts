@@ -578,7 +578,7 @@ const data: { zones: Zone[] } = {
         { name: `Trade quest, turn in broken sword`, requirements: `${canAccessDMCTop_A} and false`, tags: ["adult"] }, //what happens if swords are progressive?
         { name: `Trade quest, turn in eye drops`, requirements: `${canAccessDMCTop_A} and false`, tags: ["adult"] },
         { name: `Trade quest turn in claim check`, requirements: `${canAccessDMCTop_A} and false`, tags: ["adult"] },
-        { name: `Bombable wall, near entrance`, requirements: `(${canAccessDMTAndCity_A} and ${explosives} or (${hammer_C} and (${dinsFire} or ${rangedAttack_C}))) or (${canAccessDMTAndCity_C} and ${bombRock_A})`, tags: ["spider"] },
+        { name: `Bombable wall, near entrance`, requirements: `(${canAccessDMTAndCity_A} and ${explosives} or (${hammer_C} and (${dinsFire} or ${rangedAttack_C}))) or (${canAccessDMTAndCity_C} and ${bombRock_C})`, tags: ["spider"] },
         { name: `Bean patch, dodongo's cavern`, requirements: `${canAccessDMTAndCity_C} and ${bombFlower} and ${bottle}`, tags: ["spider", "child"] },
         { name: `Hammer rock, above DC`, requirements: `${canAccessDMTAndCity_A} and ${hammer_A}`, tags: ["spider", "adult"] },
         { name: `Hammer rock, path to summit`, requirements: `${canAccessDMCTop_A} and ${hammer_A}`, tags: ["spider", "adult"] },
@@ -820,9 +820,9 @@ const data: { zones: Zone[] } = {
       type: `dungeon`,
       items: [
         { name: `Spinning blade room`, requirements: `(${canAccessIceCavernBlades_C} and ${rangedCollectGS_C}) or ( ${canAccessIceCavernBlades_A} and ${rangedCollectGS_A})`, tags: ["spider"] },
-        { name: `Back room chest`, requirements: `${canAccessIceCavernBackRoom_A} and ${bottle}` },
-        { name: `Right room, chest`, requirements: `${canAccessIceCavernSideRooms_C}` },
-        { name: `Right room, red ice`, requirements: `${canAccessIceCavernSideRooms_C}` },
+        { name: `Back room chest`, requirements: `${canAccessIceCavernBackRoom_A} and ${bottle}` }, //ice arrow?
+        { name: `Right room, chest`, requirements: `${canAccessIceCavernSideRooms_C} or ${canAccessIceCavernSideRooms_A}` },
+        { name: `Right room, red ice`, requirements: `${canAccessIceCavernSideRooms_C} or ${canAccessIceCavernSideRooms_A}` },
         { name: `Right room`, requirements: `(${canAccessIceCavernSideRooms_C} and ${rangedCollectGS_C}) or (${canAccessIceCavernSideRooms_A} and ${rangedCollectGS_A})`, tags: ["spider"] },
         { name: `Block puzzle room`, requirements: `(${canAccessIceCavernSideRooms_C} and ${rangedCollectGS_C}) or (${canAccessIceCavernSideRooms_A} and ${rangedCollectGS_A})`, tags: ["spider"] },
         { name: `Final Chest + Shiek's song`, requirements: `(${canAccessIceCavernSideRooms_C} and ${canKillWolfos_C}) or ${canAccessIceCavernSideRooms_A}` },
