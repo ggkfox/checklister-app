@@ -7,8 +7,8 @@ const ItemTracker = () => {
   return (
     <>
       {keyItems.map((group, index) => (
-        <Box key={"0" + index} paddingTop={2.5}>
-          <Grid container justifyContent={"center"} gap={1}>
+        <Box key={"0" + index} paddingTop={1}>
+          <Grid container justifyContent={"center"} gap={0.7}>
             {group.map((iconSet, index) => (
               <KeyItem key={"1" + index} iconSet={iconSet} />
             ))}

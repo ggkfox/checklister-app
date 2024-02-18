@@ -75,18 +75,30 @@ import zeldasLetter from "./icons/OoT_Zelda's_Letter_Icon.png";
 import smallKey from "./icons/OoT_Small_Key_Icon.png";
 import bossKey from "./icons/OoT_Boss_Key_Icon.png";
 import bunnyHood from "./icons/OoT_Bunny_Hood_Icon.png";
+import silverRupee from "./icons/OoT_Silver_Rupee_Icon.png";
 import React from "react";
 
 const grayout: React.CSSProperties = {filter: 'grayscale(50%) brightness(30%) opacity(.4)'};
 const coloredDropShadow: React.CSSProperties = {filter: 'drop-shadow(0 0 5px #8244b8) brightness(115%)'};
 const goldFilter: React.CSSProperties = {filter: 'drop-shadow(0 0 5px #8244b8) hue-rotate(90deg) brightness(115%)'};
 
-const generateSmallKeyStates = (numKeys: number) => {
+// const generateSmallKeyStates = (numKeys: number) => {
+//   const states: { src: string; style: React.CSSProperties }[] = [];
+//   for (let i = 0; i <= numKeys; i++) { // Updated loop to include 0
+//     states.push({
+//       src: smallKey,
+//       style: i === 0 ? grayout : coloredDropShadow, // Apply grayout style to the first element
+//     });
+//   }
+//   return states;
+// };
+
+const generateKeyStates = (numKeys: number, src: string) => { //pass "smallKey" or "silverRupee" as src.
   const states: { src: string; style: React.CSSProperties }[] = [];
-  for (let i = 0; i <= numKeys; i++) { // Updated loop to include 0
+  for (let i = 0; i <= numKeys; i++) {
     states.push({
-      src: smallKey,
-      style: i === 0 ? grayout : coloredDropShadow, // Apply grayout style to the first element
+      src: src,
+      style: i === 0 ? grayout : coloredDropShadow,
     });
   }
   return states;
@@ -156,27 +168,42 @@ const keyItems = [
      { name: "spiritualStoneOfWater", states: [{ src: spiritualStoneOfWater, style: grayout}, {src: spiritualStoneOfWater, style: coloredDropShadow} ]},
   ],
   [
-    { name: "forestTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
-    { name: "fireTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(8)},
-    { name: "waterTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},
-    { name: "shadowTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
-    { name: "spiritTempleSmallKeys", "isCounter": true, states: generateSmallKeyStates(5)},
-    { name: "GCSmallKeys", "isCounter": true, states: generateSmallKeyStates(6)},
-    // { name: "iceCavern", isCounter: true, states: generateSmallKeyStates(3)},
-    { name: "botwSmallKeys", isCounter: true, states: generateSmallKeyStates(3)},
-    { name: "gerudoTrainingGrounds", isCounter: true, states: generateSmallKeyStates(6)},
-    { name: "forestTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
-    { name: "fireTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
-    { name: "waterTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
-    { name: "shadowTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
-    { name: "spiritTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
-    { name: "GCBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
     { name: "forestMedallion", states: [{ src: forestMedallion, style: grayout}, {src: forestMedallion, style: coloredDropShadow} ]},
     { name: "fireMedallion", states: [{ src: fireMedallion, style: grayout}, {src: fireMedallion, style: coloredDropShadow} ]},
     { name: "waterMedallion", states: [{ src: waterMedallion, style: grayout}, {src: waterMedallion, style: coloredDropShadow} ]},
     { name: "shadowMedallion", states: [{ src: shadowMedallion, style: grayout}, {src: shadowMedallion, style: coloredDropShadow} ]},
     { name: "spiritMedallion", states: [{ src: spiritMedallion, style: grayout}, {src: spiritMedallion, style: coloredDropShadow} ]},
     { name: "lightMedallion", states: [{ src: lightMedallion, style: grayout}, {src: lightMedallion, style: coloredDropShadow} ]},
+    { name: "forestTempleSmallKeys", "isCounter": true, states: generateKeyStates(5, smallKey)},
+    { name: "fireTempleSmallKeys", "isCounter": true, states: generateKeyStates(8, smallKey)},
+    { name: "waterTempleSmallKeys", "isCounter": true, states: generateKeyStates(6, smallKey)},
+    { name: "shadowTempleSmallKeys", "isCounter": true, states: generateKeyStates(5, smallKey)},
+    { name: "spiritTempleSmallKeys", "isCounter": true, states: generateKeyStates(5, smallKey)},
+    { name: "GCSmallKeys", "isCounter": true, states: generateKeyStates(6, smallKey)},
+    { name: "forestTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "fireTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "waterTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "shadowTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "spiritTempleBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "GCBossKey", states: [{ src: bossKey, style: grayout}, {src: bossKey, style: coloredDropShadow}]},
+    { name: "NA"},
+    { name: "NA"},
+    { name: "NA"},
+    { name: "spinningBladeSR", "isCounter": true, states: generateKeyStates(5, silverRupee)},
+    { name: "spiritChildSR", "isCounter": true, states: generateKeyStates(5, silverRupee)},
+    { name: "NA"},
+    { name: "botwSmallKeys", isCounter: true, states: generateKeyStates(3, smallKey)},
+    { name: "gerudoTrainingGrounds", isCounter: true, states: generateKeyStates(6, smallKey)},
+    { name: "NA"},
+    { name: "openRoomSR", "isCounter": true, states: generateKeyStates(5, silverRupee)},
+    { name: "spiritChildUpperSR", "isCounter": true, states: generateKeyStates(5, silverRupee)},
+    { name: "NA"},
+    { name: "NA"},
+    { name: "NA"},
+    { name: "NA"},
+    { name: "invisibleSpikeSR", "isCounter": true, states: generateKeyStates(5, silverRupee)},
+    { name: "spiritBoulderSR", "isCounter": true, states: generateKeyStates(5, silverRupee)},
+    { name: "NA"},
   ],
   [
     { name: "zeldasLullaby", states: [{ src: greyNote, style: grayout}, {src: greyNote, style: coloredDropShadow} ]},
@@ -185,12 +212,12 @@ const keyItems = [
     { name: "sunsSong", states: [{ src: greyNote, style: grayout}, {src: greyNote, style: coloredDropShadow} ]},
     { name: "songOfTime", states: [{ src: greyNote, style: grayout}, {src: greyNote, style: coloredDropShadow} ]},
     { name: "songOfStorms", states: [{ src: greyNote, style: grayout}, {src: greyNote, style: coloredDropShadow} ]},
-    { name: "preludeOfLight", states: [{ src: yellowNote, style: grayout}, {src: yellowNote, style: coloredDropShadow} ]},
     { name: "minuetOfForest", states: [{ src: greenNote, style: grayout}, {src: greenNote, style: coloredDropShadow} ]},
     { name: "boleroOfFire", states: [{ src: redNote, style: grayout}, {src: redNote, style: coloredDropShadow} ]},
     { name: "serenadeOfWater", states: [{ src: blueNote, style: grayout}, {src: blueNote, style: coloredDropShadow} ]},
     { name: "nocturneOfShadow", states: [{ src: purpleNote, style: grayout}, {src: purpleNote, style: coloredDropShadow} ]},
     { name: "requiemOfSpirit", states: [{ src: orangeNote, style: grayout}, {src: orangeNote, style: coloredDropShadow} ]},
+    { name: "preludeOfLight", states: [{ src: yellowNote, style: grayout}, {src: yellowNote, style: coloredDropShadow} ]},
   ],
   [
     // { name: "spiderToken", states: [{ src: token, style: grayout}, {src: token, style: {}} ]},

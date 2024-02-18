@@ -860,7 +860,7 @@ const data: { zones: Zone[] } = {
         { name: `Center room, behind skulltula`, requirements: `${canAccessBottomOfTheWell} and ${lenseOfTruth}` },
         { name: `Center, left key door`, requirements: `${canAccessBottomOfTheWell} and ${lenseOfTruth} and (botwSmallKeys>=3 or (botwSmallKeys==2 and not(BottomoftheWell5 and (BottomoftheWell11 or BottomoftheWell12 or BottomoftheWell13))) or (botwSmallKeys==1 and not(BottomoftheWell5 or (BottomoftheWell11 or BottomoftheWell12 or BottomoftheWell13))))`, tags: ["spider"] },
         { name: `Center, right key door`, requirements: `${canAccessBottomOfTheWell} and ${lenseOfTruth} and (botwSmallKeys>=3 or (botwSmallKeys==2 and not(BottomoftheWell4 and (BottomoftheWell11 or BottomoftheWell12 or BottomoftheWell13))) or (botwSmallKeys==1 and not(BottomoftheWell4 or (BottomoftheWell11 or BottomoftheWell12 or BottomoftheWell13))))`, tags: ["spider"] },
-        { name: `Left side, coffin room`, requirements: `${canAccessBottomOfTheWell} and (${dinsFire} or ${sticks_C})` },
+        { name: `Left side, coffin room`, requirements: `${canAccessBottomOfTheWell} and (${dinsFire} or ${sticks_C})` }, //WHY DOESNT REQ LENSE?
         { name: `Bombable debris, front`, requirements: `${canAccessBottomOfTheWell} and ${explosives}` },
         { name: `Bombable debris, back left`, requirements: `${canAccessBottomOfTheWell} and ${lenseOfTruth} and ${explosives}` },
         { name: `Drained water, left side`, requirements: `${canAccessBottomOfTheWell} and ${zeldasLullaby}` },

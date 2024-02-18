@@ -12,7 +12,7 @@ import { colorModeContext, useMode } from "./theme";
 function App() {
   const { theme, colorMode } = useMode();
   //Drawer states & functions
-  const drawerWidth = 290;
+  const drawerWidth = 260;
 
   //filters
   const [zoneFilter, setZoneTypeFilter] = useState<ZoneType>("all");

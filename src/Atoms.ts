@@ -19,7 +19,7 @@ const myStates = (() => {
   //initialize
   const itemResult = keyItems.reduce((result: ItemStateType, group) => {
     group.forEach((icon) => {
-      if (icon.states) {
+      if (icon?.states) {
         result[icon.name] = {
           currentState: 0,
           numOfStates: icon.states.length,

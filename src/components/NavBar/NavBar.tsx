@@ -7,6 +7,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
+import SettingsIcon from "@mui/icons-material/Settings";
 import AppBar from "@mui/material/AppBar";
 import { useAtom } from "jotai";
 import { drawerAtom } from "../../Atoms";
@@ -76,6 +77,9 @@ const NavBar = ({ zoneFilter, handleZoneFilter, handleAgeFilter, drawerWidth }: 
                 </Button>
               </ToggleButtonGroup>
             </Grid>
+            <IconButton onClick={() => {}}>
+              <SettingsIcon />
+            </IconButton>
           </Grid>
         </Toolbar>
       </AppBar>

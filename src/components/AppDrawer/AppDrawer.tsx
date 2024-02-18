@@ -47,7 +47,7 @@ const AppDrawer = ({ drawerWidth }: props) => {
       open={drawerOpen}
     >
       <Toolbar />
-      <DrawerHeader>
+      <DrawerHeader style={{ minHeight: "5vh" }}>
         <IconButton
           onClick={() => {
             setDrawer(!drawerOpen);
@@ -56,12 +56,12 @@ const AppDrawer = ({ drawerWidth }: props) => {
           {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </DrawerHeader>
-      <Box p={2} textAlign="center">
+      <Box p={2} textAlign="center" paddingTop={0}>
         <Typography variant="h5" component="div">
           Key Items
         </Typography>
         <KeyItemGrid />
-        <Button sx={{ backgroundColor: theme.palette.success.main, marginTop: "40px" }} variant="contained">
+        <Button sx={{ backgroundColor: theme.palette.success.main, marginTop: "5px" }} variant="contained">
           Disable logic
           <br />
           (placeholder)
