@@ -262,13 +262,13 @@ const canAccessFireTemple_C               = `(${canAccessDMCMain_C} and (${setti
 const canAccessFireTemple_A               = `(${canAccessDMCMain_A})`;                                                                                                                                                       //tunic strict if not warp?
 const canAccessFireTempleLoop_C           = `(${canAccessFireTemple_C} and ${hammer_C}${settings.smallKeysAnywhere? " and fireTempleSmallKeys>=8" : ""})`;
 const canAccessFireTempleLoop_A           = `(${canAccessFireTemple_A} and ${hammer_A}${settings.smallKeysAnywhere? " and fireTempleSmallKeys>=8" : ""})`;
-const canAccessFireTempleBridgeRoom_C     = `(${canAccessFireTemple_C} and fireTempleSmallKeys>=${1 + settings.smallKeysAnywhere?1:0})`;
-const canAccessFireTempleBridgeRoom_A     = `(${canAccessFireTemple_A} and fireTempleSmallKeys>=${1 + settings.smallKeysAnywhere?1:0})`;
-const canAccessFireTempleBoulderRoom_A    = `(${canAccessFireTempleBridgeRoom_A} and fireTempleSmallKeys>=${3 + settings.smallKeysAnywhere?1:0} and ${adult} and strength and (${explosives} or ${rangedAttack}))`;
-const canAccessFireTempleMovingFireWall_A = `(${canAccessFireTempleBoulderRoom_A} and fireTempleSmallKeys>=${5 + settings.smallKeysAnywhere?1:0})`;
+const canAccessFireTempleBridgeRoom_C     = `(${canAccessFireTemple_C} and fireTempleSmallKeys>=${1 + (settings.smallKeysAnywhere?1:0)})`;
+const canAccessFireTempleBridgeRoom_A     = `(${canAccessFireTemple_A} and fireTempleSmallKeys>=${1 + (settings.smallKeysAnywhere?1:0)})`;
+const canAccessFireTempleBoulderRoom_A    = `(${canAccessFireTempleBridgeRoom_A} and fireTempleSmallKeys>=${3 + (settings.smallKeysAnywhere?1:0)} and ${adult} and strength and (${explosives} or ${rangedAttack}))`;
+const canAccessFireTempleMovingFireWall_A = `(${canAccessFireTempleBoulderRoom_A} and fireTempleSmallKeys>=${5 + (settings.smallKeysAnywhere?1:0)})`;
 const canAccessFireTempleScarecrowRoom_A  = `(${canAccessFireTempleMovingFireWall_A} and ${pierre})`;
-const canAccessFireTempleRingLeft_A       = `(${canAccessFireTempleMovingFireWall_A} and fireTempleSmallKeys>=${6 + settings.smallKeysAnywhere?1:0})`;
-const canAccessFireTempleRingRight_A      = `(${canAccessFireTempleRingLeft_A} and (fireTempleSmallKeys>=${7 + settings.smallKeysAnywhere?1:0} or (${hammer_A} and ${hoverBoots_A})))`;
+const canAccessFireTempleRingLeft_A       = `(${canAccessFireTempleMovingFireWall_A} and fireTempleSmallKeys>=${6 + (settings.smallKeysAnywhere?1:0)})`;
+const canAccessFireTempleRingRight_A      = `(${canAccessFireTempleRingLeft_A} and (fireTempleSmallKeys>=${7 + (settings.smallKeysAnywhere?1:0)} or (${hammer_A} and ${hoverBoots_A})))`;
 const canAccessFireTempleHammerRoom_A     = `(${canAccessFireTempleRingRight_A} and ${explosives})`;
 const canAccessFireTempleRingPillar_A     = `((${canAccessFireTempleRingLeft_A} and ${hoverBoots_A}) or (${canAccessFireTempleRingRight_A} and ${songOfTime}) or (${canAccessFireTempleHammerRoom_A} and ${hammer_A}))`;
 const canAccessFireTempleBossRoom_C       = `(${canAccessFireTemple_C} and ${hoverBoots_C})`;
@@ -283,7 +283,7 @@ const canAccessIceCavernBackRoom_A  = `(${canAccessIceCavernBlades_A})`; //silve
 const canAccessIceCavernSideRooms_C = `(${canAccessIceCavern_C} and ${blueFire_C})`;
 const canAccessIceCavernSideRooms_A = `(${canAccessIceCavern_A} and ${blueFire_A})`;
 
-//water
+//water //keys anywhere not accounted for....
 const canAccessWaterTemple_C                = `(${canAccessLakeHylia} and ((${ironBoots_C} and ${hookshot_C}) or (${goldScale} and ${longshot_C})))`;                                                      //soft tunic req
 const canAccessWaterTemple_A                = `(${canAccessLakeHylia} and ((${ironBoots_A} and ${hookshot_A}) or (${goldScale} and ${longshot_A})))`;                                                      //soft tunic req
 const canAccessWaterTempleRutoRoom_C        = `(${canAccessWaterTemple_C} and ${ironBoots_C})`;                                                                                                            //soft tunic req
@@ -803,8 +803,8 @@ const data: { zones: Zone[] } = {
         { name: `Bridge room, room on left side`, requirements: `${canAccessFireTempleBridgeRoom_A} and ${songOfTime}`, tags: ["spider"] },
         { name: `Boulder maze lower, left side`, requirements: `${canAccessFireTempleBoulderRoom_A}` },
         { name: `Boulder maze lower, right side`, requirements: `${canAccessFireTempleBoulderRoom_A}` },
-        { name: `Boulder maze, bombable wall`, requirements: `${canAccessFireTempleBoulderRoom_A} and ${explosives} and ${rangedCollectGS_A}`, tags: ["spider"] },
-        { name: `Chest in moving fire wall room`, requirements: `${canAccessFireTempleMovingFireWall_A} or (${canAccessFireTempleBoulderRoom_A} and ${bow} and fireTempleSmallKeys>=${4 + settings.smallKeysAnywhere?1:0})` },
+        { name: `Boulder maze, bombable wall`, requirements: `${canAccessFireTempleBoulderRoom_A} and ${explosives}`, tags: ["spider"] },
+        { name: `Chest in moving fire wall room`, requirements: `${canAccessFireTempleMovingFireWall_A} or (${canAccessFireTempleBoulderRoom_A} and ${bow} and fireTempleSmallKeys>=${4 + (settings.smallKeysAnywhere?1:0)})` },
         { name: `Boulder maze upper, goron`, requirements: `${canAccessFireTempleMovingFireWall_A}` },
         { name: `Boulder maze upper, down the hole`, requirements: `${canAccessFireTempleMovingFireWall_A} and ${explosives}` },
         { name: `Scarecrow chest`, requirements: `${canAccessFireTempleScarecrowRoom_A}` },
